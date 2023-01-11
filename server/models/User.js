@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const UserItem = require("./UserItem");
+const userItemSchema = require("./UserItem");
 
 const userSchema = new Schema(
   {
@@ -19,8 +19,8 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    inventory: [UserItem],
-    equippedInventory: [UserItem],
+    inventory: [userItemSchema],
+    equippedInventory: [userItemSchema],
   },
   {
     toJSON: {

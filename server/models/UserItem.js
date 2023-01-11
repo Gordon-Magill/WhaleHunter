@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const { Stats } = require("./Stats");
+const statsSchema = require("./Stats");
 
 const userItemSchema = new Schema(
   {
@@ -8,7 +8,7 @@ const userItemSchema = new Schema(
       required: true,
       default: null,
     },
-    stats: Stats,
+    stats: statsSchema,
   },
   {
     toJSON: {
@@ -17,6 +17,4 @@ const userItemSchema = new Schema(
   }
 );
 
-const UserItem = model("UserItem", userItemSchema);
-
-module.exports = UserItem;
+module.exports = userItemSchema;

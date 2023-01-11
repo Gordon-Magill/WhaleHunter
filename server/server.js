@@ -6,12 +6,11 @@ const db = require('./config/connection')
 // Helpers for express routing and graphQL client requests
 const path = require('path')
 const {typeDefs, resolvers} = require("./schemas");
-const { authMiddleware } = require("./utils/auth");
 
 // ********************************************
 // AUTH MIDDLEWARE COMMENTED OUT UNTIL COMPLETE
 // ********************************************
-const {authMiddleware} = require('.utils/auth')
+const {authMiddleware} = require('./utils/auth')
 
 // Define the core express app
 const app = express()

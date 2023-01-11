@@ -18,6 +18,5 @@ const statsSchema = new Schema(
   }
 );
 
-const Stats = model("Stats", statsSchema);
 
-module.exports = Stats;
+module.exports = statsSchema;
