@@ -41,11 +41,9 @@ function GenerateStats(type){
         // generate values for 1 stat
         // that stat will determine the part type
 
-        let roll = getRandomInt(6, 0)
-
         let partResult = {
-            "Part Type" : roll,
-            "Stat Bonus" : roll
+            "Part Type" : getRandomInt(6, 0),
+            "Stat Bonus" : getRandomInt(5, 1),
         }
 
         return partResult
@@ -55,3 +53,5 @@ function GenerateStats(type){
         return
     }
 }
+
+module.exports = GenerateStats
