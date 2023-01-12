@@ -14,6 +14,8 @@ import Gallery from "./pages/Gallery";
 import Harbor from "./pages/Harbor";
 import Splash from "./pages/Splash";
 
+import Nav from "./components/Nav";
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,9 +43,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <Nav></Nav>
       <Router>
         <>
-          <Nav />
           <Routes>
             <Route
               path="/"
