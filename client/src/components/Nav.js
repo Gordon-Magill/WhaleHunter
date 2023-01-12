@@ -4,10 +4,11 @@ export default function Nav() {
   return (
     <nav classname="navigation">
           <ul>
-              <li>Dashboard</li>
-              <li>Gallery</li>
-              <li>Harbor</li>
-              <li>Logout</li>
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li><a href="/gallery">Gallery</a></li>
+              <li><a href="/harbor">Harbor</a></li>
+              <li><a href="/battle">Battle</a></li>
+              <li><a href="/logout">LogOut</a></li>
           </ul>
     </nav>
   );
