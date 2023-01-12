@@ -14,7 +14,7 @@ import Gallery from "./pages/Gallery";
 import Harbor from "./pages/Harbor";
 import Splash from "./pages/Splash";
 
-import Nav from "./components/Nav";
+import Nav from "./pages/page-components/Nav";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
