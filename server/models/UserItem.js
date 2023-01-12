@@ -9,6 +9,13 @@ const userItemSchema = new Schema(
       default: null,
     },
     stats: statsSchema,
+    
+    // Icon will just be a reference to a file name in the src/assets
+    icon: {
+      type: String,
+      required: true,
+      default: null
+    }
   },
   {
     toJSON: {
