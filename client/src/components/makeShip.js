@@ -6,6 +6,7 @@ const statValues = GenerateStats(0)
 const NewShip = class Ship {
     constructor(){
         this.name = "Placeholder Name"
+        this.imageID = null
         this.attackPower = statValues["attackPower"]
         this.health = statValues["health"]
         this.armor = statValues["armor"]
