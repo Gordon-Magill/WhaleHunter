@@ -40,6 +40,10 @@ const statsSchema = new Schema(
       type: Number,
       default: 0,
     },
+    imageID: {
+      type: String,
+      required:true,
+    }
   },
   {
     toJSON: {

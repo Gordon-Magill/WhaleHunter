@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 const statsSchema = require("./Stats");
 
-const userItemSchema = new Schema(
+const itemSchema = new Schema(
   {
     description: {
       type: String,
@@ -10,7 +10,7 @@ const userItemSchema = new Schema(
     },
     stats: statsSchema,
     
-    // Icon will just be a reference to a file name in the src/assets
+    // Icon will just be a reference to a file name in client/src/assets
     icon: {
       type: String,
       required: true,
@@ -24,4 +24,4 @@ const userItemSchema = new Schema(
   }
 );
 
-module.exports = userItemSchema;
+module.exports = {itemSchema};
