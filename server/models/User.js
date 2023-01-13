@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const userItemSchema = require("./UserItem");
+const itemSchema = require("./Item");
+const shipSchema = require("./Ship");
 
 const userSchema = new Schema(
   {
@@ -19,8 +20,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    inventory: [userItemSchema],
-    equippedInventory: [userItemSchema],
+    inventory: [itemSchema],
+    equippedInventory: [itemSchema],
+    ship: shipSchema,
+    shipInventory: [shipSchema]
   },
   {
     toJSON: {
@@ -31,12 +34,11 @@ const userSchema = new Schema(
 
 userSchema.pre("save", async function (next) {
   const saltRounds = 10;
-  // Hash EVERYTHING - I don't want to be next on HackerNews
+  // Hash EVERYTHING user related - I don't want to be next on HackerNews
   if (this.isNew) {
     this.password = await bcrypt.hash(this.password, saltRounds);
     this.username = await bcrypt.hash(this.username, saltRounds);
     this.email = await bcrypt.hash(this.email, saltRounds);
-    this.inventory = await bcrypt.hash(this.inventory, saltRounds);
   }
 
   if (this.isModified("password")) {
@@ -49,10 +51,6 @@ userSchema.pre("save", async function (next) {
 
   if (this.isModified("email")) {
     this.email = await bcrypt.hash(this.email, saltRounds);
-  }
-
-  if (this.isModified("inventory")) {
-    this.inventory = await bcrypt.hash(this.inventory, saltRounds);
   }
 
   next();
