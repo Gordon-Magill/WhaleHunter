@@ -88,6 +88,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addShip(shipInfo: shipInput!): Ship
+        addUserExp(expValue: Float): User
     }
 `;
 
