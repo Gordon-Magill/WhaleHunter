@@ -1,12 +1,11 @@
 // Get mongoDB models
-const { User } = require("../models");
+const { User, Monster, Item, Ship } = require("../models");
 
 // Authentication errors for when provided tokens are invalid
 const { AuthenticationError } = require("apollo-server-express");
 
 // Allow for token signing
 const { signToken } = require("../utils/auth");
-const { Ship } = require("../models/Ship");
 
 const resolvers = {
   Query: {
@@ -54,10 +53,22 @@ const resolvers = {
         "AuthenticationError: Invalid credentials attempting to query 'ships'"
       );
     },
+    randomMonster: async (parent, args, context, info) => {
+      if (context.user) {
+        const monsterCount = await Monster.count()
+        let randomInt = Math.floor(Math.random() * monsterCount)
+        const randMonster = await Monster.findOne().skip(randomInt)
+        return randMonster
+      }
+
+      throw new AuthenticationError(
+        "AuthenticationError: Invalid credentials attempting to query 'randomMonster'"
+      );
+    }
   },
   Mutation: {
     login: async (parent, args, context, info) => {
-      console.log('login mutation called with args:',args)
+      console.log("login mutation called with args:", args);
       const user = await User.findOne({ email: args.email });
 
       if (!user) {
@@ -76,7 +87,7 @@ const resolvers = {
       return { token, user };
     },
     addUser: async (parent, args, context, info) => {
-      console.log('addUser mutation called with args:',args)
+      console.log("addUser mutation called with args:", args);
       const user = await User.create(args);
       const token = signToken(user);
 
@@ -85,21 +96,37 @@ const resolvers = {
     },
     addShip: async (parent, args, context, info) => {
       if (context.user) {
-        console.log('addShip mutation called with args:',args)
+        console.log("addShip mutation called with args:", args);
         const newShipUser = await User.findByIdAndUpdate(
-          {_id:context.user._id},
+          { _id: context.user._id },
           {
             $push: {
-              ships: args.shipInfo
-            }
+              ships: args.shipInfo,
+            },
           },
-          {new: true})
+          { new: true }
+        );
       }
 
       throw new AuthenticationError(
         "AuthenticationError: Invalid credentials attempting to access 'addShip'"
       );
+    },
+    addUserExp: async (parent, args, context, info) => {
+      if (context.user) {
+        const addingToUser = User.findByIdAndUpdate(
+          { _id: context.user._id },
+          {
+            $inc: {
+              experience: args.experience,
+            },
+          }
+        );
+      }
 
+      throw new AuthenticationError(
+        "AuthenticationError: Invalid credentials attempting to access 'addUserExp'"
+      );
     }
   },
 };

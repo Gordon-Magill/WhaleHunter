@@ -21,6 +21,19 @@ const typeDefs = gql`
         icon: String!
     }
 
+    type Monster {
+        monsterID: ID!
+        name: String!
+        attackPower: Float!
+        health: Float!
+        armor: Float!
+        shield: Float!
+        accuracy: Float!
+        evasion: Float!
+        imageID: String!
+        expGrant: Float!
+    }
+
     type Ship {
         shipID: ID!
         name: String!
@@ -41,6 +54,7 @@ const typeDefs = gql`
         equippedInventory: [Item]!
         ship: Ship
         shipInventory: [Ship]
+        experience: Float!
     }
 
     type Auth {
@@ -66,12 +80,16 @@ const typeDefs = gql`
         user(userID: ID!): User
         me: User
         ships: [Ship]
+        monsters: [Monster]
+        items: [Item]
+        randomMonster: Monster
     }
 
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addShip(shipInfo: shipInput!): Ship
+        addUserExp(expValue: Float): User
     }
 `;
 
