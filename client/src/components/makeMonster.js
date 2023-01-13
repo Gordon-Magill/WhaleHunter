@@ -6,6 +6,7 @@ const statValues = GenerateStats(1)
 const NewMonster = class Monster {
     constructor(){
         this.name = "Eldritch Star Whalebeast"
+        this.imageID = null
         this.attackPower = statValues["attackPower"]
         this.health = statValues["health"]
         this.armor = statValues["armor"]
