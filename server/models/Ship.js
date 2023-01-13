@@ -16,6 +16,11 @@ const shipSchema = new Schema(
       required: true,
       default: 1,
     },
+    healthCurrent: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
     armor: {
       type: Number,
       required: true,

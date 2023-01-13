@@ -39,6 +39,7 @@ const typeDefs = gql`
         name: String!
         attackPower: Float!
         health: Float!
+        healthCurrent: Float!
         armor: Float!
         shield: Float!
         accuracy: Float!
@@ -92,5 +93,7 @@ const typeDefs = gql`
         addUserExp(expValue: Float): User
     }
 `;
+// TODO
+// -Change addUserExp to a more general end of battle resolver that saves ship health as well
 
 module.exports = typeDefs;
