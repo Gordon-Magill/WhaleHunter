@@ -20,6 +20,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    experience: {
+      type: Number,
+      required: true,
+      default: 0
+    },
     inventory: [itemSchema],
     equippedInventory: [itemSchema],
     ship: shipSchema,

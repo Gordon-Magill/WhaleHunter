@@ -53,4 +53,6 @@ const statsSchema = new Schema(
 );
 
 
-module.exports = statsSchema;
+module.exports = {
+  statsSchema
+};
