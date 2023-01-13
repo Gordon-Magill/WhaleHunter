@@ -29,7 +29,6 @@ const typeDefs = gql`
         armor: Float!
         shield: Float!
         accuracy: Float!
-        initiative: Float!
         evasion: Float!
         imageID: String!
     }

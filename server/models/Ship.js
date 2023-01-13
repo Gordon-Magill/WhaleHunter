@@ -31,11 +31,6 @@ const shipSchema = new Schema(
       required: true,
       default: 1,
     },
-    initiative: {
-      type: Number,
-      required: true,
-      default: 1,
-    },
     evasion: {
       type: Number,
       required: true,
