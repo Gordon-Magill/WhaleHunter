@@ -82,6 +82,7 @@ const typeDefs = gql`
         ships: [Ship]
         monsters: [Monster]
         items: [Item]
+        randomMonster: Monster
     }
 
     type Mutation {

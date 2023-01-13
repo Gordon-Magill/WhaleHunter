@@ -1,12 +1,11 @@
 // Get mongoDB models
-const { User } = require("../models");
+const { User, Monster, Item, Ship } = require("../models");
 
 // Authentication errors for when provided tokens are invalid
 const { AuthenticationError } = require("apollo-server-express");
 
 // Allow for token signing
 const { signToken } = require("../utils/auth");
-const { Ship } = require("../models/Ship");
 
 const resolvers = {
   Query: {
@@ -54,6 +53,18 @@ const resolvers = {
         "AuthenticationError: Invalid credentials attempting to query 'ships'"
       );
     },
+    randomMonster: async (parent, args, context, info) => {
+      if (context.user) {
+        const monsterCount = await Monster.count()
+        let randomInt = Math.floor(Math.random() * monsterCount)
+        const randMonster = await Monster.findOne().skip(randomInt)
+        return randMonster
+      }
+
+      throw new AuthenticationError(
+        "AuthenticationError: Invalid credentials attempting to query 'randomMonster'"
+      );
+    }
   },
   Mutation: {
     login: async (parent, args, context, info) => {
@@ -116,7 +127,7 @@ const resolvers = {
       throw new AuthenticationError(
         "AuthenticationError: Invalid credentials attempting to access 'addUserExp'"
       );
-    },
+    }
   },
 };
 
