@@ -24,4 +24,4 @@ const itemSchema = new Schema(
   }
 );
 
-module.exports = itemSchema;
+module.exports = {itemSchema};
