@@ -26,8 +26,8 @@ const items = [
   },
 ];
 
-export default function ContNav() {
-  const [current, setCurrent] = useState("gallery");
+const ContNav = () => {
+  const [current, setCurrent] = useState("harbor");
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
@@ -40,4 +40,5 @@ export default function ContNav() {
       items={items}
     />
   );
-}
+};
+export default ContNav;
