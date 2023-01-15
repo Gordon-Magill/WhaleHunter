@@ -69,17 +69,29 @@ function App() {
           <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={["4"]}
+            defaultSelectedKeys={["1"]}
             items={[
-              UserOutlined,
-              VideoCameraOutlined,
-              UploadOutlined,
-              UserOutlined,
-            ].map((icon, index) => ({
-              key: String(index + 1),
-              icon: React.createElement(icon),
-              label: `nav ${index + 1}`,
-            }))}
+              {
+                key: "1",
+                icon: <UserOutlined />,
+                label: <a href="/dashboard">Dashboard</a>,
+              },
+              {
+                key: "2",
+                icon: <VideoCameraOutlined />,
+                label: <a href="/harbor">Harbor</a>,
+              },
+              {
+                key: "3",
+                icon: <UploadOutlined />,
+                label: <a href="/gallery">Gallery</a>,
+              },
+              {
+                key: "4",
+                icon: <UploadOutlined />,
+                label: <a href="/battle">Battle</a>,
+              },
+            ]}
           />
         </Sider>
         <Layout>
