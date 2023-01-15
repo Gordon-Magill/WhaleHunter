@@ -4,7 +4,7 @@ import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { Button, Form, Input } from "antd";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error: loginError }] = useMutation(LOGIN_USER);
   const [errorState, setErrorState] = useState(false);
