@@ -27,7 +27,7 @@ const items = [
 ];
 
 export default function ContNav() {
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState("gallery");
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
