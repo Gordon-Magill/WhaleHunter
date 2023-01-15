@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Splash() {
   return (
-    <div classname="splash">
+    <div className="splash">
       <h1>Welcome!</h1>
     </div>
   );
