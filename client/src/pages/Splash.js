@@ -12,7 +12,7 @@ import Four from '../assets/fire_whales/tmpho__5bmj.png';
 
 const contentStyle = {
   width: "100%",
-  height: "50vh",
+  height: "30rem",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
@@ -20,10 +20,9 @@ const contentStyle = {
 
 const imageStyle = {
   width: "100%",
-  height: "auto",
+  height: "50rem",
   overflow: "hidden",
 };
-
 
 export default function Splash() {
   return (
@@ -37,6 +36,7 @@ export default function Splash() {
         <div>
           <div style={contentStyle}>
             <Image style={imageStyle} src={Two} />
+
           </div>
         </div>
         <div>
