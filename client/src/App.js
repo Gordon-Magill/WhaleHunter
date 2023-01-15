@@ -14,22 +14,23 @@ import Gallery from "./pages/Gallery";
 import Harbor from "./pages/Harbor";
 import Splash from "./pages/Splash";
 
-import Nav from "./pages/page-components/Nav";
+import { Layout } from "antd";
+const { Header, Footer, Sider, Content } = Layout;
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -42,35 +43,32 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Nav></Nav>
-      <Router>
-        <>
-          <Routes>
-            <Route
-              path="/"
-              element={<Splash/>}
-            />
-            <Route
-              path="/dashboard"
-              element={<Dashboard/>}
-            />
-             <Route
-              path="/gallery"
-              element={<Gallery/>}
-            />
-            <Route
-              path="/battle"
-              element={<Battle/>}
-            />
-            <Route
-              path="/harbor"
-              element={<Harbor/>}
-            />
-          </Routes>
-        </>
-      </Router>
-    </ApolloProvider>
+    <div className="App">
+      <ApolloProvider client={client}>
+        <Layout>
+          <Header></Header>
+        </Layout>
+        <Layout>
+          <Sider></Sider>
+          <Layout>
+            <Content>
+              <Router>
+                <>
+                  <Routes>
+                    <Route path="/" element={<Splash />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/battle" element={<Battle />} />
+                    <Route path="/harbor" element={<Harbor />} />
+                  </Routes>
+                </>
+              </Router>
+            </Content>
+          </Layout>
+        </Layout>
+        <Footer></Footer>
+      </ApolloProvider>
+    </div>
   );
 }
 
