@@ -17,7 +17,7 @@ import Splash from "./pages/Splash";
 import LoginPage from "./pages/LoginPage";
 
 // Import Logo Image
-import Logo from "./assets/01-logos/logo-white.png";
+import Logo from "./assets/01-logos/logo-gray.png";
 
 // Ant Design icons import
 import {
