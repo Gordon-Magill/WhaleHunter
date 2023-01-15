@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
-import { Button, Form, Input, Col, Row, Space } from "antd";
 
 export default function LoginPage() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -48,47 +47,12 @@ export default function LoginPage() {
   return (
     <div className="loginPage">
       <h1>This is the login page!</h1>
-      <Form
-        name="basic"
-        labelCol={{ span: 4, offset: 0 }}
-        wrapperCol={{ span: 24, offset: 0 }}
-        initialValues={{ remember: true }}
-        onFieldsChange={handleInputChange}
-        onFinish={handleFormSubmit}
-        autoComplete="off"
-      >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
-          <Row justify="center">
-            <Col span={4}>
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Col>
-
-            <Col span={4}>
-              <Button type="primary" htmlType="submit">
-                Create an account!
-              </Button>
-            </Col>
-          </Row>
-        </Form.Item>
-      </Form>
+      <form>
+        <input></input>
+        <input></input>
+        <button></button>
+        <button></button>
+      </form>
     </div>
   );
 }

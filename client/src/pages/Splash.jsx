@@ -1,8 +1,6 @@
 import React from "react";
 
 // Image carousel for home banner
-import { Carousel } from 'antd';
-import { Image } from "antd";
 
 // Images from assets
 import One from '../assets/old_ships/tmp7mrkqgzv.png';
@@ -27,29 +25,6 @@ const imageStyle = {
 export default function Splash() {
   return (
     <div className="splash">
-      <Carousel effect="fade" autoplay>
-        <div>
-          <div style={contentStyle}>
-            <Image style={imageStyle} src={One} />
-          </div>
-        </div>
-        <div>
-          <div style={contentStyle}>
-            <Image style={imageStyle} src={Two} />
-
-          </div>
-        </div>
-        <div>
-          <div style={contentStyle}>
-            <Image style={imageStyle} src={Three} />
-          </div>
-        </div>
-        <div>
-          <div style={contentStyle}>
-            <Image style={imageStyle} src={Four} />
-          </div>
-        </div>
-      </Carousel>
     </div>
   );
 }
