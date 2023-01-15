@@ -20,7 +20,7 @@ const contentStyle = {
 
 const imageStyle = {
   width: "100%",
-  height: "50rem",
+  height: "auto",
   overflow: "hidden",
 };
 
