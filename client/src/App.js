@@ -15,6 +15,10 @@ import Gallery from "./pages/Gallery";
 import Harbor from "./pages/Harbor";
 import Splash from "./pages/Splash";
 import LoginPage from "./pages/LoginPage";
+import ContUserStat from "./pages/page-content/ContUserStat";
+
+// Import Logo Image
+import Logo from "./assets/01-logos/logo-gray.png";
 
 // Ant Design icons import
 import {
@@ -22,7 +26,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme, Image } from "antd";
 const { Header, Sider, Content, Footer } = Layout;
 
 // Construct our main GraphQL API endpoint
@@ -66,7 +70,12 @@ function App() {
             console.log(collapsed, type);
           }}
         >
-          <div className="logo" />
+          <div className="logo">
+            <Image src={Logo} />
+          </div>
+          <div className="userStat">
+            <ContUserStat></ContUserStat>
+          </div>
           <Menu
             theme="dark"
             mode="inline"
@@ -101,7 +110,7 @@ function App() {
               padding: 0,
               background: colorBgContainer,
             }}
-          />
+          ></Header>
           <Content
             style={{
               margin: "24px 16px 0",
