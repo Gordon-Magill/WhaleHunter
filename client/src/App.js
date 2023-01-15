@@ -17,14 +17,12 @@ import Splash from "./pages/Splash";
 
 // Ant Design icons import
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -51,76 +49,78 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
     <ApolloProvider client={client}>
       <Layout>
-        <Header className="header">
-          <div className="logo" />
-        </Header>
-      </Layout>
-      <Layout>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Sider
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={(broken) => {
+            console.log(broken);
+          }}
+          onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+          }}
+        >
           <div className="logo" />
           <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={["4"]}
             items={[
-              {
-                key: "1",
-                icon: <UserOutlined />,
-                label: <a href="/dashboard">Dashboard</a>,
-              },
-              {
-                key: "2",
-                icon: <VideoCameraOutlined />,
-                label: <a href="/harbor">Harbor</a>,
-              },
-              {
-                key: "3",
-                icon: <UploadOutlined />,
-                label: <a href="/gallery">Gallery</a>,
-              },
-              {
-                key: "4",
-                icon: <UploadOutlined />,
-                label: <a href="/battle">Battle</a>,
-              },
-            ]}
+              UserOutlined,
+              VideoCameraOutlined,
+              UploadOutlined,
+              UserOutlined,
+            ].map((icon, index) => ({
+              key: String(index + 1),
+              icon: React.createElement(icon),
+              label: `nav ${index + 1}`,
+            }))}
           />
         </Sider>
-        <Layout className="site-layout">
+        <Layout>
           <Header
             style={{
               padding: 0,
               background: colorBgContainer,
             }}
+          />
+          <Content
+            style={{
+              margin: "24px 16px 0",
+            }}
           >
-            {React.createElement(
-              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-              {
-                className: "trigger",
-                onClick: () => setCollapsed(!collapsed),
-              }
-            )}
-          </Header>
-          <Content>
-            <Router>
-              <>
-                <Routes>
-                  <Route path="/" element={<Splash />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/gallery" element={<Gallery />} />
-                  <Route path="/battle" element={<Battle />} />
-                  <Route path="/harbor" element={<Harbor />} />
-                </Routes>
-              </>
-            </Router>
+            <div
+              style={{
+                padding: 24,
+                minHeight: 360,
+                background: colorBgContainer,
+              }}
+            >
+              <Router>
+                <>
+                  <Routes>
+                    <Route path="/" element={<Splash />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/battle" element={<Battle />} />
+                    <Route path="/harbor" element={<Harbor />} />
+                  </Routes>
+                </>
+              </Router>
+            </div>
           </Content>
+          <Footer
+            style={{
+              textAlign: "center",
+            }}
+          >
+            Ant Design ©2023 Created by Ant UED
+          </Footer>
         </Layout>
       </Layout>
     </ApolloProvider>
