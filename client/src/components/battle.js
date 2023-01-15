@@ -128,4 +128,3 @@ function battle(attacker, defender){
     
 
 }
-
