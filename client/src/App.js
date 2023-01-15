@@ -131,7 +131,7 @@ function App() {
               textAlign: "center",
             }}
           >
-            Ant Design ©2023 Created by Ant UED
+            Space Grift: Whale Hunter
           </Footer>
         </Layout>
       </Layout>
