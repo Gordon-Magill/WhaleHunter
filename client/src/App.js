@@ -1,13 +1,14 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
+// Import pages and page content
 import Battle from "./pages/Battle";
 import Dashboard from "./pages/Dashboard";
 import Gallery from "./pages/Gallery";
@@ -16,11 +17,16 @@ import Splash from "./pages/Splash";
 
 import ContNav from "./pages/page-content/ContNav";
 
-
-import { Menu } from "antd";
-
-import { Layout } from "antd";
-const { Header, Footer, Sider, Content } = Layout;
+// Ant Design icons import
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+import { Layout, Menu, theme } from "antd";
+const { Header, Sider, Content } = Layout;
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -47,35 +53,69 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [collapsed, setCollapsed] = useState(false);
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   return (
-    <div className="App">
-      <ApolloProvider client={client}>
-        <Layout>
-          <Header>
-            <Menu><ContNav></ContNav></Menu>
+    <ApolloProvider client={client}>
+      <Layout>
+        <Sider trigger={null} collapsible collapsed={collapsed}>
+          <div className="logo" />
+          <Menu
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={["1"]}
+            items={[
+              {
+                key: "1",
+                icon: <UserOutlined />,
+                label: "nav 1",
+              },
+              {
+                key: "2",
+                icon: <VideoCameraOutlined />,
+                label: "nav 2",
+              },
+              {
+                key: "3",
+                icon: <UploadOutlined />,
+                label: "nav 3",
+              },
+            ]}
+          />
+        </Sider>
+        <Layout className="site-layout">
+          <Header
+            style={{
+              padding: 0,
+              background: colorBgContainer,
+            }}
+          >
+            {React.createElement(
+              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: "trigger",
+                onClick: () => setCollapsed(!collapsed),
+              }
+            )}
           </Header>
-          <Layout>
-            <Sider></Sider>
-            <Layout>
-              <Content>
-                <Router>
-                  <>
-                    <Routes>
-                      <Route path="/" element={<Splash />} />
-                      <Route path="/dashboard" element={<Dashboard />} />
-                      <Route path="/gallery" element={<Gallery />} />
-                      <Route path="/battle" element={<Battle />} />
-                      <Route path="/harbor" element={<Harbor />} />
-                    </Routes>
-                  </>
-                </Router>
-                <Footer></Footer>
-              </Content>
-            </Layout>
-          </Layout>
+          <Content>
+            <Router>
+              <>
+                <Routes>
+                  <Route path="/" element={<Splash />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/battle" element={<Battle />} />
+                  <Route path="/harbor" element={<Harbor />} />
+                </Routes>
+              </>
+            </Router>
+          </Content>
         </Layout>
-      </ApolloProvider>
-    </div>
+      </Layout>
+    </ApolloProvider>
   );
 }
 

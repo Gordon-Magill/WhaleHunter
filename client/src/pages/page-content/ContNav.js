@@ -27,7 +27,7 @@ const items = [
 ];
 
 const ContNav = () => {
-  const [current, setCurrent] = useState("harbor");
+  const [current, setCurrent] = useState("mail");
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
