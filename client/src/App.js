@@ -15,8 +15,6 @@ import Gallery from "./pages/Gallery";
 import Harbor from "./pages/Harbor";
 import Splash from "./pages/Splash";
 
-import ContNav from "./pages/page-content/ContNav";
-
 // Ant Design icons import
 import {
   MenuFoldOutlined,
