@@ -48,10 +48,10 @@ export default function LoginPage() {
     <div className="loginPage">
       <h1>This is the login page!</h1>
       <form>
-        <input></input>
-        <input></input>
-        <button></button>
-        <button></button>
+        <input className="" placeholder="Username"></input>
+        <input type="password" className="" placeholder="Password"></input>
+        <button>Log in</button>
+        <button>Sign up</button>
       </form>
     </div>
   );
