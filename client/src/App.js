@@ -1,26 +1,28 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
+// Import pages and page content
 import Battle from "./pages/Battle";
 import Dashboard from "./pages/Dashboard";
 import Gallery from "./pages/Gallery";
 import Harbor from "./pages/Harbor";
 import Splash from "./pages/Splash";
 
-import ContNav from "./pages/page-content/ContNav";
-
-
-import { Menu } from "antd";
-
-import { Layout } from "antd";
-const { Header, Footer, Sider, Content } = Layout;
+// Ant Design icons import
+import {
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+import { Layout, Menu, theme } from "antd";
+const { Header, Sider, Content, Footer } = Layout;
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -47,35 +49,93 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   return (
-    <div className="App">
-      <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
+      <Layout>
+        <Sider
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={(broken) => {
+            console.log(broken);
+          }}
+          onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+          }}
+        >
+          <div className="logo" />
+          <Menu
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={["1"]}
+            items={[
+              {
+                key: "1",
+                icon: <UserOutlined />,
+                label: <a href="/dashboard">Dashboard</a>,
+              },
+              {
+                key: "2",
+                icon: <VideoCameraOutlined />,
+                label: <a href="/harbor">Harbor</a>,
+              },
+              {
+                key: "3",
+                icon: <UploadOutlined />,
+                label: <a href="/gallery">Gallery</a>,
+              },
+              {
+                key: "4",
+                icon: <UploadOutlined />,
+                label: <a href="/battle">Battle</a>,
+              },
+            ]}
+          />
+        </Sider>
         <Layout>
-          <Header>
-            <Menu><ContNav></ContNav></Menu>
-          </Header>
-          <Layout>
-            <Sider></Sider>
-            <Layout>
-              <Content>
-                <Router>
-                  <>
-                    <Routes>
-                      <Route path="/" element={<Splash />} />
-                      <Route path="/dashboard" element={<Dashboard />} />
-                      <Route path="/gallery" element={<Gallery />} />
-                      <Route path="/battle" element={<Battle />} />
-                      <Route path="/harbor" element={<Harbor />} />
-                    </Routes>
-                  </>
-                </Router>
-                <Footer></Footer>
-              </Content>
-            </Layout>
-          </Layout>
+          <Header
+            style={{
+              padding: 0,
+              background: colorBgContainer,
+            }}
+          />
+          <Content
+            style={{
+              margin: "24px 16px 0",
+            }}
+          >
+            <div
+              style={{
+                padding: 24,
+                minHeight: 360,
+                background: colorBgContainer,
+              }}
+            >
+              <Router>
+                <>
+                  <Routes>
+                    <Route path="/" element={<Splash />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/battle" element={<Battle />} />
+                    <Route path="/harbor" element={<Harbor />} />
+                  </Routes>
+                </>
+              </Router>
+            </div>
+          </Content>
+          <Footer
+            style={{
+              textAlign: "center",
+            }}
+          >
+            Space Grift: Whale Hunter
+          </Footer>
         </Layout>
-      </ApolloProvider>
-    </div>
+      </Layout>
+    </ApolloProvider>
   );
 }
 
