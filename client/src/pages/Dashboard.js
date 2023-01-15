@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Dashboard() {
   return (
-    <div classname="dashboard">
+    <div className="dashboard">
           <h1>Your Dashboard</h1>
     </div>
   );

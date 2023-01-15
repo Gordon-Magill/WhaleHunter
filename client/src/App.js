@@ -14,6 +14,11 @@ import Gallery from "./pages/Gallery";
 import Harbor from "./pages/Harbor";
 import Splash from "./pages/Splash";
 
+import ContNav from "./pages/page-content/ContNav";
+
+
+import { Menu } from "antd";
+
 import { Layout } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -46,27 +51,29 @@ function App() {
     <div className="App">
       <ApolloProvider client={client}>
         <Layout>
-          <Header></Header>
-        </Layout>
-        <Layout>
-          <Sider></Sider>
+          <Header>
+            <Menu><ContNav></ContNav></Menu>
+          </Header>
           <Layout>
-            <Content>
-              <Router>
-                <>
-                  <Routes>
-                    <Route path="/" element={<Splash />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/gallery" element={<Gallery />} />
-                    <Route path="/battle" element={<Battle />} />
-                    <Route path="/harbor" element={<Harbor />} />
-                  </Routes>
-                </>
-              </Router>
-            </Content>
+            <Sider></Sider>
+            <Layout>
+              <Content>
+                <Router>
+                  <>
+                    <Routes>
+                      <Route path="/" element={<Splash />} />
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/gallery" element={<Gallery />} />
+                      <Route path="/battle" element={<Battle />} />
+                      <Route path="/harbor" element={<Harbor />} />
+                    </Routes>
+                  </>
+                </Router>
+                <Footer></Footer>
+              </Content>
+            </Layout>
           </Layout>
         </Layout>
-        <Footer></Footer>
       </ApolloProvider>
     </div>
   );
