@@ -60,6 +60,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Layout>
+        <Header className="header">
+          <div className="logo" />
+        </Header>
+      </Layout>
+      <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
           <Menu
@@ -70,17 +75,22 @@ function App() {
               {
                 key: "1",
                 icon: <UserOutlined />,
-                label: "nav 1",
+                label: <a href="/dashboard">Dashboard</a>,
               },
               {
                 key: "2",
                 icon: <VideoCameraOutlined />,
-                label: "nav 2",
+                label: <a href="/harbor">Harbor</a>,
               },
               {
                 key: "3",
                 icon: <UploadOutlined />,
-                label: "nav 3",
+                label: <a href="/gallery">Gallery</a>,
+              },
+              {
+                key: "4",
+                icon: <UploadOutlined />,
+                label: <a href="/battle">Battle</a>,
               },
             ]}
           />
