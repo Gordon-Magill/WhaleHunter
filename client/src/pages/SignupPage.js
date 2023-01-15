@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
-import { Button, Form, Input, Col, Row, Space } from "antd";
+import { Button, Form, Input } from "antd";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error: loginError }] = useMutation(LOGIN_USER);
   const [errorState, setErrorState] = useState(false);
@@ -50,8 +50,8 @@ export default function LoginPage() {
       <h1>This is the login page!</h1>
       <Form
         name="basic"
-        labelCol={{ span: 4, offset: 0 }}
-        wrapperCol={{ span: 24, offset: 0 }}
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFieldsChange={handleInputChange}
         onFinish={handleFormSubmit}
@@ -73,20 +73,10 @@ export default function LoginPage() {
           <Input.Password />
         </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
-          <Row justify="center">
-            <Col span={4}>
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Col>
-
-            <Col span={4}>
-              <Button type="primary" htmlType="submit">
-                Create an account!
-              </Button>
-            </Col>
-          </Row>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
         </Form.Item>
       </Form>
     </div>
