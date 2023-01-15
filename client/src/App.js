@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard";
 import Gallery from "./pages/Gallery";
 import Harbor from "./pages/Harbor";
 import Splash from "./pages/Splash";
+import LoginPage from "./pages/LoginPage";
 
 // Ant Design icons import
 import {
@@ -121,6 +122,7 @@ function App() {
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/battle" element={<Battle />} />
                     <Route path="/harbor" element={<Harbor />} />
+                    <Route path="/login" element={<LoginPage />} />
                   </Routes>
                 </>
               </Router>
