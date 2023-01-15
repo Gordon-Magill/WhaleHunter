@@ -12,18 +12,16 @@ import Four from '../assets/fire_whales/tmpho__5bmj.png';
 
 const contentStyle = {
   width: "100%",
-  height: "10vh",
+  height: "50vh",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
-  display: "flex",
-  overflow: "hidden",
 };
 
 const imageStyle = {
   width: "100%",
   height: "auto",
-  overfloiw: "hidden",
+  overflow: "hidden",
 };
 
 
