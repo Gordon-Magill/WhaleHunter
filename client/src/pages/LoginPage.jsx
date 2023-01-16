@@ -12,7 +12,7 @@ export default function LoginPage() {
   //   Update form state on changes to the form
   const handleInputChange = (event) => {
     console.log('handleInputChange event:', event)
-    const { name, value } = event[0];
+    const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
     console.log("new userFormData is:", userFormData);
   };
@@ -51,6 +51,7 @@ export default function LoginPage() {
         <div className="flex flex-col justify-around ">
           <input
             type="email"
+            name="email"
             className="w-full m-1 rounded-md"
             placeholder="Email"
             onChange={handleInputChange}
@@ -58,6 +59,7 @@ export default function LoginPage() {
           ></input>
           <input
             type="password"
+            name="password"
             className="w-full m-1 rounded-md"
             placeholder="Password"
             onChange={handleInputChange}
