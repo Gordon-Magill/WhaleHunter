@@ -1,8 +1,10 @@
 import React from "react";
+
 import { Form, Input, Button, Alert, Row, Col } from "antd";
 import { battle } from "../components/battle"
 // import user's ship as attacker
 // import random monster as defender
+
 
 export default function Battle() {
   return (
@@ -26,6 +28,7 @@ export default function Battle() {
           >Retreat!
         </Button>
       </Col>
+
     </div>
   );
 }
