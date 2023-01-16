@@ -5,14 +5,14 @@ import Auth from "../utils/auth";
 
 export default function LoginPage() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "", username:""});
-  const [login, { error: loginError }] = useMutation(LOGIN_USER);
+  const [addUser, { error: addUserError }] = useMutation(ADD_USER);
   const [errorState, setErrorState] = useState(false);
   const [validatedForm, setValidatedForm] = useState(false);
 
   //   Update form state on changes to the form
   const handleInputChange = (event) => {
     console.log('handleInputChange event:', event)
-    const { name, value } = event;
+    const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
     console.log("new userFormData is:", userFormData);
   };
@@ -24,7 +24,7 @@ export default function LoginPage() {
     console.log("userFormData:", userFormData);
 
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: {
           ...userFormData,
         },
@@ -51,6 +51,7 @@ export default function LoginPage() {
         <div className="flex flex-col justify-around ">
           <input
             type="email"
+            name="email"
             className="w-full m-1 rounded-md"
             placeholder="Email"
             onChange={handleInputChange}
@@ -58,6 +59,7 @@ export default function LoginPage() {
           ></input>
           <input
             type="text"
+            name="username"
             className="w-full m-1 rounded-md"
             placeholder="Username"
             onChange={handleInputChange}
@@ -65,6 +67,7 @@ export default function LoginPage() {
           ></input>
           <input
             type="password"
+            name="password"
             className="w-full m-1 rounded-md"
             placeholder="Password"
             onChange={handleInputChange}
