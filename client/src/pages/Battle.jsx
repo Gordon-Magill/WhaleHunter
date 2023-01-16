@@ -8,7 +8,7 @@ export default function Battle() {
   return (
     <div className="battle">
       <h1>FIGHT!!!</h1>
-      <col>
+      <div>
         <button
           type="primary"
           // battle(attacker, defender)
@@ -25,7 +25,7 @@ export default function Battle() {
           type="primary"
           >Retreat!
         </button>
-      </col>
+      </div>
 
     </div>
   );
