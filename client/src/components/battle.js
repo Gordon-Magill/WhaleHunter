@@ -128,3 +128,5 @@ async function battle(attacker, defender){
     
 
 }
+
+module.exports = battle
