@@ -1,5 +1,5 @@
 // randomly generate stats for a ship, monster, or part
-// this generates an integer between min and num
+
 function getRandomInt(num, min) {
     return Math.floor(Math.random() * num) + min;
 }

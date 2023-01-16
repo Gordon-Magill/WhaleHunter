@@ -1,7 +1,3 @@
-// todo: import user ship stats and opponent stats
-// import user's ship as attacker
-// import monster as defender
-
 function getRandomInt(num) {
     return Math.floor(Math.random() * num);
 }
@@ -53,7 +49,7 @@ function round([atkPower, defHp, defArmor, defShield]){
  
 
 // this function manages an entire battle until its completion
-function battle(attacker, defender){
+async function battle(attacker, defender){
 
     // clone values that will decrement as the battle goes on
     let atkCurrentHp = attacker.health
@@ -84,6 +80,7 @@ function battle(attacker, defender){
     // start a loop here that waits for user input to continue each cycle, and ends when someone's HP < 1
     while(atkCurrentHp > 1 && defCurrentHp > 1){
         // await user input for "Next Round" or "Retreat"
+        
 
         // roll accuracy vs evasion to determine hit or miss
         if(diceRoll(attacker.accuracy) > diceRoll(defender.evasion)){
@@ -121,6 +118,9 @@ function battle(attacker, defender){
         } else {
             // it's a miss!
         }
+
+        // failsafe decrement for debugging
+        atkCurrentHp--
 
         roundCounter++
     // end of loop is around here
