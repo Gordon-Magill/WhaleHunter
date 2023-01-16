@@ -1,12 +1,12 @@
 import React from "react";
-import { battle } from "../components/battle"
+import {battle} from "../components/battle"
 // import user's ship as attacker
 // import random monster as defender
 
 
 export default function Battle() {
   return (
-    <div className="battle">
+    <div className="battleSection">
       <h1>FIGHT!!!</h1>
       <div>
         <button
