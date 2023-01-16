@@ -1,6 +1,4 @@
 import React from "react";
-
-import { Form, Input, Button, Alert, Row, Col } from "antd";
 import { battle } from "../components/battle"
 // import user's ship as attacker
 // import random monster as defender
@@ -10,24 +8,24 @@ export default function Battle() {
   return (
     <div className="battle">
       <h1>FIGHT!!!</h1>
-      <Col>
-        <Button
+      <div>
+        <button
           type="primary"
           // battle(attacker, defender)
           onClick={() => battle()}
           >Start battle
-        </Button>
+        </button>
 
-        <Button
+        <button
           type="primary"
           >Next Round
-        </Button>
+        </button>
 
-        <Button
+        <button
           type="primary"
           >Retreat!
-        </Button>
-      </Col>
+        </button>
+      </div>
 
     </div>
   );
