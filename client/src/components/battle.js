@@ -49,7 +49,7 @@ function round([atkPower, defHp, defArmor, defShield]){
  
 
 // this function manages an entire battle until its completion
-async function battle(attacker, defender){
+export async function battle(attacker, defender){
 
     // clone values that will decrement as the battle goes on
     let atkCurrentHp = attacker.health
@@ -128,5 +128,3 @@ async function battle(attacker, defender){
     
 
 }
-
-module.exports = battle;
