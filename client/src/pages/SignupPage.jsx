@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
-import { Button, Form, Input } from "antd";
 
-export default function SignupPage() {
-  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+export default function LoginPage() {
+  const [userFormData, setUserFormData] = useState({ email: "", password: "", username:""});
   const [login, { error: loginError }] = useMutation(LOGIN_USER);
   const [errorState, setErrorState] = useState(false);
   const [validatedForm, setValidatedForm] = useState(false);
 
   //   Update form state on changes to the form
   const handleInputChange = (event) => {
-    // console.log('handleInputChange event:', event[0])
-    const { name, value } = event[0];
+    console.log('handleInputChange event:', event)
+    const { name, value } = event;
     setUserFormData({ ...userFormData, [name]: value });
     console.log("new userFormData is:", userFormData);
   };
@@ -46,39 +45,38 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="loginPage">
-      <h1>This is the login page!</h1>
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        initialValues={{ remember: true }}
-        onFieldsChange={handleInputChange}
-        onFinish={handleFormSubmit}
-        autoComplete="off"
-      >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+    <div className="loginPage container">
+      <h1 className="m-1">This is the signup page!</h1>
+      <form className="flex flex-col" onSubmit={handleFormSubmit}>
+        <div className="flex flex-col justify-around ">
+          <input
+            type="email"
+            className="w-full m-1 rounded-md"
+            placeholder="Email"
+            onChange={handleInputChange}
+            value={userFormData.email}
+          ></input>
+          <input
+            type="text"
+            className="w-full m-1 rounded-md"
+            placeholder="Username"
+            onChange={handleInputChange}
+            value={userFormData.username}
+          ></input>
+          <input
+            type="password"
+            className="w-full m-1 rounded-md"
+            placeholder="Password"
+            onChange={handleInputChange}
+            value={userFormData.password}
+          ></input>
+        </div>
+        <div className="flex flex-row justify-around">
+          <button type="submit" className="m-1">
+            Create account
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

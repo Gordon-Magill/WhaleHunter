@@ -18,6 +18,7 @@ import Gallery from "./pages/Gallery";
 import Harbor from "./pages/Harbor";
 import Splash from "./pages/Splash";
 import LoginPage from "./pages/LoginPage";
+import SignupPage from './pages/SignupPage'
 import ContUserStat from "./pages/page-content/ContUserStat";
 
 // Import Logo Image
@@ -60,6 +61,7 @@ function App() {
           <Route path="/battle" element={<Battle />} />
           <Route path="/harbor" element={<Harbor />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </Router>
     </ApolloProvider>
