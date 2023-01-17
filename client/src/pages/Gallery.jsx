@@ -9,7 +9,7 @@ export default function Gallery() {
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    transition={{ duration: 3 }}
+    transition={{ duration: .5 }}
   >
     <div className="gallery">
           <h1>The Gallery</h1>

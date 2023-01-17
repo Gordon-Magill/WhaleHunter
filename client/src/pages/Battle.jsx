@@ -12,7 +12,7 @@ export default function Battle() {
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    transition={{ duration: 3 }}
+    transition={{ duration: .5 }}
   >
     <div className="battleSection">
       <h1>FIGHT!!!</h1>

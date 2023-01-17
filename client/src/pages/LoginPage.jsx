@@ -52,7 +52,7 @@ export default function LoginPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 3 }}
+      transition={{ duration: .5 }}
     >
     <div className="loginPage container">
       <h1 className="m-1">This is the login page!</h1>
