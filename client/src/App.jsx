@@ -53,6 +53,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      <div className="app">
       <Router>
         <Routes>
           <Route path="/" element={<Splash />} />
@@ -63,7 +64,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Routes>
-      </Router>
+        </Router>
+        </div>
     </ApolloProvider>
   );
 }
