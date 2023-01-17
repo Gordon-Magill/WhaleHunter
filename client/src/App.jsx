@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -11,15 +11,9 @@ import { setContext } from "@apollo/client/link/context";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
-// Import pages and page content
-import Battle from "./pages/Battle";
-import Dashboard from "./pages/Dashboard";
-import Gallery from "./pages/Gallery";
-import Harbor from "./pages/Harbor";
-import Splash from "./pages/Splash";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from './pages/SignupPage'
-import ContUserStat from "./pages/page-content/ContUserStat";
+// Import pages
+import Page from "./pages/page-components/Page";
+
 
 // Import Logo Image
 import Logo from "./assets/01-logos/logo-gray.png";
@@ -54,17 +48,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="app">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Splash />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/battle" element={<Battle />} />
-          <Route path="/harbor" element={<Harbor />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-        </Routes>
-        </Router>
+        <Page></Page>
+
         </div>
     </ApolloProvider>
   );
