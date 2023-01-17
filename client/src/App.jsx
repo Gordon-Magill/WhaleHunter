@@ -53,8 +53,10 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Header/>
         <Sidebar/>
-        <AnimatedRoutes/>
+        <AnimatedRoutes />
+        <Footer />
       </Router>
     </ApolloProvider>
   );
