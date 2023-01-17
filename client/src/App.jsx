@@ -12,13 +12,12 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 // Import pages and page content
-import Battle from "./pages/Battle";
-import Dashboard from "./pages/Dashboard";
-import Gallery from "./pages/Gallery";
-import Harbor from "./pages/Harbor";
+import Battle from "./pages/BattlePage";
+import Dashboard from "./pages/DashboardPage";
+import Gallery from "./pages/GalleryPage";
+import Harbor from "./pages/HarborPage";
 import Splash from "./pages/Splash";
 import LoginPage from "./pages/LoginPage";
-import ContUserStat from "./pages/page-content/ContUserStat";
 
 // Import Logo Image
 import Logo from "./assets/01-logos/logo-gray.png";
