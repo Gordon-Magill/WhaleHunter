@@ -51,6 +51,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      <div className="text-blue-700">Hello</div>
       <Router>
         <Routes>
           <Route path="/" element={<Splash />} />
