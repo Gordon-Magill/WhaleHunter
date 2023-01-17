@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-import { motion } from "framer-motion"
+
+import { BrowserRouter as Router } from "react-router-dom";
+
 
 import {
   ApolloClient,
@@ -13,7 +15,7 @@ import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 
 // Import pages
-import Page from "./pages/page-components/Page";
+import AnimatedRoutes from "./pages/page-components/AnimatedRoutes";
 import Sidebar from "./pages/page-components/Sidebar";
 import Header from "./pages/page-components/Header";
 import Footer from "./pages/page-components/Footer";
@@ -50,17 +52,10 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-
-      <div className="flex flex-row min-h-screen bg-gray-100 text-gray-800">
-          <Sidebar></Sidebar>
-        <main className="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
-          <Header></Header>
-        <div className="main-content flex flex-col flex-grow p-4">
-          <Page></Page>
-        </div>
-          <Footer></Footer>
-        </main>
-      </div>
+      <Router>
+        <Sidebar/>
+        <AnimatedRoutes/>
+      </Router>
     </ApolloProvider>
   );
 }

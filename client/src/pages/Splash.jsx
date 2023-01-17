@@ -8,6 +8,8 @@ import Two from '../assets/cthulhu_whales/tmpstas7ntz.png';
 import Three from '../assets/modern_ships/tmp797kt7v6.png';
 import Four from '../assets/fire_whales/tmpho__5bmj.png';
 
+import { motion } from "framer-motion";
+
 const contentStyle = {
   width: "100%",
   height: "30rem",
@@ -24,7 +26,15 @@ const imageStyle = {
 
 export default function Splash() {
   return (
+    <motion.div
+      className="container text-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 3 }}
+    >
     <div className="splash">
     </div>
+    </motion.div>
   );
 }

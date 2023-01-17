@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 // Import Logo Image
 import Logo from "../../assets/01-logos/logo-gray.png";
 
@@ -16,29 +18,24 @@ export default function Sidebar() {
     <div className="sidebar px-4 py-6">
       <ul className="flex flex-col w-full">
         <li className="my-px">
-          <a href="#" className="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700">
-            Dashboard
-          </a>
+          <Link className="nav-link active" to="/dashboard">
+                  Dashboard
+          </Link>
         </li>
         <li className="my-px">
-          <a href="/harbor" className="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700">
-            Harbor
-          </a>
+          <Link className="nav-link active" to="/harbor">
+                  Harbor
+          </Link>
         </li>
         <li className="my-px">
-          <a href="/gallery" className="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700">
-            Gallery
-          </a>
+          <Link className="nav-link active" to="/gallery">
+                  Gallery
+          </Link>
         </li>
         <li className="my-px">
-          <a href="/battle" className="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700">
-            Battle
-          </a>
-        </li>
-        <li className="my-px">
-          <a href="/logout" className="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700">
-            Log Out
-          </a>
+          <Link className="nav-link active" to="/battle">
+                  Battle
+          </Link>
         </li>
       </ul>
     </div>
