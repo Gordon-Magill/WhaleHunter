@@ -8,15 +8,16 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 // Import pages
 import Page from "./pages/page-components/Page";
+import Sidebar from "./pages/page-components/Sidebar";
+import Header from "./pages/page-components/Header";
+import Footer from "./pages/page-components/Footer";
 
 
-// Import Logo Image
-import Logo from "./assets/01-logos/logo-gray.png";
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -47,10 +48,16 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="app">
-        <Page></Page>
-
-        </div>
+      <div className="flex flex-row min-h-screen bg-gray-100 text-gray-800">
+    <Sidebar></Sidebar>
+    <main className="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
+    <Header></Header>
+      <div className="main-content flex flex-col flex-grow p-4">
+       <Page></Page>
+          </div>
+          <Footer></Footer>
+    </main>
+  </div>
     </ApolloProvider>
   );
 }
