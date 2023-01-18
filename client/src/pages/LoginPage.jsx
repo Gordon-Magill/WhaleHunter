@@ -3,6 +3,8 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
+import { motion } from "framer-motion";
+
 export default function LoginPage() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error: loginError }] = useMutation(LOGIN_USER);
@@ -45,6 +47,13 @@ export default function LoginPage() {
   };
 
   return (
+    <motion.div
+      className="container text-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: .5 }}
+    >
     <div className="loginPage container">
       <h1 className="m-1">This is the login page!</h1>
       <form className="flex flex-col" onSubmit={handleFormSubmit}>
@@ -72,6 +81,7 @@ export default function LoginPage() {
         </div>
         <button className="m-1 bg-green-500 text-lg" href='/'>Sign up here!</button>
       </form>
-    </div>
+      </div>
+      </motion.div>
   );
 }

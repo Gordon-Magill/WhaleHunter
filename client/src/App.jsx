@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+
+import { BrowserRouter as Router } from "react-router-dom";
+
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,21 +12,16 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 
-// Import pages and page content
-import Battle from "./pages/Battle";
-import Dashboard from "./pages/Dashboard";
-import Gallery from "./pages/Gallery";
-import Harbor from "./pages/Harbor";
-import Splash from "./pages/Splash";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from './pages/SignupPage'
-import ContUserStat from "./pages/page-content/ContUserStat";
+// Import pages
+import AnimatedRoutes from "./pages/page-components/AnimatedRoutes";
+import Sidebar from "./pages/page-components/Sidebar";
+import Header from "./pages/page-components/Header";
+import Footer from "./pages/page-components/Footer";
 
-// Import Logo Image
-import Logo from "./assets/01-logos/logo-gray.png";
+
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -54,16 +53,18 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Routes>
-          <Route path="/" element={<Splash />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/battle" element={<Battle />} />
-          <Route path="/harbor" element={<Harbor />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-        </Routes>
-      </Router>
+      <div className="w-screen flex flex-row min-h-screen bg-gray-100 text-gray-800">
+    <Sidebar></Sidebar>
+    <main className="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
+    <Header></Header>
+      <div className="main-content flex flex-col flex-grow p-4">
+       <AnimatedRoutes/>
+          </div>
+          <Footer></Footer>
+    </main>
+        </div>
+        </Router>
+
     </ApolloProvider>
   );
 }
