@@ -18,19 +18,16 @@ export default function Battle() {
       <h1>FIGHT!!!</h1>
       <div>
         <button
-          type="primary"
           // battle(attacker, defender)
           onClick={() => battle()}
           >Start battle
         </button>
 
         <button
-          type="primary"
           >Next Round
         </button>
 
         <button
-          type="primary"
           >Retreat!
         </button>
       </div>
