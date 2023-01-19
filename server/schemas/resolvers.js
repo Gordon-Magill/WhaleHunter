@@ -72,13 +72,13 @@ const resolvers = {
       const user = await User.findOne({ email: args.email });
 
       if (!user) {
-        throw new AuthenticationError("Bad Credentials");
+        throw new AuthenticationError("Bad Credentials: no user of that email");
       }
 
       const correctPw = await user.isCorrectPassword(args.password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Bad Credentials");
+        throw new AuthenticationError("Bad Credentials: bad password.");
       }
 
       const token = signToken(user);
