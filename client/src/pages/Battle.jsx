@@ -12,7 +12,6 @@ import playerShipPic from "../assets/old_ships/tmpa1uksn_p.png"
 const playerHP = 50;
 const bossHP = 75;
 
-
 export default function Battle() {
   return (
     <motion.div
