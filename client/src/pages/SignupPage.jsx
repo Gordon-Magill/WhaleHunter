@@ -4,6 +4,8 @@ import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 import { motion } from "framer-motion";
+import {TRANSITION_SPEED} from '../utils/transitionSpeed'
+
 
 export default function LoginPage() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "", username:""});
@@ -52,7 +54,7 @@ export default function LoginPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: .5 }}
+      transition={{ duration: TRANSITION_SPEED }}
     >
     <div className="loginPage container">
       <h1 className="m-1">This is the signup page!</h1>
