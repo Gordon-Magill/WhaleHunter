@@ -9,7 +9,8 @@ import whaleBossPic from "../assets/cthulhu_whales/tmp3k8jgtcj.png"
 // Test player picture
 import playerShipPic from "../assets/old_ships/tmpa1uksn_p.png"
 // Test HP Value for PLayer
-const playerHP = "50%";
+const playerHP = 50;
+const bossHP = 75;
 
 
 export default function Battle() {
@@ -33,8 +34,8 @@ export default function Battle() {
             className="playerHP">
             <motion.div
               initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${playerHP}` }}
-              className="bg-gray-400">BOX</motion.div>
+              animate={{ scaleX: `${playerHP}%` }}
+              className="bg-gray-400">{playerHP}%</motion.div>
           </div>
         </div>
 
@@ -58,8 +59,12 @@ export default function Battle() {
             <img src={whaleBossPic}/>
           </div>
           <div
-            // Whale HP bar
-            className="bossHp">
+            // Player HP bar
+            className="bossHP">
+            <motion.div
+              initial={{ scaleX: "0%" }}
+              animate={{ scaleX: `${bossHP}%` }}
+              className="bg-gray-400">{bossHP}%</motion.div>
           </div>
         </div>
 
