@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_51MRp2ZFLfVZMTOvrFfvFmqQLZAlVG4izWwHmU56UkKtW2EqdLUJfBzWWMdjQZr6abAsBa3nnrooMf1Ize1wDtp5Z00Llu2pnUV');
+const stripePromise = loadStripe('pk_live_51MRp2ZFLfVZMTOvrx3sIHkAewtXlhPg1IJGWD8aSCLgkHUDoSrbOTlqh7VoMxP7RmVwiSndv8WiqPqVb9nnqMUbv00tSkYsURq');
 
 import {
   ApolloClient,
