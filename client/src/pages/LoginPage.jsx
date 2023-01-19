@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -56,7 +57,7 @@ export default function LoginPage() {
     >
     <div className="loginPage container">
       <h1 className="m-1">This is the login page!</h1>
-      <form className="flex flex-col" onSubmit={handleFormSubmit}>
+      <form className="flex flex-col items-center" onSubmit={handleFormSubmit}>
         <div className="flex flex-col justify-around ">
           <input
             type="email"
@@ -79,7 +80,9 @@ export default function LoginPage() {
           <button type="submit" className="m-1 bg-blue-600">Log in</button>
           <button type="button" className="m-1 bg-slate-600">Forgot login?</button>
         </div>
-        <button className="m-1 bg-green-500 text-lg" href='/'>Sign up here!</button>
+        <Link className="nav-link active bg-green-500 text-white rounded-md w-1/3" to="/signup">
+                  Sign up
+          </Link>
       </form>
       </div>
       </motion.div>
