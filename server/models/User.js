@@ -48,6 +48,9 @@ userSchema.pre("save", async function (next) {
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
 
+  // *****
+  // NEED TO FIND A WAY TO RESTORE PW CHANGE FUNCTIONALITY
+  // *****
   // if (this.isModified("password")) {
   //   console.log('userSchema: Hashing password after password change')
   //   this.password = await bcrypt.hash(this.password, saltRounds);
