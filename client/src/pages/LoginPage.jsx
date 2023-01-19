@@ -15,10 +15,10 @@ export default function LoginPage() {
 
   //   Update form state on changes to the form
   const handleInputChange = (event) => {
-    console.log('handleInputChange event:', event)
+    // console.log('handleInputChange event:', event)
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
-    console.log("new userFormData is:", userFormData);
+    // console.log("new userFormData is:", userFormData);
   };
 
   //   Log the user in

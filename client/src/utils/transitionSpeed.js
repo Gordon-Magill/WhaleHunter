@@ -1,1 +1,1 @@
-export const TRANSITION_SPEED = 0.25;
+export const TRANSITION_SPEED = 0.15;

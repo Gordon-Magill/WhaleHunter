@@ -92,6 +92,7 @@ const resolvers = {
       const token = signToken(user);
 
       // Returns an Auth object for the newly created user
+      console.log("addUser mutation returning with token:", token);
       return { token, user };
     },
     addShip: async (parent, args, context, info) => {

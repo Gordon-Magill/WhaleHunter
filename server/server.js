@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "production") {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: authMiddleware,
+  // context: authMiddleware,
 });
 
 // Send all GET requests the client content and let React handle the rest
