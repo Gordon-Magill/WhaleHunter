@@ -54,7 +54,12 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [count, setCount] = useState(0);
+  // Stripe options
+  // TODO: Store Client secret server-side!
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: '{{CLIENT_SECRET}}',
+  };
 
   return (
     <ApolloProvider client={client}>
