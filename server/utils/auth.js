@@ -27,9 +27,9 @@ function authMiddleware({ req, res }) {
   try {
     const { data } = jwt.verify(token, secret, { maxAge: expiration });
     req.user = data;
-    console.log('Encoding data in req.user:', data)
+    console.log('Server authMiddleware encoding data in req.user:', data)
   } catch {
-    console.log("Auth middleware error: Could not verify token");
+    console.log("Auth middleware error: Could not verify token unexpired token");
   }
 
   // Always return the request, even if it raised an error

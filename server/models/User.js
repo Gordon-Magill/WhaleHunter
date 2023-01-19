@@ -44,12 +44,14 @@ userSchema.pre("save", async function (next) {
   // able to store a decryption key for secondary user information like email
   // and username so it's at least stored encrypted
   if (this.isNew) {
+    console.log('userSchema: Hashing password for first time')
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
 
-  if (this.isModified("password")) {
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
+  // if (this.isModified("password")) {
+  //   console.log('userSchema: Hashing password after password change')
+  //   this.password = await bcrypt.hash(this.password, saltRounds);
+  // }
 
   next();
 });
