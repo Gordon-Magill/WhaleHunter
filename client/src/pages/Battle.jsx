@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 // import user's ship as attacker
 // import random monster as defender
 
+// Test whale picture
+import whaleBossPic from "../assets/cthulhu_whales/tmp3k8jgtcj.png"
+// Test player picture
+import playerShipPic from "../assets/old_ships/tmpa1uksn_p.png"
+
 
 export default function Battle() {
   return (
@@ -14,24 +19,45 @@ export default function Battle() {
     exit={{ opacity: 0 }}
     transition={{ duration: .5 }}
   >
-    <div className="battleSection">
-      <h1>FIGHT!!!</h1>
-      <div>
-        <button
-          // battle(attacker, defender)
-          onClick={() => battle()}
-          >Start battle
-        </button>
+      <div
+        // Section for player picture and stats
+        className="flex battleSection">
+        <div className="player">
+          <div className="playerShipPic">
+            <img src={playerShipPic}/>
+          </div>
+          <div
+            // Player HP bar
+            className="playerHP">
+          </div>
+        </div>
 
-        <button
-          >Next Round
-        </button>
+        <div className="actionArea">
+          <div className="actionText">
+            <p
+            // Text to reflect what just happened
+              className="bg-gray-200">Holy ship! That's a lot of damage!</p>
+          </div>
+            <button
+            // battle(attacker, defender)
+            onClick={() => battle()}>Start battle</button>
+          <button>Next Round</button>
+          <button>Retreat!</button>
+        </div>
+        
+        <div
+          // Section for player picture and stats
+          className="enemy">
+          <div className="whaleBossPic">
+            <img src={whaleBossPic}/>
+          </div>
+          <div
+            // Whale HP bar
+            className="bossHp">
+          </div>
+        </div>
 
-        <button
-          >Retreat!
-        </button>
-      </div>
-      </div>
+    </div>
       </motion.div>
   );
 }
