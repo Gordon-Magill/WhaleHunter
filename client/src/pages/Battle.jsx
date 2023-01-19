@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 import whaleBossPic from "../assets/cthulhu_whales/tmp3k8jgtcj.png"
 // Test player picture
 import playerShipPic from "../assets/old_ships/tmpa1uksn_p.png"
+// Test HP Value for PLayer
+const playerHP = "50%";
 
 
 export default function Battle() {
@@ -29,6 +31,10 @@ export default function Battle() {
           <div
             // Player HP bar
             className="playerHP">
+            <motion.div
+              initial={{ scaleX: "0%" }}
+              animate={{ scaleX: `${playerHP}` }}
+              className="bg-gray-400">BOX</motion.div>
           </div>
         </div>
 
@@ -44,7 +50,7 @@ export default function Battle() {
           <button>Next Round</button>
           <button>Retreat!</button>
         </div>
-        
+
         <div
           // Section for player picture and stats
           className="enemy">
