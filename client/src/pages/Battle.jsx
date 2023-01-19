@@ -1,8 +1,6 @@
 import React from "react";
 import { battle } from "../components/battle"
 import { motion } from "framer-motion";
-// import user's ship as attacker
-// import random monster as defender
 
 // Test whale picture
 import whaleBossPic from "../assets/cthulhu_whales/tmp3k8jgtcj.png"
@@ -47,8 +45,10 @@ export default function Battle() {
             <button
             // battle(attacker, defender)
             onClick={() => battle()}>Start battle</button>
-          <button>Next Round</button>
-          <button>Retreat!</button>
+          <button
+            onClick={() => nextRound()}>Next Round</button>
+          <button
+            onClick={() => retreat()}>Retreat!</button>
         </div>
 
         <div
