@@ -2,6 +2,9 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
+// Link import to allow redirect to stripe store
+import { Link } from "react-router-dom";
+
 export default function Harbor() {
   return (
     <motion.div
@@ -13,7 +16,9 @@ export default function Harbor() {
   >
     <div className="harbor">
           <h1>The Harbor</h1>
-          <p>Buy Stuff!</p>
+        <p>Buy Stuff!</p>
+        <button><a href="https://buy.stripe.com/3cs4iR3MKbef8lWfYY">Buy a Repair Capsule</a>
+           </button>
       </div>
       </motion.div>
   );
