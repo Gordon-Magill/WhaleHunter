@@ -49,6 +49,7 @@ export default function SignupPage() {
     setUserFormData({
       email: "",
       password: "",
+      username: ""
     });
   };
 

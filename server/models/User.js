@@ -40,22 +40,15 @@ const userSchema = new Schema(
 userSchema.pre("save", async function (next) {
   const saltRounds = 10;
   // Hash EVERYTHING user related - I don't want to be next on HackerNews
+  // Start with bcrypt for passwords, but find a key storage system for being
+  // able to store a decryption key for secondary user information like email
+  // and username so it's at least stored encrypted
   if (this.isNew) {
     this.password = await bcrypt.hash(this.password, saltRounds);
-    this.username = await bcrypt.hash(this.username, saltRounds);
-    this.email = await bcrypt.hash(this.email, saltRounds);
   }
 
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, saltRounds);
-  }
-
-  if (this.isModified("username")) {
-    this.username = await bcrypt.hash(this.username, saltRounds);
-  }
-
-  if (this.isModified("email")) {
-    this.email = await bcrypt.hash(this.email, saltRounds);
   }
 
   next();

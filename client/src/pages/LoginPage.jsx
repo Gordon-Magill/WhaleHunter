@@ -23,7 +23,7 @@ export default function LoginPage() {
 
   //   Log the user in
   const handleFormSubmit = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     console.log("handleFormSubmit event:", event);
     console.log("userFormData:", userFormData);
 
@@ -35,7 +35,7 @@ export default function LoginPage() {
       });
 
       // console.log('login data.login.user.savedBooks:', data.login.user.savedBooks);
-      Auth.login(data.login.token);
+      Auth.saveTokenToLocal(data.login.token);
     } catch (err) {
       console.error(err);
       setErrorState(true);

@@ -11,7 +11,7 @@ function authMiddleware({ req, res }) {
   // allows token to be sent via  req.query or headers (NEW: or with token in the body, even if nonstand it's good to have)
   let token = req.query.token || req.headers.authorization || req.body.token;
 
-  console.log('Auth token:', token)
+  console.log('Auth token being used by authMiddleware:', token)
   // ["Bearer", "<tokenvalue>"]
   if (req.headers.authorization) {
     token = token.split(' ').pop().trim();
@@ -27,6 +27,7 @@ function authMiddleware({ req, res }) {
   try {
     const { data } = jwt.verify(token, secret, { maxAge: expiration });
     req.user = data;
+    console.log('Encoding data in req.user:', data)
   } catch {
     console.log("Auth middleware error: Could not verify token");
   }
