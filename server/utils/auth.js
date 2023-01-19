@@ -7,8 +7,16 @@ const expiration = "2h";
 // Use JWT token embedded in request headers (from authenticated users)
 function authMiddleware({ req, res }) {
   // Token will be in the header authorization prop in the form of a string "Bearer tokenValue"
-  let token = req.headers.authorization;
-  token = token.split(" ").pop().trim();
+  console.log('authMiddleware started')
+  // allows token to be sent via  req.query or headers (NEW: or with token in the body, even if nonstand it's good to have)
+  let token = req.query.token || req.headers.authorization || req.body.token;
+
+  console.log('Auth token:', token)
+  // ["Bearer", "<tokenvalue>"]
+  if (req.headers.authorization) {
+    token = token.split(' ').pop().trim();
+  }
+
 
   // Return the plain request if it's unauthenticated
   if (!token) {
@@ -26,6 +34,7 @@ function authMiddleware({ req, res }) {
   // Always return the request, even if it raised an error
   // If the user is authenticated, the request will now have req.user populated with
   // the values embedded by signToken, otherwise that property will be undefined
+  console.log(`authmiddleware about to exit`)
   return req;
 }
 
