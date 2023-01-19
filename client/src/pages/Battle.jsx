@@ -9,6 +9,9 @@ import whaleBossPic from "../assets/cthulhu_whales/tmp3k8jgtcj.png"
 // Test player picture
 import playerShipPic from "../assets/old_ships/tmpa1uksn_p.png"
 
+// Transformation for hp bar
+import { useTransform } from "framer-motion";
+
 
 export default function Battle() {
   return (
@@ -44,7 +47,7 @@ export default function Battle() {
           <button>Next Round</button>
           <button>Retreat!</button>
         </div>
-        
+
         <div
           // Section for player picture and stats
           className="enemy">
