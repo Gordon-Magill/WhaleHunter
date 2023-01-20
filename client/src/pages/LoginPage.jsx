@@ -46,8 +46,8 @@ export default function LoginPage() {
       });
       console.log('Received data from server for data.login.user: ', data.login.user)
 
-      Auth.saveTokenToLocal(data.login.token);
       userDispatch({type: LOGIN, payload: data.login.user})
+      Auth.saveTokenToLocal(data.login.token);
     } catch (err) {
       console.error(err);
       setErrorState(true);
