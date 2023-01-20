@@ -1,9 +1,9 @@
-const GenerateStats = require("./rollStats")
+import { GenerateStats } from "./rollStats.js"
 
 // calling this function with argument 1 generates stats for a monster object
 const statValues = GenerateStats(1)
 
-const NewMonster = class Monster {
+export const NewMonster = class Monster {
     constructor(){
         this.name = "Eldritch Star Whalebeast"
         this.imageID = null
@@ -17,4 +17,4 @@ const NewMonster = class Monster {
     }
 }
 
-module.exports = NewMonster
+console.log(new NewMonster)

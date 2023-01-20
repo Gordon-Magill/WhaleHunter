@@ -1,5 +1,5 @@
 import React from "react";
-import { battle } from "../components/battle"
+import { battle, nextRound, retreat } from "../components/battle"
 import { motion } from "framer-motion";
 import {TRANSITION_SPEED} from '../utils/transitionSpeed'
 
@@ -11,6 +11,34 @@ import playerShipPic from "../assets/old_ships/tmpa1uksn_p.png"
 const playerHP = 50;
 const bossHP = 75;
 
+
+//debug attacker and defender
+const attacker = {
+  name: 'Debug Ship',
+  imageID: null,
+  attackPower: 4,
+  health: 14,
+  healthCurrent: 14,
+  armor: 5,
+  armorCurrent: 5,
+  shield: 5,
+  shieldCurrent: 5,
+  accuracy: 29,
+  initiative: 3,
+  evasion: 23
+}
+
+const defender = {
+  name: 'Debug Monster',
+  imageID: null,
+  attackPower: 4,
+  health: 19,
+  armor: 3,
+  shield: 0,
+  accuracy: 21,
+  initiative: 15,
+  evasion: 5
+}
 
 export default function Battle() {
   return (
@@ -46,9 +74,9 @@ export default function Battle() {
           </div>
             <button
             // battle(attacker, defender)
-            onClick={() => battle()}>Start battle</button>
+            onClick={() => battle(attacker, defender)}>Start battle</button>
           <button
-            onClick={() => nextRound()}>Next Round</button>
+            onClick={() => nextRound(attacker, defender)}>Next Round</button>
           <button
             onClick={() => retreat()}>Retreat!</button>
         </div>
