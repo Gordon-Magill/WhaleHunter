@@ -85,13 +85,13 @@ const typeDefs = gql`
         items: [Item]
         randomMonster: Monster
     }
-
+    
     type Mutation {
-        login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!): Auth
-        addShip(shipInfo: shipInput!): Ship
-        addUserExp(expValue: Float): User
-    }
+            login(email: String!, password: String!): Auth
+            addUser(username: String!, email: String!, password: String!): Auth
+            addShip(shipInfo: shipInput!): Ship
+            addUserExp(expValue: Float): User
+        }
 `;
 // TODO
 // -Change addUserExp to a more general end of battle resolver that saves ship health as well

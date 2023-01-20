@@ -40,29 +40,29 @@ const userSchema = new Schema(
 userSchema.pre("save", async function (next) {
   const saltRounds = 10;
   // Hash EVERYTHING user related - I don't want to be next on HackerNews
+  // Start with bcrypt for passwords, but find a key storage system for being
+  // able to store a decryption key for secondary user information like email
+  // and username so it's at least stored encrypted
   if (this.isNew) {
-    this.password = await bcrypt.hash(this.password, saltRounds);
-    this.username = await bcrypt.hash(this.username, saltRounds);
-    this.email = await bcrypt.hash(this.email, saltRounds);
-  }
-
-  if (this.isModified("password")) {
+    console.log('userSchema: Hashing password for first time')
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
 
-  if (this.isModified("username")) {
-    this.username = await bcrypt.hash(this.username, saltRounds);
-  }
-
-  if (this.isModified("email")) {
-    this.email = await bcrypt.hash(this.email, saltRounds);
-  }
+  // *****
+  // NEED TO FIND A WAY TO RESTORE PW CHANGE FUNCTIONALITY
+  // *****
+  // if (this.isModified("password")) {
+  //   console.log('userSchema: Hashing password after password change')
+  //   this.password = await bcrypt.hash(this.password, saltRounds);
+  // }
 
   next();
 });
 
 userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+  const result = await bcrypt.compare(password, this.password);
+  console.log(`userSchema checking validity of password ${password} against hashed password ${this.password}, result = ${result}`)
+  return result
 };
 
 const User = model("User", userSchema);

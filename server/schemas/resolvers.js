@@ -72,13 +72,13 @@ const resolvers = {
       const user = await User.findOne({ email: args.email });
 
       if (!user) {
-        throw new AuthenticationError("Bad Credentials");
+        throw new AuthenticationError("Bad Credentials: no user of that email");
       }
 
       const correctPw = await user.isCorrectPassword(args.password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Bad Credentials");
+        throw new AuthenticationError("Bad Credentials: bad password.");
       }
 
       const token = signToken(user);
@@ -92,6 +92,7 @@ const resolvers = {
       const token = signToken(user);
 
       // Returns an Auth object for the newly created user
+      console.log("addUser mutation returning with token:", token);
       return { token, user };
     },
     addShip: async (parent, args, context, info) => {

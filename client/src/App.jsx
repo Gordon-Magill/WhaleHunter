@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 // Import stripe dependencies for payments
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
@@ -25,9 +26,6 @@ import AnimatedRoutes from "./pages/page-components/AnimatedRoutes";
 import Sidebar from "./pages/page-components/Sidebar";
 import Header from "./pages/page-components/Header";
 import Footer from "./pages/page-components/Footer";
-
-
-
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

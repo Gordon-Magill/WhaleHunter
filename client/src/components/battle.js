@@ -48,13 +48,13 @@ function round([atkPower, defHp, defArmor, defShield]){
 }
  
 
-// this function manages an entire battle until its completion
-export async function battle(attacker, defender){
+// initialize the battle state, get values for attacker and defender, wrap other functions in this function
+export function battle(attacker, defender){
 
     // clone values that will decrement as the battle goes on
-    let atkCurrentHp = attacker.health
-    let atkCurrentArmor = attacker.armor
-    let atkCurrentShield = attacker.shield
+    let atkCurrentHp = attacker.healthCurrent
+    let atkCurrentArmor = attacker.armorCurrent
+    let atkCurrentShield = attacker.shieldCurrent
 
     let defCurrentHp = defender.health
     let defCurrentArmor = defender.armor
@@ -62,26 +62,11 @@ export async function battle(attacker, defender){
 
     let roundCounter = 1
 
-    // using a naive approach to dice roll comparisons : 3d6 + stat
-    // function first, balance later
-
-    // roll initiative to determine turn order
-    // just kidding we aren't gonna use it until pvp is in 
-    /*
-    if(diceRoll(attacker.initiative) > diceRoll(defender.initiative)){
-        var first = attacker
-        var second = defender
-    } else {
-        var first = defender
-        var second = attacker
-    }
-    */
-
-    // start a loop here that waits for user input to continue each cycle, and ends when someone's HP < 1
-    while(atkCurrentHp > 1 && defCurrentHp > 1){
+    // if nextRound button is pressed call this function
+    function nextRound(){
+            
+        if(atkCurrentHp > 1 && defCurrentHp > 1){
         // await user input for "Next Round" or "Retreat"
-        
-
         // roll accuracy vs evasion to determine hit or miss
         if(diceRoll(attacker.accuracy) > diceRoll(defender.evasion)){
 
@@ -95,6 +80,7 @@ export async function battle(attacker, defender){
             // check defender hp
             if(defCurrentHp < 1){
                 // defender has been defeated
+                // end battle state
             }
 
         } else {
@@ -113,18 +99,23 @@ export async function battle(attacker, defender){
             // check attacker hp
             if(atkCurrentHp < 1){
                 // attacker has been defeated
+                // end battle state
             }
 
         } else {
             // it's a miss!
         }
-
-        // failsafe decrement for debugging
-        atkCurrentHp--
-
+        
+        // return some data to the page
         roundCounter++
-    // end of loop is around here
+ 
+        }
     }
-    
 
+    // if retreat button is pressed call this function
+    function retreat(){
+        // end battle state
+        // save attacker hp values to current hp in db
+        // or don't, this is less important right now
+    }
 }

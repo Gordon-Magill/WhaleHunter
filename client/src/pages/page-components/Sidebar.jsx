@@ -37,6 +37,17 @@ export default function Sidebar() {
                   Battle
           </Link>
         </li>
+        {/* Make this disappear upong login */}
+        <li className="my-px">
+          <Link className="nav-link active" to="/login">
+                  Login
+          </Link>
+        </li>
+        <li className="my-px">
+          <Link className="nav-link active" to="/signup">
+                  Sign up
+          </Link>
+        </li>
       </ul>
     </div>
   </aside>
