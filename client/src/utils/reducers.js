@@ -9,7 +9,7 @@ export function userReducer(state, action) {
 
         return {
           ...state,
-          userInfo,
+          userInfo: {...action.payload},
         };
       } catch {
         console.error("userReducer: Failed to update state during LOGIN");

@@ -10,5 +10,8 @@ export const useUserContext = () => useContext(UserContext)
 
 export function UserProvider(props) {
     const initialState = {userInfo: null}
-    return <Provider value={initialState} {...props} />
+    // return <Provider value={{...initialState}} {...props} />
+    return <Provider value={{...initialState}} {...props} >
+        {props.children}
+    </Provider>
 }
