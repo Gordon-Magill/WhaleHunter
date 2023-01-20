@@ -26,7 +26,17 @@ const shipSchema = new Schema(
       required: true,
       default: 1,
     },
+    armorCurrent: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
     shield: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
+    shieldCurrent: {
       type: Number,
       required: true,
       default: 1,
