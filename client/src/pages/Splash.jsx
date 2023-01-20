@@ -9,6 +9,8 @@ import Three from '../assets/modern_ships/tmp797kt7v6.png';
 import Four from '../assets/fire_whales/tmpho__5bmj.png';
 
 import { motion } from "framer-motion";
+import {TRANSITION_SPEED} from '../utils/transitionSpeed'
+
 
 const contentStyle = {
   width: "100%",
@@ -31,7 +33,7 @@ export default function Splash() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: .5 }}
+      transition={{ duration: TRANSITION_SPEED }}
     >
       <div className="splash">
         <h1>Space Grift: Whale Hunter</h1>

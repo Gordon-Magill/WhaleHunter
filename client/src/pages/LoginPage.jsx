@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 import { motion } from "framer-motion";
+import {TRANSITION_SPEED} from '../utils/transitionSpeed'
 
 export default function LoginPage() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -13,15 +15,15 @@ export default function LoginPage() {
 
   //   Update form state on changes to the form
   const handleInputChange = (event) => {
-    console.log('handleInputChange event:', event)
+    // console.log('handleInputChange event:', event)
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
-    console.log("new userFormData is:", userFormData);
+    // console.log("new userFormData is:", userFormData);
   };
 
   //   Log the user in
   const handleFormSubmit = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     console.log("handleFormSubmit event:", event);
     console.log("userFormData:", userFormData);
 
@@ -32,8 +34,7 @@ export default function LoginPage() {
         },
       });
 
-      // console.log('login data.login.user.savedBooks:', data.login.user.savedBooks);
-      Auth.login(data.login.token);
+      Auth.saveTokenToLocal(data.login.token);
     } catch (err) {
       console.error(err);
       setErrorState(true);
@@ -52,11 +53,11 @@ export default function LoginPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: .5 }}
+      transition={{ duration: TRANSITION_SPEED }}
     >
     <div className="loginPage container">
       <h1 className="m-1">This is the login page!</h1>
-      <form className="flex flex-col" onSubmit={handleFormSubmit}>
+      <form className="flex flex-col items-center" onSubmit={handleFormSubmit}>
         <div className="flex flex-col justify-around ">
           <input
             type="email"
@@ -79,7 +80,9 @@ export default function LoginPage() {
           <button type="submit" className="m-1 bg-blue-600">Log in</button>
           <button type="button" className="m-1 bg-slate-600">Forgot login?</button>
         </div>
-        <button className="m-1 bg-green-500 text-lg" href='/'>Sign up here!</button>
+        <Link className="nav-link active bg-green-500 text-white rounded-md w-1/3" to="/signup">
+                  Sign up
+          </Link>
       </form>
       </div>
       </motion.div>
