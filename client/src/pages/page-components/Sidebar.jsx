@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 import { userReducer } from "../../utils/reducers";
 import { useUserContext } from "../../utils/userContext";
+import { LOGOUT } from "../../utils/actions";
+
 
 import { Link } from "react-router-dom";
 
@@ -11,6 +13,7 @@ export default function Sidebar() {
   const initialState = useUserContext();
   const [userState, userDispatch] = useReducer(userReducer, initialState);
 
+  console.log('Sidebar loading with userState:', userState)
   return (
     <aside className="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-700">
       <div className="sidebar-header flex items-center justify-center py-4">
@@ -19,7 +22,7 @@ export default function Sidebar() {
         </div>
       </div>
       <div className="sidebar px-4 py-6">
-        {userState?.username ? (
+        {userState.userInfo !== null ? (
           <>
             <p>Hello {userState.username}!</p>
           </>
@@ -50,10 +53,10 @@ export default function Sidebar() {
             </Link>
           </li>
           {/* Make this disappear upong login */}
-          {userState?.username ? (
+          {userState?.userInfo !== null ? (
             <>
               <li className="my-px">
-                <Link className="nav-link active" to="/signup">
+                <Link className="nav-link active" onClick={() => {userDispatch({type:LOGOUT})}}>
                   Log out
                 </Link>
               </li>

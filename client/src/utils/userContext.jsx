@@ -5,10 +5,10 @@ import React, {createContext, useContext} from 'react';
 export const UserContext = createContext()
 const {Provider} = UserContext
 
-export function useUserContext() {
-    useContext(UserContext)
-}
+// export const useUserContext = () => {userInfo: null}
+export const useUserContext = () => useContext(UserContext)
 
 export function UserProvider(props) {
-    return <Provider value={null} {...props} />
+    const initialState = {userInfo: null}
+    return <Provider value={initialState} {...props} />
 }
