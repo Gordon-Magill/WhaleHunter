@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -22,6 +22,7 @@ export default function LoginPage() {
   // const [userState, userDispatch] = useReducer(userReducer, initialState);
   const userDispatch = useUserDispatchContext()
   const userState = useUserStateContext()
+  const navigate = useNavigate()
 
   //   Update form state on changes to the form
   const handleInputChange = (event) => {
@@ -54,6 +55,9 @@ export default function LoginPage() {
       //   userState.userInfo
       // );
       Auth.saveTokenToLocal(data.login.token);
+
+      navigate("/")
+
     } catch (err) {
       console.error(err);
       setErrorState(true);

@@ -17,7 +17,7 @@ export default function userReducer(state, action){
     }
     case LOGOUT: {
       try {
-        const userInfo = null;
+        const userInfo = {username: null};
         console.log("userReducer LOGOUT set user info as null: ", userInfo);
   
         return {
