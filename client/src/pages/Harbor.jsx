@@ -15,7 +15,9 @@ export default function Harbor() {
   >
     <div className="harbor">
           <h1>The Harbor</h1>
-          <p>Buy Stuff!</p>
+        <button>
+          <a href="https://buy.stripe.com/14k02B6YW3LNau4001" target="_blank">Buy a Repair Kit NOW!!!</a>
+        </button>
       </div>
       </motion.div>
   );
