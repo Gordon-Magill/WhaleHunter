@@ -1,0 +1,5 @@
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'
+export const ADD_SHIP = 'ADD_SHIP'
+export const ADD_ITEM = 'ADD_ITEM'
+export const ADD_EXPERIENCE = 'ADD_EXPERIENCE'
