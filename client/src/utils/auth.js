@@ -3,7 +3,7 @@ import decode from "jwt-decode";
 
 
 import {useReducer} from 'react'
-import {userReducer} from '../utils/reducers'
+import userReducer from '../utils/reducers'
 
 // Class to contain methods for storing, retrieving, and using tokens from localStorage
 class AuthService {

@@ -1,23 +1,24 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useReducer } from "react";
+import userReducer from "./reducers";
 
 // Defining a global state for user information
 // To be derived from Apollo login/addUser {token, **user**} responses
-// export const UserContext = createContext();
-export const UserContext = createContext({ userInfo: {username: null} })
-const { Provider } = UserContext;
-
-// export const useUserContext = () => {userInfo: null}
-export const useUserContext = () => useContext(UserContext);
+export const UserContext = createContext({
+  userInfo: { username: null },
+});
+export const UserDispatchContext = createContext(null);
 
 export const UserProvider = (props) => {
-
-  const [userState, setUserState] = useState({ userInfo: {} })
-
+  const [userState, userDispatch] = useReducer(userReducer, {
+    userInfo: { username: null },
+  });
 
   // return <Provider value={{...initialState}} {...props} />
-  return(
-    <Provider value={useContext(UserContext)} {...props}>
-      {props.children}
-    </Provider>
+  return (
+    <UserContext.Provider value={userState} {...props}>
+      <UserDispatchContext.Provider value={userDispatch} {...props}>
+        {props.children}
+      </UserDispatchContext.Provider>
+    </UserContext.Provider>
   );
-}
+};

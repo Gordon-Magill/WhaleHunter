@@ -6,7 +6,7 @@ import Auth from "../utils/auth";
 import { motion } from "framer-motion";
 import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 
-import { userReducer } from "../utils/reducers";
+import userReducer from "../utils/reducers";
 import { LOGIN } from "../utils/actions";
 
 
@@ -45,7 +45,6 @@ export default function SignupPage() {
         },
       });
       console.log("Received graphql response with data:", data);
-
       userDispatch({type: LOGIN, payload: data.addUser.user})
       Auth.saveTokenToLocal(data.addUser.token);
     } catch (err) {

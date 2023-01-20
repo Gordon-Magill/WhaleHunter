@@ -1,6 +1,6 @@
-import React, { useReducer } from "react";
-import { userReducer } from "../../utils/reducers";
-import { useUserContext } from "../../utils/userContext";
+import React, { useContext } from "react";
+import userReducer from "../../utils/reducers";
+import { UserContext, UserDispatchContext } from "../../utils/userContext";
 import { LOGOUT } from "../../utils/actions";
 
 
@@ -10,8 +10,11 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/01-logos/logo-gray.png";
 
 export default function Sidebar() {
-  const initialState = useUserContext();
-  const [userState, userDispatch] = useReducer(userReducer, initialState);
+  // const initialState = useUserContext();
+  const userState = useContext(UserContext)
+  const userDispatch = useContext(UserDispatchContext)
+
+  // const [userState, userDispatch] = useReducer(userReducer,initialState);
 
   console.log('Sidebar loading with userState:', userState)
   return (
@@ -22,7 +25,7 @@ export default function Sidebar() {
         </div>
       </div>
       <div className="sidebar px-4 py-6">
-        {userState.userInfo.username !== null ? (
+        {userState?.userInfo.username !== null ? (
           <>
             <p>Hello {userState.userInfo?.username}!</p>
           </>
