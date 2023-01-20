@@ -22,9 +22,9 @@ export default function Sidebar() {
         </div>
       </div>
       <div className="sidebar px-4 py-6">
-        {userState.userInfo !== null ? (
+        {userState.userInfo.username !== null ? (
           <>
-            <p>Hello {userState.username}!</p>
+            <p>Hello {userState.userInfo?.username}!</p>
           </>
         ) : (
           <>
@@ -53,7 +53,7 @@ export default function Sidebar() {
             </Link>
           </li>
           {/* Make this disappear upong login */}
-          {userState?.userInfo !== null ? (
+          {userState.userInfo.username !== null ? (
             <>
               <li className="my-px">
                 <Link className="nav-link active" onClick={() => {userDispatch({type:LOGOUT})}}>
