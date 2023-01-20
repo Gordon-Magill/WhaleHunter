@@ -1,3 +1,15 @@
+// I guess we need global variables!
+
+var battleState = 0
+var atkCurrentHp
+var atkCurrentArmor
+var atkCurrentShield
+var defCurrentHp
+var defCurrentArmor
+var defCurrentShield
+var roundCounter
+
+
 function getRandomInt(num) {
     return Math.floor(Math.random() * num);
 }
@@ -50,23 +62,31 @@ function round([atkPower, defHp, defArmor, defShield]){
 
 // initialize the battle state, get values for attacker and defender, wrap other functions in this function
 export function battle(attacker, defender){
+    if(battleState === 0){
+        console.log("Battle state initiated! " + attacker.name + " vs " + defender.name)
+        battleState = 1
 
-    // clone values that will decrement as the battle goes on
-    let atkCurrentHp = attacker.healthCurrent
-    let atkCurrentArmor = attacker.armorCurrent
-    let atkCurrentShield = attacker.shieldCurrent
+        atkCurrentHp = attacker.healthCurrent
+        atkCurrentArmor = attacker.armorCurrent
+        atkCurrentShield = attacker.shieldCurrent
 
-    let defCurrentHp = defender.health
-    let defCurrentArmor = defender.armor
-    let defCurrentShield = defender.shield
+        defCurrentHp = defender.health
+        defCurrentArmor = defender.armor
+        defCurrentShield = defender.shield
 
-    let roundCounter = 1
+        roundCounter = 1
 
-    // if nextRound button is pressed call this function
-    function nextRound(){
-            
+        // what should this return??
+    } else {
+        console.log("Battle already initiated!")
+    }
+}
+
+// if nextRound button is pressed call this function
+export function nextRound(attacker, defender){
+        console.log("Next round called!")
+
         if(atkCurrentHp > 1 && defCurrentHp > 1){
-        // await user input for "Next Round" or "Retreat"
         // roll accuracy vs evasion to determine hit or miss
         if(diceRoll(attacker.accuracy) > diceRoll(defender.evasion)){
 
@@ -81,6 +101,7 @@ export function battle(attacker, defender){
             if(defCurrentHp < 1){
                 // defender has been defeated
                 // end battle state
+                endBattle()
             }
 
         } else {
@@ -100,6 +121,7 @@ export function battle(attacker, defender){
             if(atkCurrentHp < 1){
                 // attacker has been defeated
                 // end battle state
+                endBattle()
             }
 
         } else {
@@ -113,9 +135,14 @@ export function battle(attacker, defender){
     }
 
     // if retreat button is pressed call this function
-    function retreat(){
+export function retreat(){
         // end battle state
+        endBattle()
         // save attacker hp values to current hp in db
         // or don't, this is less important right now
-    }
+}
+
+function endBattle(attacker){
+    console.log("Battle state ended!")
+    battleState = 0
 }

@@ -1,9 +1,9 @@
-const GenerateStats = require("./rollStats")
+import { GenerateStats } from "./rollStats.js"
 
 // calling this function with argument 0 generates stats for a ship object
 const statValues = GenerateStats(0)
 
-const NewShip = class Ship {
+export const NewShip = class Ship {
     constructor(){
         this.name = "Placeholder Name"
         this.imageID = null
@@ -20,4 +20,4 @@ const NewShip = class Ship {
     }
 }
 
-module.exports = NewShip
+console.log(new NewShip)

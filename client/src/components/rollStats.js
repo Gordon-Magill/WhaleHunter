@@ -4,7 +4,7 @@ function getRandomInt(num, min) {
     return Math.floor(Math.random() * num) + min;
 }
 
-function GenerateStats(type){
+export function GenerateStats(type){
     // types: 0 = ship, 1 = monster, 2 = part
 
     if(type === 0){
@@ -53,5 +53,3 @@ function GenerateStats(type){
         return
     }
 }
-
-module.exports = GenerateStats
