@@ -55,9 +55,7 @@ export default function LoginPage() {
       //   userState.userInfo
       // );
       Auth.saveTokenToLocal(data.login.token);
-
       navigate("/")
-
     } catch (err) {
       console.error(err);
       setErrorState(true);
