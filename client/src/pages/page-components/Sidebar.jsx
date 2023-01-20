@@ -19,7 +19,8 @@ export default function Sidebar() {
   const navigate = useNavigate();
   // const [userState, userDispatch] = useReducer(userReducer,initialState);
 
-  function logoutHelper() {
+  const logoutHelper = (event) => {
+    event.preventDefault()
     userDispatch({ type: LOGOUT });
     Auth.removeTokenFromLocal()
     navigate("/");
