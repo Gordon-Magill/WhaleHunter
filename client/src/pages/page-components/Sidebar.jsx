@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import userReducer from "../../utils/reducers";
-import { UserContext, UserDispatchContext } from "../../utils/userContext";
+import React from "react";
+// import userReducer from "../../utils/reducers";
+import { useUserStateContext, useUserDispatchContext } from "../../utils/userContext";
 import { LOGOUT } from "../../utils/actions";
 
 
@@ -11,12 +11,11 @@ import Logo from "../../assets/01-logos/logo-gray.png";
 
 export default function Sidebar() {
   // const initialState = useUserContext();
-  const userState = useContext(UserContext)
-  const userDispatch = useContext(UserDispatchContext)
-
+  const userDispatch = useUserDispatchContext()
+  const userState = useUserStateContext()
   // const [userState, userDispatch] = useReducer(userReducer,initialState);
 
-  console.log('Sidebar loading with userState:', userState)
+  console.log('Sidebar loading with userState.userInfo:', userState.userInfo)
   return (
     <aside className="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-700">
       <div className="sidebar-header flex items-center justify-center py-4">

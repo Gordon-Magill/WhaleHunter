@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 
 // Importing content for userReducer
-import { UserContext, UserDispatchContext } from "../utils/userContext";
+import { useUserStateContext, useUserDispatchContext } from "../utils/userContext";
 // import userReducer from "../utils/reducers";
 import { LOGIN } from "../utils/actions";
 
@@ -20,8 +20,8 @@ export default function LoginPage() {
 
   // const initialState = useUserContext();
   // const [userState, userDispatch] = useReducer(userReducer, initialState);
-  const userDispatch = useContext(UserDispatchContext)
-  const userState = useContext(UserContext)
+  const userDispatch = useUserDispatchContext()
+  const userState = useUserStateContext()
 
   //   Update form state on changes to the form
   const handleInputChange = (event) => {
