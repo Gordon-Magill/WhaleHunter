@@ -1,24 +1,33 @@
-import {LOGIN, LOGOUT} from './actions'
+import { LOGIN, LOGOUT } from "./actions";
 
 export function userReducer(state, action) {
   switch (action.type) {
     case LOGIN: {
-        const userInfo = action.payload.user || null
-        console.log('userReducer LOGIN set user info as: ', userInfo)
+      try {
+        const userInfo = action.payload || null;
+        console.log("userReducer LOGIN set user info as: ", action.payload);
 
         return {
-            ...state,
-            userInfo
-        }
+          ...state,
+          userInfo,
+        };
+      } catch {
+        console.error("userReducer: Failed to update state during LOGIN");
+      }
     }
     case LOGOUT: {
-        const userInfo = null
-        console.log('userReducer LOGOUT set user info as null: ',userInfo)
-        
+      try {
+        const userInfo = null;
+        console.log("userReducer LOGOUT set user info as null: ", userInfo);
+  
         return {
-            ...state,
-            userInfo
-        }
+          ...state,
+          userInfo,
+        };
+  
+      } catch {
+        console.error("userReducer: Failed to update state during LOGOUT");
+      }
     }
   }
 }

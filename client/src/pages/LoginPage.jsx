@@ -44,7 +44,7 @@ export default function LoginPage() {
           ...userFormData,
         },
       });
-      console.log('Received data from server for login: ', data)
+      console.log('Received data from server for data.login.user: ', data.login.user)
 
       Auth.saveTokenToLocal(data.login.token);
       userDispatch({type: LOGIN, payload: data.login.user})
