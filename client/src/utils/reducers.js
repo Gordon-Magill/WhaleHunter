@@ -5,11 +5,11 @@ export function userReducer(state, action) {
     case LOGIN: {
       try {
         const userInfo = action.payload || null;
-        console.log("userReducer LOGIN set user info as: ", action.payload);
+        console.log("userReducer LOGIN set state.userInfo as: ", userInfo);
 
         return {
           ...state,
-          userInfo,
+          userInfo: {...action.payload},
         };
       } catch {
         console.error("userReducer: Failed to update state during LOGIN");
@@ -28,6 +28,9 @@ export function userReducer(state, action) {
       } catch {
         console.error("userReducer: Failed to update state during LOGOUT");
       }
+    }
+    default: {
+        return state;
     }
   }
 }
