@@ -27,11 +27,11 @@ To run a local development version of the app, run ```npm run develop``` in the 
 
 ## Credits
 
-[Github: Gordon-Magill](https://github.com/Gordon-Magill)
+[Gordon-Magill](https://github.com/Gordon-Magill)
 
-[Github: arielle-elak](https://github.com/arielle-elak)
+[arielle-elak](https://github.com/arielle-elak)
 
-[Github: CArmstrong2](https://github.com/CArmstrong2)
+[CArmstrong2](https://github.com/CArmstrong2)
 
 
 ## Tests
