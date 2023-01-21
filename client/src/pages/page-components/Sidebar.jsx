@@ -36,15 +36,12 @@ export default function Sidebar() {
       </div>
       <div className="sidebar px-4 py-6">
         {userState?.userInfo.username !== null ? (
-          <>
             <p>Hello {userState.userInfo?.username}!</p>
-          </>
         ) : (
           <>
-            <p>No user logged in</p>
           </>
         )}
-        <ul className="flex flex-col w-full">
+        <ul className="flex flex-col w-full space-y-2">
           <li className="my-px">
             <Link className="nav-link active" to="/dashboard">
               Dashboard
@@ -77,12 +74,12 @@ export default function Sidebar() {
           ) : (
             <>
               <li className="my-px">
-                <Link className="nav-link active" to="/login">
+                <Link className="nav-link active font-extrabold text-lg rounded-md px-1 bg-green-800 text-white " to="/login">
                   Login
                 </Link>
               </li>
               <li className="my-px">
-                <Link className="nav-link active" to="/signup">
+                <Link className="nav-link active font-extrabold text-lg rounded-md px-1 bg-green-800 text-white" to="/signup">
                   Sign up
                 </Link>
               </li>

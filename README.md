@@ -3,7 +3,7 @@
 
 ## Description
 
-A parody game built in the MERN stack as a tech demo. 
+A parody game making fun of the worst of NFT's and gacha games. Built in the MERN stack as a tech demo. Hunt whales! Earn ridiculous items! Trust us bro, they'll totally go up in value! !hat's just the way things go ... right?
 
 ## Table of Contents
 
