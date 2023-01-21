@@ -1,9 +1,10 @@
 // Decoding JWT Tokens
 import decode from "jwt-decode";
+import { redirect } from "react-router-dom";
 
 
 import {useReducer} from 'react'
-import {userReducer} from '../utils/reducers'
+import userReducer from '../utils/reducers'
 
 // Class to contain methods for storing, retrieving, and using tokens from localStorage
 class AuthService {
@@ -39,13 +40,14 @@ class AuthService {
   //   Save a supplied token to localStorage and take user to homepage
   saveTokenToLocal(idToken) {
     localStorage.setItem("id_token", idToken);
-    window.location.assign("/");
+    // window.location.assign("/");
+
   }
 
   //   Remove saved token from localStorage and kick user back to homepage
   removeTokenFromLocal() {
     localStorage.removeItem("id_token");
-    window.location.assign("/");
+    // window.location.assign("/");
   }
 }
 

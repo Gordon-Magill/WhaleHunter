@@ -1,6 +1,6 @@
 import { LOGIN, LOGOUT } from "./actions";
 
-export function userReducer(state, action) {
+export default function userReducer(state, action){
   switch (action.type) {
     case LOGIN: {
       try {
@@ -9,7 +9,7 @@ export function userReducer(state, action) {
 
         return {
           ...state,
-          userInfo: {...action.payload},
+          userInfo,
         };
       } catch {
         console.error("userReducer: Failed to update state during LOGIN");
@@ -17,7 +17,7 @@ export function userReducer(state, action) {
     }
     case LOGOUT: {
       try {
-        const userInfo = null;
+        const userInfo = {username: null};
         console.log("userReducer LOGOUT set user info as null: ", userInfo);
   
         return {
