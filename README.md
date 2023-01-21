@@ -1,6 +1,8 @@
 # Space Grift: Whale Hunter
 [![License: Attribution-NonCommmercial-ShareAlike 4.0 International](https://img.shields.io/badge/License-CC_BY--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+![App screenshot](./assets/sidebar_shot.png)
+
 ## Description
 
 A parody game making fun of the worst of NFT's and gacha games. Built in the MERN stack as a tech demo. Hunt whales! Earn ridiculous items! Trust us bro, they'll totally go up in value! !hat's just the way things go ... right?
