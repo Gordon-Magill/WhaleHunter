@@ -62,7 +62,7 @@ function round([atkPower, defHp, defArmor, defShield]){
     
     return [defHp, defArmor, defShield]
 }
- 
+
 
 // initialize the battle state, get values for attacker and defender, wrap other functions in this function
 export function battle(attacker, defender){
