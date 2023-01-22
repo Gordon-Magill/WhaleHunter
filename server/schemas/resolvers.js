@@ -53,6 +53,9 @@ const resolvers = {
         "AuthenticationError: Invalid credentials attempting to query 'ships'"
       );
     },
+    monsters: async () => {
+      return Monster.find();
+    },
     randomMonster: async (parent, args, context, info) => {
       if (context.user) {
         const monsterCount = await Monster.count()

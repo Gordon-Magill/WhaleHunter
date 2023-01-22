@@ -14,4 +14,20 @@ export const QUERY_ME = gql`
   }
 `;
 
-//todo: single monster/random single monster query 
+// Query all monsters
+export const QUERY_MONSTERS = gql`
+  query allMonsters {
+    monsters {
+      name
+      attackPower
+      health
+      armor
+      shield
+      accuracy
+      evasion
+      expGrant
+    }
+  }
+`;
+
+//todo: single monster/random single monster query
