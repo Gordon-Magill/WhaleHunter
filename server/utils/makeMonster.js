@@ -16,5 +16,3 @@ export const NewMonster = class Monster {
         this.evasion = statValues["evasion"]
     }
 }
-
-console.log(new NewMonster)

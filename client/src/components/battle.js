@@ -1,3 +1,5 @@
+/* deprecated for now
+
 // I guess we need global variables!
 
 var battleState = 0
@@ -8,6 +10,8 @@ var defCurrentHp
 var defCurrentArmor
 var defCurrentShield
 var roundCounter
+var battleMsgOne = ""
+var battleMsgTwo = ""
 
 
 function getRandomInt(num) {
@@ -58,7 +62,7 @@ function round([atkPower, defHp, defArmor, defShield]){
     
     return [defHp, defArmor, defShield]
 }
- 
+
 
 // initialize the battle state, get values for attacker and defender, wrap other functions in this function
 export function battle(attacker, defender){
@@ -77,6 +81,7 @@ export function battle(attacker, defender){
         roundCounter = 1
 
         // what should this return??
+
     } else {
         console.log("Battle already initiated!")
     }
@@ -135,9 +140,9 @@ export function nextRound(attacker, defender){
     }
 
     // if retreat button is pressed call this function
-export function retreat(){
+export function retreat(attacker){
         // end battle state
-        endBattle()
+        endBattle(attacker)
         // save attacker hp values to current hp in db
         // or don't, this is less important right now
 }
@@ -146,3 +151,4 @@ function endBattle(attacker){
     console.log("Battle state ended!")
     battleState = 0
 }
+*/
