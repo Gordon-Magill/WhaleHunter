@@ -103,7 +103,8 @@ function nextRound(attacker, defender){
     battleMsgOne = ""
     battleMsgTwo = ""
 
-    if(atkCurrentHp > 1 && defCurrentHp > 1){
+    if(atkCurrentHp >= 1 && defCurrentHp >= 1){
+
       // roll accuracy vs evasion to determine hit or miss
       if(diceRoll(attacker.accuracy) > diceRoll(defender.evasion)){
 
@@ -118,15 +119,19 @@ function nextRound(attacker, defender){
         if(defCurrentHp < 1){
             // defender has been defeated
             battleMsgOne = `You defeated ${defender.name}!`
+            console.log(battleMsgOne)
             // end battle state
             endBattle("win")
+            return
         }
 
         battleMsgOne = `${attacker.name} damaged ${defender.name}!`
+        console.log(battleMsgOne)
 
     } else {
         // it's a miss!
         battleMsgOne = `${attacker.name} missed ${defender.name}...`
+        console.log(battleMsgOne)
     }
 
     if(diceRoll(defender.accuracy) > diceRoll(attacker.evasion)){
@@ -142,20 +147,24 @@ function nextRound(attacker, defender){
         if(atkCurrentHp < 1){
             // attacker has been defeated
             battleMsgTwo = `You were defeated...`
+            console.log(battleMsgTwo)
             // end battle state
             endBattle("lose")
+            return
         }
 
         battleMsgTwo = `${attacker.name} damaged ${defender.name}!`
+        console.log(battleMsgTwo)
 
     } else {
         // it's a miss!
         battleMsgTwo = `${defender.name} missed ${attacker.name}...`
+        console.log(battleMsgTwo)
     }
         
     // return some data to the page
     roundCounter++
- 
+    console.log(`Round results: attacker has ${atkCurrentHp} hp, defender has ${defCurrentHp} hp`)
     }
 }
 
