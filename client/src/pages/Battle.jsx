@@ -21,9 +21,9 @@ var atkCurrentShield
 var defCurrentHp
 var defCurrentArmor
 var defCurrentShield
-var roundCounter
-var battleMsgOne = "SAMPLE"
-var battleMsgTwo = "TWO"
+var roundCounter = 0;
+var battleMsgOne
+var battleMsgTwo
 
 
 function getRandomInt(num) {
@@ -88,14 +88,6 @@ function startBattle(attacker, defender){
         defCurrentArmor = defender.armor
         defCurrentShield = defender.shield
 
-        roundCounter = 1
-
-      // Render Round number to page
-      let currentRound = roundCounter;
-      let roundEle = document.getElementById('currentRound');
-      roundEle.innerHTML = 'Round: ' + currentRound;
-
-
     } else {
         console.log("Battle already initiated!")
     }
@@ -103,9 +95,6 @@ function startBattle(attacker, defender){
 
 // if nextRound button is pressed call this function
 function nextRound(attacker, defender){
-
-    battleMsgOne = ""
-    battleMsgTwo = ""
 
     if(atkCurrentHp >= 1 && defCurrentHp >= 1){
 
@@ -125,6 +114,9 @@ function nextRound(attacker, defender){
             battleMsgOne = `You defeated ${defender.name}!`
             console.log(battleMsgOne)
             // end battle state
+            let message = battleMsgOne;
+            let msgArea = document.getElementById('msgOne');
+            msgArea.innerHTML = message;
             endBattle("win")
             return
         }
@@ -136,6 +128,9 @@ function nextRound(attacker, defender){
         // it's a miss!
         battleMsgOne = `${attacker.name} missed ${defender.name}...`
         console.log(battleMsgOne)
+        let message = battleMsgOne;
+        let msgArea = document.getElementById('msgOne');
+        msgArea.innerHTML = message;
     }
 
     if(diceRoll(defender.accuracy) > diceRoll(attacker.evasion)){
@@ -157,25 +152,33 @@ function nextRound(attacker, defender){
             return
         }
 
-        battleMsgTwo = `${attacker.name} damaged ${defender.name}!`
+      battleMsgTwo = `${attacker.name} damaged ${defender.name}!`
+      let message = battleMsgTwo;
+      let msgArea = document.getElementById('msgTwo');
+      msgArea.innerHTML = message;
         console.log(battleMsgTwo)
 
     } else {
         // it's a miss!
-        battleMsgTwo = `${defender.name} missed ${attacker.name}...`
-        console.log(battleMsgTwo)
+      battleMsgTwo = `${defender.name} missed ${attacker.name}...`
+      let message = battleMsgTwo;
+      let msgArea = document.getElementById('msgTwo');
+      msgArea.innerHTML = message;
+      console.log(battleMsgTwo)
+
     }
 
     // return some data to the page
 
-    roundCounter++
+      roundCounter++
+      console.log('Round: ' + roundCounter)
+      // Render Round number to page
+      let currentRound = roundCounter;
+      let roundEle = document.getElementById('currentRound');
+      roundEle.innerHTML = 'Round: ' + currentRound;
     console.log(`Round results: attacker has ${atkCurrentHp} hp, defender has ${defCurrentHp} hp`)
   }
   // Append final text to the page element
-
-  let message = battleMsgOne;
-  let msgArea = document.getElementById('msgOne');
-  msgArea.innerHTML = message;
 }
 
     // if retreat button is pressed call this function
