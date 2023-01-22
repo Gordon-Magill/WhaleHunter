@@ -1,0 +1,54 @@
+[
+    {
+        "_id":"ship00000001",
+        "name":"Rowboat",
+        "attackPower":1,
+        "health":1,
+        "healthCurrent":1,
+        "armor":1,
+        "armorCurrent":1,
+        "shield":1,
+        "shieldCurrent":1,
+        "accuracy":0.25,
+        "evasion":0.01
+    },
+    {
+        "_id":"ship00000002",
+        "name":"Old ship",
+        "attackPower":2,
+        "health":2,
+        "healthCurrent":2,
+        "armor":2,
+        "armorCurrent":2,
+        "shield":2,
+        "shieldCurrent":2,
+        "accuracy":0.4,
+        "evasion":0.03
+    },
+    {
+        "_id":"ship00000003",
+        "name":"Modern ship",
+        "attackPower":3,
+        "health":3,
+        "healthCurrent":3,
+        "armor":3,
+        "armorCurrent":3,
+        "shield":3,
+        "shieldCurrent":3,
+        "accuracy":0.6,
+        "evasion":0.07
+    },
+    {
+        "_id":"ship00000004",
+        "name":"Future ship",
+        "attackPower":4,
+        "health":4,
+        "healthCurrent":4,
+        "armor":4,
+        "armorCurrent":4,
+        "shield":4,
+        "shieldCurrent":4,
+        "accuracy":0.9,
+        "evasion":0.1
+    }
+]
