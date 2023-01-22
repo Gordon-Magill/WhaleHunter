@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const statsSchema = require("./Stats");
+// const statsSchema = require("./Stats");
 
 const itemSchema = new Schema(
   {
@@ -12,10 +12,6 @@ const itemSchema = new Schema(
       type: String,
       required: true,
       default: null,
-    },
-    stats: {
-      type: statsSchema,
-      default: null
     },
     // Icon will just be a reference to a file name in client/src/assets
     icon: {
