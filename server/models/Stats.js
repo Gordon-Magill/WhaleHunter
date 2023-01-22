@@ -42,7 +42,8 @@ const statsSchema = new Schema(
     },
     imageID: {
       type: String,
-      required:true,
+      default: null
+
     }
   },
   {

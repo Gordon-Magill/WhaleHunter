@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 import { motion } from "framer-motion";
 import { TRANSITION_SPEED } from "../utils/transitionSpeed";
+import { useUserStateContext, useUserDispatchContext } from "../utils/userContext";
+
+import userReducer from "../utils/reducers";
+import { LOGIN } from "../utils/actions";
+
 
 export default function SignupPage() {
   const [userFormData, setUserFormData] = useState({
@@ -15,6 +22,11 @@ export default function SignupPage() {
   const [addUser, { error: addUserError }] = useMutation(ADD_USER);
   const [errorState, setErrorState] = useState(false);
   const [validatedForm, setValidatedForm] = useState(false);
+
+  // const initialState = useUserContext()
+  // const [userState, userDispatch] = useReducer(userReducer, initialState)
+  const userDispatch = useUserDispatchContext()
+  const navigate = useNavigate()
 
   //   Update form state on changes to the form
   const handleInputChange = (event) => {
@@ -38,8 +50,9 @@ export default function SignupPage() {
         },
       });
       console.log("Received graphql response with data:", data);
-
+      userDispatch({type: LOGIN, payload: data.addUser.user})
       Auth.saveTokenToLocal(data.addUser.token);
+      navigate('/')
     } catch (err) {
       console.error(err);
       setErrorState(true);

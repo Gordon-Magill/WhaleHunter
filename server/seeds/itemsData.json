@@ -1,0 +1,17 @@
+[
+    {
+        "name":"test item name",
+        "description": "test item description",
+        "icon":"",
+        "stats": {
+            "attackPower": 1,
+            "health": 1,
+            "armor": 1,
+            "shield": 1,
+            "accuracy": 1,
+            "initiative":1,
+            "evasion":1,
+            "imageID": "000000"
+        }
+    }
+]
