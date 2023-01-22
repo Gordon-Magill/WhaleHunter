@@ -56,9 +56,6 @@ const resolvers = {
     monsters: async () => {
       return Monster.find();
     },
-    monster: async (parent, { monsterId }) => {
-      return Monster.findOne({ _id: monsterId });
-    },
     randomMonster: async (parent, args, context, info) => {
       if (context.user) {
         const monsterCount = await Monster.count()
