@@ -56,7 +56,7 @@ export default function Sidebar() {
     <section className="flex gap-6">
       <div
         className={`bg-[#02243f] min-h-screen ${
-          open ? "w-72" : "w-16"
+          open ? "w-52" : "w-20"
         } duration-500 text-gray-100 px-4`}
       >
         <div className="py-3 flex justify-end">
@@ -70,12 +70,12 @@ export default function Sidebar() {
           <img src={Logo} />
           <div>
           {menus?.map((menu, i) => (
-            <Link id="logout"
+            <Link
               to={menu?.link}
               key={i}
               className={` ${
                 menu?.margin && "mt-5"
-              } group flex items-center text-sm  gap-3.5 font-bold p-2 hover:bg-gray-900 rounded-md`}
+              } group flex text-sm gap-3.5 font-bold p-2 hover:bg-gray-900 rounded-md`}
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
               <h2
@@ -99,33 +99,26 @@ export default function Sidebar() {
           ))}
           </div>
 
-          <ul className="list-none text-left">
+
           {/* Make this disappear upong login */}
           {userState.userInfo.username !== null ? (
             <>
-              <li className="my-px">
-                <Link className="nav-link active" onClick={logoutHelper}>
+                <Link className="bg-teal-600 p-1 rounded overflow-hidden nav-link active font-bold text-xs text-white" onClick={logoutHelper}>
                   Log out
                 </Link>
-              </li>
+
             </>
           ) : (
             <>
-              <li className="my-px">
-                <Link className="nav-link active font-extrabold text-lg rounded-md px-1 bg-green-800 text-white " to="/login">
+                <Link className="bg-teal-600 p-1 rounded overflow-hidden nav-link active font-bold text-xs text-white " to="/login">
                   Login
                 </Link>
-              </li>
-              <li className="my-px">
-                <Link className="nav-link active font-extrabold text-lg rounded-md px-1 bg-green-800 text-white" to="/signup">
-                  Sign up
+                <Link className="bg-teal-600 p-1 rounded overflow-hidden first-letter:nav-link active font-bold text-xs text-white" to="/signup">
+                  Signup
                 </Link>
-              </li>
+
             </>
           )}
-        </ul>
-
-
 
         </div>
       </div>
