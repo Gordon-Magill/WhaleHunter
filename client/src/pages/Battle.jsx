@@ -265,10 +265,19 @@ export default function Battle() {
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: TRANSITION_SPEED }}
-  >
+    >
+      <div className="flex justify-around buttons mb-2">
+        <button
+            // battle(attacker, defender)
+            onClick={() => startBattle(attacker, defender)}>Start battle</button>
+          <button
+            onClick={() => nextRound(attacker, defender)}>Next Round</button>
+          <button
+          onClick={() => retreat()}>Retreat!</button>
+        </div>
       <div
         // Section for player picture and stats
-        className="flex battleSection">
+        className="flex justify-between battleSection">
         <div className="player">
           <div className="playerShipPic">
             <img src={playerShipPic}/>
@@ -293,13 +302,6 @@ export default function Battle() {
                // Text to reflect what just happened to defender
               className="bg-gray-200"></p>
           </div>
-            <button
-            // battle(attacker, defender)
-            onClick={() => startBattle(attacker, defender)}>Start battle</button>
-          <button
-            onClick={() => nextRound(attacker, defender)}>Next Round</button>
-          <button
-            onClick={() => retreat()}>Retreat!</button>
         </div>
 
         <div
