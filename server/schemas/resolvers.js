@@ -1,5 +1,5 @@
 // Get mongoDB models
-const { User, Monster, Item, Ship } = require("../models");
+const { User, Monster, Item, Ship, Icon } = require("../models");
 
 // Authentication errors for when provided tokens are invalid
 const { AuthenticationError } = require("apollo-server-express");
