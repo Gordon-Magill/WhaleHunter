@@ -1,3 +1,5 @@
+/* deprecated for now
+
 // I guess we need global variables!
 
 var battleState = 0
@@ -149,3 +151,4 @@ function endBattle(attacker){
     console.log("Battle state ended!")
     battleState = 0
 }
+*/

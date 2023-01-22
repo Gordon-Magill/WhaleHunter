@@ -19,5 +19,3 @@ export const NewShip = class Ship {
         this.evasion = statValues["evasion"]
     }
 }
-
-console.log(new NewShip)
