@@ -21,9 +21,9 @@ var atkCurrentShield
 var defCurrentHp
 var defCurrentArmor
 var defCurrentShield
-var roundCounter
-var battleMsgOne = ""
-var battleMsgTwo = ""
+var roundCounter = 0;
+var battleMsgOne
+var battleMsgTwo
 
 
 function getRandomInt(num) {
@@ -69,7 +69,7 @@ function round([atkPower, defHp, defArmor, defShield]){
             defHp = defHp - remainingPower
         }
     }
-    
+
     return [defHp, defArmor, defShield]
 }
 
@@ -88,9 +88,9 @@ function startBattle(attacker, defender){
         defCurrentArmor = defender.armor
         defCurrentShield = defender.shield
 
-        roundCounter = 1
+      roundCounter = 1;
 
-        // what should this return??
+      nextRound(attacker, defender);
 
     } else {
         console.log("Battle already initiated!")
@@ -98,10 +98,12 @@ function startBattle(attacker, defender){
 }
 
 // if nextRound button is pressed call this function
-function nextRound(attacker, defender){
+function nextRound(attacker, defender) {
 
-    battleMsgOne = ""
-    battleMsgTwo = ""
+  // Render Round number to page
+  let currentRound = roundCounter;
+  let roundEle = document.getElementById('currentRound');
+  roundEle.innerHTML = 'Round: ' + currentRound;
 
     if(atkCurrentHp >= 1 && defCurrentHp >= 1){
 
@@ -121,6 +123,9 @@ function nextRound(attacker, defender){
             battleMsgOne = `You defeated ${defender.name}!`
             console.log(battleMsgOne)
             // end battle state
+            let message = battleMsgOne;
+            let msgArea = document.getElementById('msgOne');
+            msgArea.innerHTML = message;
             endBattle("win")
             return
         }
@@ -132,10 +137,13 @@ function nextRound(attacker, defender){
         // it's a miss!
         battleMsgOne = `${attacker.name} missed ${defender.name}...`
         console.log(battleMsgOne)
+        let message = battleMsgOne;
+        let msgArea = document.getElementById('msgOne');
+        msgArea.innerHTML = message;
     }
 
     if(diceRoll(defender.accuracy) > diceRoll(attacker.evasion)){
-            
+
         let roundResult = round([defender.attackPower, atkCurrentHp, atkCurrentArmor, atkCurrentShield])
 
         // update values
@@ -153,19 +161,30 @@ function nextRound(attacker, defender){
             return
         }
 
-        battleMsgTwo = `${attacker.name} damaged ${defender.name}!`
+      battleMsgTwo = `${attacker.name} damaged ${defender.name}!`
+      let message = battleMsgTwo;
+      let msgArea = document.getElementById('msgTwo');
+      msgArea.innerHTML = message;
         console.log(battleMsgTwo)
 
     } else {
         // it's a miss!
-        battleMsgTwo = `${defender.name} missed ${attacker.name}...`
-        console.log(battleMsgTwo)
+      battleMsgTwo = `${defender.name} missed ${attacker.name}...`
+      let message = battleMsgTwo;
+      let msgArea = document.getElementById('msgTwo');
+      msgArea.innerHTML = message;
+      console.log(battleMsgTwo)
+
     }
-        
+
     // return some data to the page
-    roundCounter++
+
+      roundCounter++
+      console.log('Round: ' + roundCounter)
+
     console.log(`Round results: attacker has ${atkCurrentHp} hp, defender has ${defCurrentHp} hp`)
-    }
+  }
+  // Append final text to the page element
 }
 
     // if retreat button is pressed call this function
@@ -180,11 +199,11 @@ function endBattle(outcome){
     if(outcome === "win"){
 
 
-      
+
     } else if(outcome === "lose"){
 
 
-      
+
     } else {
       console.log("Error in battle outcome")
     }
@@ -253,11 +272,13 @@ export default function Battle() {
 
         <div className="actionArea">
           <div className="actionText">
-            <p
-            // Text to reflect what just happened
-              className="bg-gray-200">{battleMsgOne}</p>
-            <p 
-              className="bg-gray-200">{battleMsgTwo}</p>
+            <p id ="currentRound"></p>
+            <p id="msgOne"
+            // Text to reflect what just happened to attacker
+              className="bg-gray-200"></p>
+            <p id="msgTwo"
+               // Text to reflect what just happened to defender
+              className="bg-gray-200"></p>
           </div>
             <button
             // battle(attacker, defender)
