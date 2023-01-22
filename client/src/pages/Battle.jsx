@@ -88,13 +88,22 @@ function startBattle(attacker, defender){
         defCurrentArmor = defender.armor
         defCurrentShield = defender.shield
 
+      roundCounter = 1;
+
+      nextRound(attacker, defender);
+
     } else {
         console.log("Battle already initiated!")
     }
 }
 
 // if nextRound button is pressed call this function
-function nextRound(attacker, defender){
+function nextRound(attacker, defender) {
+
+  // Render Round number to page
+  let currentRound = roundCounter;
+  let roundEle = document.getElementById('currentRound');
+  roundEle.innerHTML = 'Round: ' + currentRound;
 
     if(atkCurrentHp >= 1 && defCurrentHp >= 1){
 
@@ -172,10 +181,7 @@ function nextRound(attacker, defender){
 
       roundCounter++
       console.log('Round: ' + roundCounter)
-      // Render Round number to page
-      let currentRound = roundCounter;
-      let roundEle = document.getElementById('currentRound');
-      roundEle.innerHTML = 'Round: ' + currentRound;
+
     console.log(`Round results: attacker has ${atkCurrentHp} hp, defender has ${defCurrentHp} hp`)
   }
   // Append final text to the page element
