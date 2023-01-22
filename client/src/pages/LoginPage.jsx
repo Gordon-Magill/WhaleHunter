@@ -77,7 +77,7 @@ export default function LoginPage() {
       transition={{ duration: TRANSITION_SPEED }}
     >
       <div className="loginPage container">
-        <h1 className="m-1">Welcome Back, Whaler</h1>
+        <h1 className="m-1">Welcome Back, Whale Hunter</h1>
         <form
           className="flex flex-col items-center"
           onSubmit={(event) => {
