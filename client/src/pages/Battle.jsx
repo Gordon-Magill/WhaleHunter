@@ -163,12 +163,14 @@ function nextRound(attacker, defender){
     }
 
     // return some data to the page
-      
+
     roundCounter++
     console.log(`Round results: attacker has ${atkCurrentHp} hp, defender has ${defCurrentHp} hp`)
   }
+  let message = battleMsgOne;
+  let msgArea = document.getElementById('msgOne');
   console.log(battleMsgOne)
-
+  msgArea.innerHTML = message;
 }
 
     // if retreat button is pressed call this function
@@ -256,11 +258,11 @@ export default function Battle() {
 
         <div className="actionArea">
           <div className="actionText">
-            <p
+            <p id="msgOne"
             // Text to reflect what just happened
-              className="bg-gray-200">{battleMsgOne}</p>
-            <p
-              className="bg-gray-200">{battleMsgTwo}</p>
+              className="bg-gray-200"></p>
+            <p id ="msgTwo"
+              className="bg-gray-200"></p>
           </div>
             <button
             // battle(attacker, defender)
