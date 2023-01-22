@@ -90,7 +90,11 @@ function startBattle(attacker, defender){
 
         roundCounter = 1
 
-        // what should this return??
+      // Render Round number to page
+      let currentRound = roundCounter;
+      let roundEle = document.getElementById('currentRound');
+      roundEle.innerHTML = 'Round: ' + currentRound;
+
 
     } else {
         console.log("Battle already initiated!")
@@ -167,9 +171,10 @@ function nextRound(attacker, defender){
     roundCounter++
     console.log(`Round results: attacker has ${atkCurrentHp} hp, defender has ${defCurrentHp} hp`)
   }
+  // Append final text to the page element
+
   let message = battleMsgOne;
   let msgArea = document.getElementById('msgOne');
-  console.log(battleMsgOne)
   msgArea.innerHTML = message;
 }
 
@@ -258,10 +263,12 @@ export default function Battle() {
 
         <div className="actionArea">
           <div className="actionText">
+            <p id ="currentRound"></p>
             <p id="msgOne"
-            // Text to reflect what just happened
+            // Text to reflect what just happened to attacker
               className="bg-gray-200"></p>
-            <p id ="msgTwo"
+            <p id="msgTwo"
+               // Text to reflect what just happened to defender
               className="bg-gray-200"></p>
           </div>
             <button
