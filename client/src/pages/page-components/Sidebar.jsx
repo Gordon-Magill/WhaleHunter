@@ -81,7 +81,7 @@ export default function Sidebar() {
           <img src={Logo} />
           <div>
           {menus?.map((menu, i) => (
-            <Link
+            <Link id="logout"
               to={menu?.link}
               key={i}
               className={` ${
@@ -178,4 +178,5 @@ export default function Sidebar() {
       </div>
     </section>
   );
+
 }
