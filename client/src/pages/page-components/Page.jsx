@@ -1,7 +1,5 @@
 import React from "react";
 
-import { motion } from "framer-motion";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Import pages and page content
