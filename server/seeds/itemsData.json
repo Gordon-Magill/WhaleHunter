@@ -1,10 +1,10 @@
 [
     {
         "_id": "item00000001",
-        "name":"test item name",
-        "description": "test item description",
+        "name":"Rusty cannon",
+        "description": "It'll shoot...just not well, or at anything in particular. In fact, best to not shoot it at all.",
         "icon":"",
-        "attackPower":1,
+        "attackPower":1.05,
         "health":1,
         "armor":1,
         "shield":1,
@@ -13,31 +13,38 @@
     },
     {
         "_id": "item00000002",
-        "name":"test item name 2",
-        "description": "test item description 2",
+        "name":"Basic cannon",
+        "description": "It shoots, but it won't score.",
         "icon":"",
-        "attackPower":1,
+        "attackPower":1.07,
         "health":1,
         "armor":1,
         "shield":1,
         "accuracy":1,
         "evasion":1
-
-
     },
     {
         "_id": "item00000003",
-        "name":"test item name 3",
-        "description": "test item description 3",
+        "name":"Modern anti-whale missiles",
+        "description": "A significant advacement over a harpoon, wouldn't you say?",
         "icon":"",
-        "attackPower":1,
+        "attackPower":1.1,
         "health":1,
         "armor":1,
         "shield":1,
         "accuracy":1,
         "evasion":1
-
+    },
+    {
+        "_id": "item00000004",
+        "name":"Literal space laser",
+        "description": "\"I've had it with these motherf**king whales in this motherf**king solar system\" -Admiral Jackson",
+        "icon":"",
+        "attackPower":2,
+        "health":1,
+        "armor":1,
+        "shield":1,
+        "accuracy":1,
+        "evasion":1
     }
-
-
 ]
