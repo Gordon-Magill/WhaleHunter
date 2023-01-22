@@ -31,17 +31,6 @@ export default function Sidebar() {
     { name: "Gallery", link: "/gallery", icon: GiTheaterCurtains },
   ];
 
-    // Logged In State Links
-    const loggedIn = [
-      { name: "Log Out", icon: GiShipWheel },
-  ];
-
-    // Logged Out State Links
-    const loggedOut = [
-      { name: "Log In", link: "/login", icon: GiShipWheel },
-      { name: "Sign Up", link: "/signup", icon: GiShipWheel },
-  ];
-
 
 
 
@@ -67,7 +56,7 @@ export default function Sidebar() {
     <section className="flex gap-6">
       <div
         className={`bg-[#02243f] min-h-screen ${
-          open ? "w-72" : "w-16"
+          open ? "w-52" : "w-20"
         } duration-500 text-gray-100 px-4`}
       >
         <div className="py-3 flex justify-end">
@@ -81,12 +70,12 @@ export default function Sidebar() {
           <img src={Logo} />
           <div>
           {menus?.map((menu, i) => (
-            <Link id="logout"
+            <Link
               to={menu?.link}
               key={i}
               className={` ${
                 menu?.margin && "mt-5"
-              } group flex items-center text-sm  gap-3.5 font-bold p-2 hover:bg-gray-900 rounded-md`}
+              } group flex text-sm gap-3.5 font-bold p-2 hover:bg-gray-900 rounded-md`}
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
               <h2
@@ -108,71 +97,28 @@ export default function Sidebar() {
               </h2>
             </Link>
           ))}
-            </div>
-
-              <div>
-          {loggedIn?.map((menu, i) => (
-            <Link
-              to={menu?.link}
-              key={i}
-              className={` ${
-                menu?.margin && "mt-5"
-              } group flex items-center text-sm  gap-3.5 font-bold p-2 hover:bg-gray-900 rounded-md`}
-            >
-              <div>{React.createElement(menu?.icon, { size: "20" })}</div>
-              <h2
-                style={{
-                  transitionDelay: `${i + 3}00ms`,
-                }}
-                className={`whitespace-pre text-gray-200 duration-500 ${
-                  !open && "opacity-0 translate-x-28 overflow-hidden"
-                }`}
-              >
-                {menu?.name}
-              </h2>
-              <h2
-                className={`${
-                  open && "hidden"
-                } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
-              >
-                {menu?.name}
-              </h2>
-            </Link>
-          ))}
-            </div>
-
-<div>
-       {loggedOut?.map((menu, i) => (
-            <Link
-              to={menu?.link}
-              key={i}
-              className={` ${
-                menu?.margin && "mt-5"
-              } group flex items-center text-sm  gap-3.5 font-bold p-2 hover:bg-gray-900 rounded-md`}
-            >
-              <div>{React.createElement(menu?.icon, { size: "20" })}</div>
-              <h2
-                style={{
-                  transitionDelay: `${i + 3}00ms`,
-                }}
-                className={`whitespace-pre text-gray-200 duration-500 ${
-                  !open && "opacity-0 translate-x-28 overflow-hidden"
-                }`}
-              >
-                {menu?.name}
-              </h2>
-              <h2
-                className={`${
-                  open && "hidden"
-                } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
-              >
-                {menu?.name}
-              </h2>
-            </Link>
-       ))}
-            </div>
+          </div>
 
 
+          {/* Make this disappear upong login */}
+          {userState.userInfo.username !== null ? (
+            <>
+                <Link className="bg-teal-600 p-1 rounded overflow-hidden nav-link active font-bold text-xs text-white" onClick={logoutHelper}>
+                  Log out
+                </Link>
+
+            </>
+          ) : (
+            <>
+                <Link className="bg-teal-600 p-1 rounded overflow-hidden nav-link active font-bold text-xs text-white " to="/login">
+                  Login
+                </Link>
+                <Link className="bg-teal-600 p-1 rounded overflow-hidden first-letter:nav-link active font-bold text-xs text-white" to="/signup">
+                  Signup
+                </Link>
+
+            </>
+          )}
 
         </div>
       </div>
