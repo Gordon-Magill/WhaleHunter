@@ -13,7 +13,7 @@ const bossHP = 75;
 
 
 //debug attacker and defender
-const attacker = {
+var attacker = {
   name: 'Debug Ship',
   imageID: null,
   attackPower: 4,
@@ -27,7 +27,7 @@ const attacker = {
   initiative: 3,
   evasion: 23
 }
-
+x
 const defender = {
   name: 'Debug Monster',
   imageID: null,

@@ -8,6 +8,8 @@ var defCurrentHp
 var defCurrentArmor
 var defCurrentShield
 var roundCounter
+var battleMsgOne = ""
+var battleMsgTwo = ""
 
 
 function getRandomInt(num) {
@@ -77,6 +79,7 @@ export function battle(attacker, defender){
         roundCounter = 1
 
         // what should this return??
+
     } else {
         console.log("Battle already initiated!")
     }
