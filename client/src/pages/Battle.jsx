@@ -22,8 +22,8 @@ var defCurrentHp
 var defCurrentArmor
 var defCurrentShield
 var roundCounter
-var battleMsgOne = ""
-var battleMsgTwo = ""
+var battleMsgOne = "SAMPLE"
+var battleMsgTwo = "TWO"
 
 
 function getRandomInt(num) {
@@ -69,7 +69,7 @@ function round([atkPower, defHp, defArmor, defShield]){
             defHp = defHp - remainingPower
         }
     }
-    
+
     return [defHp, defArmor, defShield]
 }
 
@@ -135,7 +135,7 @@ function nextRound(attacker, defender){
     }
 
     if(diceRoll(defender.accuracy) > diceRoll(attacker.evasion)){
-            
+
         let roundResult = round([defender.attackPower, atkCurrentHp, atkCurrentArmor, atkCurrentShield])
 
         // update values
@@ -161,11 +161,14 @@ function nextRound(attacker, defender){
         battleMsgTwo = `${defender.name} missed ${attacker.name}...`
         console.log(battleMsgTwo)
     }
-        
+
     // return some data to the page
+      
     roundCounter++
     console.log(`Round results: attacker has ${atkCurrentHp} hp, defender has ${defCurrentHp} hp`)
-    }
+  }
+  console.log(battleMsgOne)
+
 }
 
     // if retreat button is pressed call this function
@@ -180,11 +183,11 @@ function endBattle(outcome){
     if(outcome === "win"){
 
 
-      
+
     } else if(outcome === "lose"){
 
 
-      
+
     } else {
       console.log("Error in battle outcome")
     }
@@ -256,7 +259,7 @@ export default function Battle() {
             <p
             // Text to reflect what just happened
               className="bg-gray-200">{battleMsgOne}</p>
-            <p 
+            <p
               className="bg-gray-200">{battleMsgTwo}</p>
           </div>
             <button
