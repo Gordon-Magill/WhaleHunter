@@ -64,7 +64,10 @@ const resolvers = {
       throw new AuthenticationError(
         "AuthenticationError: Invalid credentials attempting to query 'randomMonster'"
       );
-    }
+    },
+    icon: async (parent, { iconId }) => {
+      return Icon.findOne({ _id: iconId });
+    },
   },
   Mutation: {
     login: async (parent, args, context, info) => {
