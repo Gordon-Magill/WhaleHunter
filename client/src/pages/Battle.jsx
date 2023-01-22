@@ -7,8 +7,8 @@ import whaleBossPic from "../assets/cthulhu_whales/tmp3k8jgtcj.png"
 // Test player picture
 import playerShipPic from "../assets/old_ships/tmpa1uksn_p.png"
 // Test HP Value for PLayer
-const playerHP = 50;
-const bossHP = 75;
+const playerHP = atkCurrentHp;
+const bossHP = defCurrentHp;
 
 
 
@@ -188,9 +188,10 @@ function nextRound(attacker, defender) {
 }
 
     // if retreat button is pressed call this function
-function retreat(attacker){
-        // end battle state
-        endBattle(attacker)
+function retreat(){
+    // end battle state
+    if(battleState === 1)
+        endBattle("lose")
 }
 
 function endBattle(outcome){
@@ -208,6 +209,12 @@ function endBattle(outcome){
       console.log("Error in battle outcome")
     }
 }
+
+const getBattleMsg = (int) => {
+  if(int === 1)return battleMsgOne
+  else if(int === 2) return battleMsgTwo
+}
+
 
 
 // // Here ends the battle script
@@ -266,7 +273,7 @@ export default function Battle() {
             <motion.div
               initial={{ scaleX: "0%" }}
               animate={{ scaleX: `${playerHP}%` }}
-              className="bg-gray-400">{playerHP}%</motion.div>
+              className="bg-gray-400">{playerHP}HP</motion.div>
           </div>
         </div>
 
@@ -286,7 +293,7 @@ export default function Battle() {
           <button
             onClick={() => nextRound(attacker, defender)}>Next Round</button>
           <button
-            onClick={() => retreat(attacker)}>Retreat!</button>
+            onClick={() => retreat()}>Retreat!</button>
         </div>
 
         <div
@@ -301,7 +308,7 @@ export default function Battle() {
             <motion.div
               initial={{ scaleX: "0%" }}
               animate={{ scaleX: `${bossHP}%` }}
-              className="bg-gray-400">{bossHP}%</motion.div>
+              className="bg-gray-400">{bossHP}HP</motion.div>
           </div>
         </div>
 
