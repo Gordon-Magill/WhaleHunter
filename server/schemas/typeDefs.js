@@ -21,6 +21,12 @@ const typeDefs = gql`
         icon: String!
     }
 
+    type Icon {
+        iconID: ID!
+        objectType: String!
+        img: String!
+    }
+
     type Monster {
         monsterID: ID!
         name: String!
@@ -83,9 +89,10 @@ const typeDefs = gql`
         ships: [Ship]
         monsters: [Monster]
         items: [Item]
+        icon: [Icon]
         randomMonster: Monster
     }
-    
+
     type Mutation {
             login(email: String!, password: String!): Auth
             addUser(username: String!, email: String!, password: String!): Auth
