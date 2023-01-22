@@ -17,7 +17,37 @@ const itemSchema = new Schema(
     icon: {
       type: String,
       default: null
-    }
+    },
+    attackPower: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
+    health: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
+    armor: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
+    shield: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
+    accuracy: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
+    evasion: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
   },
   {
     toJSON: {
