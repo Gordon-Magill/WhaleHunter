@@ -6,6 +6,13 @@ import Auth from "../utils/auth";
 import { motion } from "framer-motion";
 import {TRANSITION_SPEED} from '../utils/transitionSpeed'
 
+// Import the `useQuery()` hook from Apollo Client
+import { useQuery } from '@apollo/client';
+
+import MonsterList from './page-components/MonsterList';
+
+// Import the query we are going to execute from its file
+import { QUERY_MONSTERS} from '../utils/queries';
 
 export default function Dashboard() {
   const [loginState, loginStateSetter] = useState(false);
@@ -15,6 +22,12 @@ export default function Dashboard() {
   useEffect(() => {
     loginStateSetter(Auth.checkLoggedIn());
   }, []);
+
+    // Execute the query on component load
+  const { loading, data } = useQuery(QUERY_MONSTERS);
+
+  // Use optional chaining to check if data exists and if it has a thoughts property. If not, return an empty array to use.
+  const monsters = data?.monsters || [];
 
   return (
     <motion.div
@@ -28,7 +41,16 @@ export default function Dashboard() {
         <h1>Your Dashboard</h1>
 
         <h2>The Bosses</h2>
-        
+        {/* If the data is still loading, render a loading message */}
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <MonsterList
+              monsters={monsters}
+              title="Fight the Whales!!!"
+            />
+          )}
+
       </div>
       </motion.div>
   );
