@@ -75,7 +75,7 @@ export default function SignupPage() {
       transition={{ duration: TRANSITION_SPEED }}
     >
       <div className="loginPage container">
-        <h1 className="m-1">This is the signup page!</h1>
+        <h1 className="m-1">Become a Whale Hunter!</h1>
         <form className="flex flex-col" onSubmit={handleFormSubmit}>
           <div className="flex flex-col justify-around ">
             <input
@@ -104,9 +104,9 @@ export default function SignupPage() {
             ></input>
           </div>
           <div className="flex flex-row justify-around">
-            <button type="submit" className="m-1">
-              Create account
-            </button>
+          <button type="submit" className="m-1 text-white bg-teal-500">
+              Sign Up
+          </button>
           </div>
         </form>
       </div>

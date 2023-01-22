@@ -77,7 +77,7 @@ export default function LoginPage() {
       transition={{ duration: TRANSITION_SPEED }}
     >
       <div className="loginPage container">
-        <h1 className="m-1">This is the login page!</h1>
+        <h1 className="m-1">Welcome Back, Whale Hunter</h1>
         <form
           className="flex flex-col items-center"
           onSubmit={(event) => {
@@ -104,20 +104,23 @@ export default function LoginPage() {
             ></input>
           </div>
           <div className="flex flex-row justify-around">
-            <button type="submit" className="m-1 bg-blue-600">
+            <button type="submit" className="m-1 text-white bg-teal-500">
               Log in
             </button>
-            <button type="button" className="m-1 bg-slate-600">
+            <button type="button" className="m-1 text-white bg-slate-600">
               Forgot login?
             </button>
           </div>
-          <Link
-            className="nav-link active bg-green-500 text-white rounded-md w-1/3"
-            to="/signup"
-          >
-            Sign up
-          </Link>
         </form>
+        <div className="mt-5">
+          <p>Don't have an account yet?</p>
+          <button className="m-1 bg-teal-600">
+          <Link className="text-white"
+            to="/signup"
+          >Sign up
+            </Link>
+            </button>
+            </div>
       </div>
     </motion.div>
   );
