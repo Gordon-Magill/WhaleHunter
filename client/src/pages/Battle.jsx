@@ -37,9 +37,15 @@ function diceRoll(modifier){
     return roll
 }
 
+const updateMsg = (int) => {
+  if(int === 1){document.getElementById('msgOne').innerHTML = battleMsgOne}
+  else if(int === 2){document.getElementById('msgTwo').innerHTML = battleMsgTwo}
+}
+
 // this function manages a half round of battle where damage is dealt
 function round([atkPower, defHp, defArmor, defShield]){
     console.log("Round function called")
+    console.log(`Attack power ${atkPower} hitting ${defHp} hp, ${defArmor} armor, ${defShield} shield`)
     let remainingPower = atkPower
 
     // hit shield first
@@ -69,7 +75,7 @@ function round([atkPower, defHp, defArmor, defShield]){
             defHp = defHp - remainingPower
         }
     }
-
+    console.log(`${defHp} hp, ${defArmor} armor, ${defShield} shield`)
     return [defHp, defArmor, defShield]
 }
 
@@ -77,20 +83,24 @@ function round([atkPower, defHp, defArmor, defShield]){
 // initialize the battle state, get values for attacker and defender, wrap other functions in this function
 function startBattle(attacker, defender){
     if(battleState === 0){
-        console.log(`Battle state initiated! ${attacker.name} vs ${defender.name}`)
-        battleState = 1
+      battleMsgOne = ""
+      battleMsgTwo = ""
 
-        atkCurrentHp = attacker.healthCurrent
-        atkCurrentArmor = attacker.armorCurrent
-        atkCurrentShield = attacker.shieldCurrent
+      console.log(`Battle state initiated! ${attacker.name} vs ${defender.name}`)
+      battleState = 1
 
-        defCurrentHp = defender.health
-        defCurrentArmor = defender.armor
-        defCurrentShield = defender.shield
+      atkCurrentHp = attacker.healthCurrent
+      atkCurrentArmor = attacker.armorCurrent
+      atkCurrentShield = attacker.shieldCurrent
+
+      defCurrentHp = defender.health
+      defCurrentArmor = defender.armor
+      defCurrentShield = defender.shield
 
       roundCounter = 1;
-
-      nextRound(attacker, defender);
+      battleMsgOne = "Battle commenced! Press 'Next Round' to continue."
+      updateMsg(1)
+      // nextRound(attacker, defender);
 
     } else {
         console.log("Battle already initiated!")
@@ -100,6 +110,11 @@ function startBattle(attacker, defender){
 // if nextRound button is pressed call this function
 function nextRound(attacker, defender) {
 
+  // reset battle messages
+  battleMsgOne = ""
+  battleMsgTwo = ""
+  updateMsg(1)
+  updateMsg(2)
   // Render Round number to page
   let currentRound = roundCounter;
   let roundEle = document.getElementById('currentRound');
@@ -113,33 +128,31 @@ function nextRound(attacker, defender) {
         let roundResult = round([attacker.attackPower, defCurrentHp, defCurrentArmor, defCurrentShield])
 
         // update values
-        defCurrentHp = roundResult[1]
-        defCurrentArmor = roundResult[2]
-        defCurrentShield = roundResult[3]
+        defCurrentHp = roundResult[0]
+        defCurrentArmor = roundResult[1]
+        defCurrentShield = roundResult[2]
 
         // check defender hp
         if(defCurrentHp < 1){
             // defender has been defeated
             battleMsgOne = `You defeated ${defender.name}!`
+            updateMsg(1)
             console.log(battleMsgOne)
             // end battle state
-            let message = battleMsgOne;
-            let msgArea = document.getElementById('msgOne');
-            msgArea.innerHTML = message;
+
             endBattle("win")
             return
         }
 
         battleMsgOne = `${attacker.name} damaged ${defender.name}!`
+        updateMsg(1)
         console.log(battleMsgOne)
 
     } else {
         // it's a miss!
         battleMsgOne = `${attacker.name} missed ${defender.name}...`
+        updateMsg(1)
         console.log(battleMsgOne)
-        let message = battleMsgOne;
-        let msgArea = document.getElementById('msgOne');
-        msgArea.innerHTML = message;
     }
 
     if(diceRoll(defender.accuracy) > diceRoll(attacker.evasion)){
@@ -147,9 +160,9 @@ function nextRound(attacker, defender) {
         let roundResult = round([defender.attackPower, atkCurrentHp, atkCurrentArmor, atkCurrentShield])
 
         // update values
-        atkCurrentHp = roundResult[1]
-        atkCurrentArmor = roundResult[2]
-        atkCurrentShield = roundResult[3]
+        atkCurrentHp = roundResult[0]
+        atkCurrentArmor = roundResult[1]
+        atkCurrentShield = roundResult[2]
 
         // check attacker hp
         if(atkCurrentHp < 1){
@@ -161,18 +174,14 @@ function nextRound(attacker, defender) {
             return
         }
 
-      battleMsgTwo = `${attacker.name} damaged ${defender.name}!`
-      let message = battleMsgTwo;
-      let msgArea = document.getElementById('msgTwo');
-      msgArea.innerHTML = message;
+      battleMsgTwo = `${defender.name} damaged ${attacker.name}!`
+      updateMsg(2)
         console.log(battleMsgTwo)
 
     } else {
         // it's a miss!
       battleMsgTwo = `${defender.name} missed ${attacker.name}...`
-      let message = battleMsgTwo;
-      let msgArea = document.getElementById('msgTwo');
-      msgArea.innerHTML = message;
+      updateMsg(2)
       console.log(battleMsgTwo)
 
     }
@@ -210,10 +219,7 @@ function endBattle(outcome){
     }
 }
 
-const getBattleMsg = (int) => {
-  if(int === 1)return battleMsgOne
-  else if(int === 2) return battleMsgTwo
-}
+
 
 
 
@@ -236,7 +242,7 @@ var attacker = {
   shieldCurrent: 5,
   accuracy: 29,
   initiative: 3,
-  evasion: 23
+  evasion: 21
 }
 
 const defender = {
