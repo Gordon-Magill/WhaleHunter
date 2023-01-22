@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import userReducer from "../../utils/reducers";
 import {
   useUserStateContext,
@@ -9,10 +9,29 @@ import { LOGOUT } from "../../utils/actions";
 import { Link, useNavigate } from "react-router-dom";
 
 // Import Logo Image
-import Logo from "../../assets/01-logos/logo-gray.png";
+import Logo from "../../assets/01-logos/logo-full-color.png";
 import Auth from "../../utils/auth"
 
+// Import menu icons
+
+// Icon for menu retract
+import { HiMenuAlt3 } from "react-icons/hi";
+// Icons for menu items
+import { GiShipWheel } from "react-icons/gi";
+import { FaShoppingCart } from "react-icons/fa";
+import {GiTheaterCurtains } from "react-icons/gi";
+
+
 export default function Sidebar() {
+
+  // Set sidebar links
+  const menus = [
+    { name: "Dashboard", link: "/dashboard", icon: GiShipWheel },
+    { name: "Harbor", link: "/harbor", icon: FaShoppingCart },
+    { name: "Gallery", link: "/gallery", icon: GiTheaterCurtains },
+  ];
+
+
   // const initialState = useUserContext();
   const userDispatch = useUserDispatchContext();
   const userState = useUserStateContext();
@@ -27,42 +46,55 @@ export default function Sidebar() {
   }
 
   console.log("Sidebar loading with userState.userInfo:", userState.userInfo);
+
+  const [open, setOpen] = useState(true);
+
   return (
-    <aside className="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-700">
-      <div className="sidebar-header flex items-center justify-center py-4">
-        <div className="inline-flex">
-          <img src={Logo} />
+    <section className="flex gap-6">
+      <div
+        className={`bg-[#02243f] min-h-screen ${
+          open ? "w-72" : "w-16"
+        } duration-500 text-gray-100 px-4`}
+      >
+        <div className="py-3 flex justify-end">
+          <HiMenuAlt3
+            size={26}
+            className="cursor-pointer"
+            onClick={() => setOpen(!open)}
+          />
         </div>
-      </div>
-      <div className="sidebar px-4 py-6">
-        {userState?.userInfo.username !== null ? (
-            <p>Hello {userState.userInfo?.username}!</p>
-        ) : (
-          <>
-          </>
-        )}
-        <ul className="flex flex-col w-full space-y-2">
-          <li className="my-px">
-            <Link className="nav-link active" to="/dashboard">
-              Dashboard
+        <div className="mt-4 flex flex-col gap-4 relative">
+          <img src={Logo}/>
+          {menus?.map((menu, i) => (
+            <Link
+              to={menu?.link}
+              key={i}
+              className={` ${
+                menu?.margin && "mt-5"
+              } group flex items-center text-sm  gap-3.5 font-bold p-2 hover:bg-gray-900 rounded-md`}
+            >
+              <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+              <h2
+                style={{
+                  transitionDelay: `${i + 3}00ms`,
+                }}
+                className={`whitespace-pre text-gray-200 duration-500 ${
+                  !open && "opacity-0 translate-x-28 overflow-hidden"
+                }`}
+              >
+                {menu?.name}
+              </h2>
+              <h2
+                className={`${
+                  open && "hidden"
+                } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+              >
+                {menu?.name}
+              </h2>
             </Link>
-          </li>
-          <li className="my-px">
-            <Link className="nav-link active" to="/harbor">
-              Harbor
-            </Link>
-          </li>
-          <li className="my-px">
-            <Link className="nav-link active" to="/gallery">
-              Gallery
-            </Link>
-          </li>
-          <li className="my-px">
-            <Link className="nav-link active" to="/battle">
-              Battle
-            </Link>
-          </li>
-          {/* Make this disappear upong login */}
+          ))}
+          <ul>
+             {/* Make this disappear upong login */}
           {userState.userInfo.username !== null ? (
             <>
               <li className="my-px">
@@ -86,7 +118,11 @@ export default function Sidebar() {
             </>
           )}
         </ul>
+
+
+
+        </div>
       </div>
-    </aside>
+    </section>
   );
 }
