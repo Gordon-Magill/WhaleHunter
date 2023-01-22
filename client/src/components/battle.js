@@ -138,9 +138,9 @@ export function nextRound(attacker, defender){
     }
 
     // if retreat button is pressed call this function
-export function retreat(){
+export function retreat(attacker){
         // end battle state
-        endBattle()
+        endBattle(attacker)
         // save attacker hp values to current hp in db
         // or don't, this is less important right now
 }
