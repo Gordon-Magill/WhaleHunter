@@ -25,7 +25,10 @@ export default function Dashboard() {
     transition={{ duration: TRANSITION_SPEED }}
   >
     <div className="dashboard">
-      <h1>Your Dashboard</h1>
+        <h1>Your Dashboard</h1>
+
+        <h2>The Bosses</h2>
+        
       </div>
       </motion.div>
   );
