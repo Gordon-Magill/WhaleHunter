@@ -36,18 +36,18 @@ db.once("open", async () => {
     return files;
   }
 
-  async function seedImages() {
+  function seedImages() {
     const cthulhuWhaleImages = getFileNames(
       "../client/src/assets/cthulhu_whales"
     );
-    const fireWhaleImages = getFileNames("../client/src/assets/fire_whales");
-    const kaijuWhaleImages = getFileNames("../client/src/assets/kaiju_whales");
-    const undeadWhaleImages = getFileNames(
-      "../client/src/assets/undead_whales"
-    );
-    const oldShipImages = getFileNames("../client/src/assets/old_ships");
-    const modernShipImages = getFileNames("../client/src/assets/modern_ships");
-    const futureShipImages = getFileNames("../client/src/assets/future_ships");
+    // const fireWhaleImages = getFileNames("../client/src/assets/fire_whales");
+    // const kaijuWhaleImages = getFileNames("../client/src/assets/kaiju_whales");
+    // const undeadWhaleImages = getFileNames(
+    //   "../client/src/assets/undead_whales"
+    // );
+    // const oldShipImages = getFileNames("../client/src/assets/old_ships");
+    // const modernShipImages = getFileNames("../client/src/assets/modern_ships");
+    // const futureShipImages = getFileNames("../client/src/assets/future_ships");
 
     const whaleObjects = cthulhuWhaleImages.map((filename) => {
       const obj = {
@@ -68,12 +68,41 @@ db.once("open", async () => {
       // console.log(obj);
     });
 
-    console.log("Whale objects: ", whaleObjects);
-    const writeWhaleImages = await Icon.insertMany(whaleObjects);
-    console.log("Images seeded!");
+    return whaleObjects;
+
+    // console.log("Whale objects: ", whaleObjects);
+    // const writeWhaleImages = await Icon.insertMany(whaleObjects);
+    // console.log("Images seeded!");
   }
 
-  seedImages();
+  // whaleObjects = seedImages();
+
+  // *****************************
+  // THIS WORKS FOR A SINGLE WHALE
+  // const singleWhaleArray = [
+  //   {
+  //     objectType: "whale",
+  //     img: {
+  //       data: fs.readFileSync(
+  //         path.join(
+  //           __dirname,
+  //           "../../client/src/assets/cthulhu_whales",
+  //           "tmp_39sggek.png"
+  //         )
+  //       ),
+  //       contentType: "image/png",
+  //     },
+  //   },
+  // ]
+  // console.log("singleWhaleArray: ",singleWhaleArray)
+  // const writeWhaleImages = await Icon.insertMany(singleWhaleArray);
+  // *****************************
+
+  // *****************************
+  // MULTIPLE WHALES
+  const multWhales = seedImages()
+  console.log(multWhales)
+  const writeWhaleImages = await Icon.insertMany(multWhales);
 
   console.log("Done seeding content.");
 
