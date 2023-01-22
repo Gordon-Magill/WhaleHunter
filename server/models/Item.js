@@ -13,7 +13,10 @@ const itemSchema = new Schema(
       required: true,
       default: null,
     },
-    stats: statsSchema,
+    stats: {
+      type: statsSchema,
+      default: null
+    },
     // Icon will just be a reference to a file name in client/src/assets
     icon: {
       type: String,

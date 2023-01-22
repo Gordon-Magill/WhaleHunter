@@ -4,24 +4,23 @@ const { Item, Ship, Monster } = require("../models");
 
 // Importing raw data from JSON
 const itemsData = require("./itemsData.json");
-// const monstersData = require("./monstersData.json");
-// const shipsData = require("./shipsData.json");
+const monstersData = require("./monstersData.json");
+const shipsData = require("./shipsData.json");
 
 db.once("open", async () => {
   // Clear out existing data
   await Item.deleteMany({});
-//   await Ship.deleteMany({});
-//   await Monster.deleteMany({});
+  await Ship.deleteMany({});
+  await Monster.deleteMany({});
 
   const items = await Item.insertMany(itemsData);
   console.log("Items seeded!");
 
-//   const ships = await Ship.insertMany(shipsData);
-//   console.log("Ships seeded!");
+  const ships = await Ship.insertMany(shipsData);
+  console.log("Ships seeded!");
   
-//   const monsters = await Monster.insertMany(monstersData);
-//   console.log("Monsters seeded!");
+  const monsters = await Monster.insertMany(monstersData);
+  console.log("Monsters seeded!");
   
-
   process.exit(0);
 });

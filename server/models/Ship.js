@@ -53,7 +53,6 @@ const shipSchema = new Schema(
     },
     imageID: {
       type: String,
-      required: true,
     },
   },
   {
