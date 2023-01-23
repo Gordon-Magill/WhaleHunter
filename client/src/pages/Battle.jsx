@@ -9,6 +9,9 @@ import {
 import { motion } from "framer-motion";
 import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 
+
+
+
 // Test whale picture
 import whaleBossPic from "../assets/cthulhu_whales/tmp3k8jgtcj.png";
 // Test player picture
