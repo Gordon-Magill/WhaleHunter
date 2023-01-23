@@ -10,7 +10,7 @@ const typeDefs = gql`
         shield: Float!
         accuracy: Float!
         evasion: Float!
-        imageID: String!
+        imagePath: String!
         expGrant: Float!
     }
 
@@ -24,7 +24,7 @@ const typeDefs = gql`
         shield: Float!
         accuracy: Float!
         evasion: Float!
-        imageID: String!
+        imagePath: String!
     }
 
     type User {

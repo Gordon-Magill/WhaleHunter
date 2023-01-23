@@ -36,7 +36,7 @@ const monsterSchema = new Schema(
       required: true,
       default: 1,
     },
-    imageID: {
+    imagePath: {
       type: String,
     },
     expGrant: {
