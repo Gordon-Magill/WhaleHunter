@@ -51,7 +51,10 @@ export default function LoginPage() {
       // );
       if (data.login.user.ship == null) {
         console.log("Logged in user has no ship!")
-        data.login.user.ship = await getShip()
+        const {data} = await getShip()
+        const starterShip = data.getStarterShip
+        console.log('Got starter ship: ',starterShip)
+        data.login.user.ship = starterShip
       }
 
       userDispatch({ type: LOGIN, payload: data.login.user });
