@@ -9,6 +9,8 @@ import {TRANSITION_SPEED} from '../utils/transitionSpeed'
 // List of monster objects
 import MonsterList from './page-components/MonsterList';
 
+import DashboardBG from '../assets/page_backgrounds/~crows_nest.png'
+
 export default function Dashboard() {
   const [loginState, loginStateSetter] = useState(false);
   const [login, { error: loginError }] = useMutation(LOGIN_USER);
@@ -21,14 +23,16 @@ export default function Dashboard() {
 
   return (
     <motion.div
+    style={{backgroundImage: `url(${DashboardBG})`}}
     className="container text-center"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: TRANSITION_SPEED }}
   >
-    <div className="dashboard">
+      <div className="dashboard">
         <h1>Your Dashboard</h1>
+
 
         <h2>The Bosses</h2>
             <MonsterList/>
