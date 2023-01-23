@@ -39,6 +39,7 @@ class AuthService {
 
   //   Save a supplied token to localStorage and take user to homepage
   saveTokenToLocal(idToken) {
+    console.log('Client auth.js saving token to localStorage: ', idToken)
     localStorage.setItem("id_token", idToken);
     // window.location.assign("/");
 
@@ -46,6 +47,7 @@ class AuthService {
 
   //   Remove saved token from localStorage and kick user back to homepage
   removeTokenFromLocal() {
+    console.log('Client auth.js removing token from localStorage: ', idToken)
     localStorage.removeItem("id_token");
     // window.location.assign("/");
   }

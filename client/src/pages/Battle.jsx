@@ -11,9 +11,9 @@ import { motion } from "framer-motion";
 import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 
 // Test whale picture
-import whaleBossPic from "../assets/cthulhu_whales/cthulhu_1.png";
+// import whaleBossPic from "../assets/undead_whales/undead_1.png";
 // Test player picture
-import playerShipPic from "../assets/old_ships/old_1.png";
+// import playerShipPic from "../assets/future_ships/future_1.png";
 // Test HP Value for PLayer
 const playerHP = atkCurrentHp;
 const bossHP = defCurrentHp;
@@ -265,6 +265,7 @@ class Combatant {
     this.health = obj.health;
     this.attackPower = obj.attackPower;
     this.name = obj.name;
+    this.imagePath = obj.imagePath;
   }
 
   attack(opponent) {
@@ -311,13 +312,13 @@ class BattleClass {
     // If the player is alive, attack
     if (this.player.isAlive()) {
       this.player.attack(this.monster);
-      this.monsterSetter(this.monster)
+      this.monsterSetter(this.monster);
     }
 
     // If the monster is still alive, attack, otherwise player wins
     if (this.monster.isAlive()) {
       this.monster.attack(this.player);
-      this.playerSetter(this.player)
+      this.playerSetter(this.player);
     } else {
       this.victor = this.player;
       this.endBattle();
@@ -328,8 +329,6 @@ class BattleClass {
       this.victor = this.monster;
       this.endBattle();
     }
-
-
   }
 
   endBattle() {
@@ -351,7 +350,7 @@ export default function Battle() {
   const [playerState, setPlayerState] = useState(player);
 
   // Get monster from global state, set by whatever monster was chosen on the dashboard
-  const monsterObj = useUserStateContext().monster || {
+  const monsterObj = useUserStateContext().monsterPayLoad || {
     name: "Debug Monster",
     imageID: null,
     attackPower: 4,
@@ -361,7 +360,9 @@ export default function Battle() {
     accuracy: 21,
     initiative: 15,
     evasion: 5,
+    imagePath: "/cthulhu_whales/cthulhu_2.png",
   };
+  console.log("Got monster: ", useUserStateContext().monsterPayLoad);
   const monster = new Combatant(monsterObj);
   const [monsterState, setMonsterState] = useState(monster);
 
@@ -383,26 +384,16 @@ export default function Battle() {
       exit={{ opacity: 0 }}
       transition={{ duration: TRANSITION_SPEED }}
     >
-      <div
-        // Section for player picture and stats
-        className="flex battleSection"
-      >
+      <div className="flex flex-row justify-around items-center battleSection">
         <div className="player">
-          <div className="playerShipPic">
-            <img src={playerShipPic} />
-          </div>
-          <div
-            // Player HP bar
-            className="playerHP"
+          <img src={playerState.imagePath} />
+          <motion.div
+            initial={{ scaleX: "0%" }}
+            animate={{ scaleX: `${playerState.health}%` }}
+            className="bg-gray-400"
           >
-            <motion.div
-              initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${playerState.health}%` }}
-              className="bg-gray-400"
-            >
-              {playerState.health}HP
-            </motion.div>
-          </div>
+            {playerState.health}HP
+          </motion.div>
         </div>
 
         <div className="actionArea">
@@ -450,25 +441,15 @@ export default function Battle() {
           {/* <button onClick={() => retreat()}>Retreat!</button> */}
         </div>
 
-        <div
-          // Section for player picture and stats
-          className="enemy"
-        >
-          <div className="whaleBossPic">
-            <img src={whaleBossPic} />
-          </div>
-          <div
-            // Player HP bar
-            className="bossHP"
+        <div className="enemy">
+          <img src={monsterState.imagePath} />
+          <motion.div
+            initial={{ scaleX: "0%" }}
+            animate={{ scaleX: `${monsterState.health}%` }}
+            className="bg-gray-400"
           >
-            <motion.div
-              initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${monsterState.health}%` }}
-              className="bg-gray-400"
-            >
-              {monsterState.health}HP
-            </motion.div>
-          </div>
+            {monsterState.health}HP
+          </motion.div>
         </div>
       </div>
     </motion.div>

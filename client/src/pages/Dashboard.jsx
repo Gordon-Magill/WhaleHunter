@@ -4,10 +4,10 @@ import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 import { motion } from "framer-motion";
-import {TRANSITION_SPEED} from '../utils/transitionSpeed'
+import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 
 // List of monster objects
-import MonsterList from './page-components/MonsterList';
+import MonsterList from "./page-components/MonsterList";
 
 export default function Dashboard() {
   const [loginState, loginStateSetter] = useState(false);
@@ -18,21 +18,19 @@ export default function Dashboard() {
     loginStateSetter(Auth.checkLoggedIn());
   }, []);
 
-
   return (
     <motion.div
-    className="container text-center"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: TRANSITION_SPEED }}
-  >
-    <div className="dashboard">
+      className="container text-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: TRANSITION_SPEED }}
+    >
+      <div className="dashboard flex flex-col items-center">
         <h1>Your Dashboard</h1>
-
         <h2>The Bosses</h2>
-            <MonsterList/>
-    </div>
-      </motion.div>
+        <MonsterList />
+      </div>
+    </motion.div>
   );
 }
