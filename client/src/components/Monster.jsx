@@ -22,9 +22,11 @@ function MonsterObject(monsterObj) {
     shield,
     accuracy,
     evasion,
-    imageID,
+    imagePath,
     expGrant,
   } = monsterObj;
+  console.log()
+
 
   return (
     <div className="card px-1 py-1">

@@ -11,9 +11,9 @@ import { motion } from "framer-motion";
 import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 
 // Test whale picture
-import whaleBossPic from "../assets/undead_whales/undead_1.png";
+// import whaleBossPic from "../assets/undead_whales/undead_1.png";
 // Test player picture
-import playerShipPic from "../assets/future_ships/future_1.png";
+// import playerShipPic from "../assets/future_ships/future_1.png";
 // Test HP Value for PLayer
 const playerHP = atkCurrentHp;
 const bossHP = defCurrentHp;
@@ -389,7 +389,7 @@ export default function Battle() {
       >
         <div className="player">
           <div className="playerShipPic">
-            <img src={playerShipPic} />
+            <img src='/future_ships/future_1.png' />
           </div>
           <div
             // Player HP bar
@@ -455,7 +455,7 @@ export default function Battle() {
           className="enemy"
         >
           <div className="whaleBossPic">
-            <img src={whaleBossPic} />
+            <img src='/undead_whales/undead_1.png' />
           </div>
           <div
             // Player HP bar
