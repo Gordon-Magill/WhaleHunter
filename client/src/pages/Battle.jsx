@@ -1,5 +1,6 @@
 // Importing React relevant state and context
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   useUserStateContext,
   useUserDispatchContext,
@@ -8,9 +9,6 @@ import {
 // Importing page transition content
 import { motion } from "framer-motion";
 import { TRANSITION_SPEED } from "../utils/transitionSpeed";
-
-
-
 
 // Test whale picture
 import whaleBossPic from "../assets/cthulhu_whales/tmp3k8jgtcj.png";
@@ -286,28 +284,40 @@ class Combatant {
 
 // A handler for
 class BattleClass {
-  constructor(player, monster, playerSetter, monsterSetter) {
+  constructor(
+    player,
+    monster,
+    playerSetter,
+    monsterSetter,
+    victoryStateSetter
+  ) {
     this.player = player;
     this.monster = monster;
     this.victor = null;
+    this.victoryStateSetter = victoryStateSetter;
+    this.playerSetter = playerSetter;
+    this.monsterSetter = monsterSetter;
   }
 
   executeRound() {
     if (this.victor !== null) {
-      console.log('Battle is already over!')
-      return
+      console.log("Battle is already over!");
+      return;
     }
 
-    console.log('Initiating a round of combat!')
-    console.log('Player HP: ', this.player.health)
+    console.log("Initiating a round of combat!");
+    console.log("Player HP: ", this.player.health);
+    console.log("Monster HP: ", this.monster.health);
     // If the player is alive, attack
     if (this.player.isAlive()) {
       this.player.attack(this.monster);
+      this.monsterSetter(this.monster)
     }
 
     // If the monster is still alive, attack, otherwise player wins
     if (this.monster.isAlive()) {
       this.monster.attack(this.player);
+      this.playerSetter(this.player)
     } else {
       this.victor = this.player;
       this.endBattle();
@@ -324,15 +334,21 @@ class BattleClass {
 
   endBattle() {
     console.log(`Battle over! Winner is ${this.victor.name}!`);
+    this.victoryStateSetter(this.victor);
+    if (this.victor == this.player) {
+      // Code for incrementing the user's experience on the db and in global state
+    }
   }
 }
 
 export default function Battle() {
   // Get player's ship from global context
+  const navigate = useNavigate();
+
   const playerShipInfo = useUserStateContext().userInfo.ship;
-  console.log(playerShipInfo)
+  console.log(playerShipInfo);
   const player = new Combatant(playerShipInfo);
-  const [playerState, setPlayerState] = useState(player)
+  const [playerState, setPlayerState] = useState(player);
 
   // Get monster from global state, set by whatever monster was chosen on the dashboard
   const monsterObj = useUserStateContext().monster || {
@@ -347,10 +363,17 @@ export default function Battle() {
     evasion: 5,
   };
   const monster = new Combatant(monsterObj);
-  const [monsterState, setMonsterState] = useState(monster)
+  const [monsterState, setMonsterState] = useState(monster);
 
   // Create a framework for the battle to take place
-  const battleObject = new BattleClass(playerState, monsterState, setPlayerState, setMonsterState);
+  const [victoryState, victoryStateSetter] = useState(null);
+  const battleObject = new BattleClass(
+    playerState,
+    monsterState,
+    setPlayerState,
+    setMonsterState,
+    victoryStateSetter
+  );
 
   return (
     <motion.div
@@ -405,9 +428,23 @@ export default function Battle() {
             Start battle
           </button> */}
 
-          <button onClick={() => battleObject.executeRound()}>
-            Next Round
-          </button>
+          {victoryState == null ? (
+            <button
+              onClick={() => battleObject.executeRound()}
+              className="bg-black text-white"
+            >
+              Next Round
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                navigate("/dashboard");
+              }}
+              className="bg-black text-white"
+            >
+              Battle is over! Collect your prize!
+            </button>
+          )}
 
           {/* Removing retreat functionality for now */}
           {/* <button onClick={() => retreat()}>Retreat!</button> */}
