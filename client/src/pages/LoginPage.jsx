@@ -49,15 +49,17 @@ export default function LoginPage() {
       //   "Received data from server for data.login.user: ",
       //   data.login.user
       // );
+
+      const user = data.login.user
       if (data.login.user.ship == null) {
         console.log("Logged in user has no ship!")
         const {data} = await getShip()
         const starterShip = data.getStarterShip
         console.log('Got starter ship: ',starterShip)
-        data.login.user.ship = starterShip
+        user.ship = starterShip
       }
 
-      userDispatch({ type: LOGIN, payload: data.login.user });
+      userDispatch({ type: LOGIN, payload: user });
       // console.log(
       //   "LoginPage has set userState.userInfo as:",
       //   userState.userInfo
