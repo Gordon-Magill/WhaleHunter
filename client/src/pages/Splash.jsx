@@ -2,15 +2,13 @@ import React from "react";
 
 // Image carousel for home banner
 
-// Images from assets
-import One from '../assets/old_ships/tmp7mrkqgzv.png';
-import Two from '../assets/cthulhu_whales/tmpstas7ntz.png';
-import Three from '../assets/modern_ships/tmp797kt7v6.png';
-import Four from '../assets/fire_whales/tmpho__5bmj.png';
+// Import Logo Image
+import Logo  from "../assets/01-logos/logo-full-color.png";
 
 import { motion } from "framer-motion";
 import {TRANSITION_SPEED} from '../utils/transitionSpeed'
 
+import { Link, useNavigate } from "react-router-dom";
 
 const contentStyle = {
   width: "100%",
@@ -36,8 +34,16 @@ export default function Splash() {
       transition={{ duration: TRANSITION_SPEED }}
     >
       <div className="splash">
-        <h1>Space Grift: Whale Hunter</h1>
-    </div>
+        <img src={Logo}/>
+      </div>
+      <div className="flex justify-around">
+      <Link className="bg-teal-600 p-5 rounded nav-link active font-bold text-lg text-white " to="/login">
+        Login
+      </Link>
+      <Link className="bg-teal-600 p-5 rounded first-letter:nav-link active font-bold text-lg text-white" to="/signup">
+        Signup
+      </Link>
+      </div>
     </motion.div>
   );
 }
