@@ -265,7 +265,7 @@ class Combatant {
     this.health = obj.health;
     this.attackPower = obj.attackPower;
     this.name = obj.name;
-    this.imagePath = obj.imagePath
+    this.imagePath = obj.imagePath;
   }
 
   attack(opponent) {
@@ -360,9 +360,9 @@ export default function Battle() {
     accuracy: 21,
     initiative: 15,
     evasion: 5,
-    imagePath:'/cthulhu_whales/cthulhu_2.png'
+    imagePath: "/cthulhu_whales/cthulhu_2.png",
   };
-  console.log('Got monster: ', useUserStateContext().monsterPayLoad)
+  console.log("Got monster: ", useUserStateContext().monsterPayLoad);
   const monster = new Combatant(monsterObj);
   const [monsterState, setMonsterState] = useState(monster);
 
@@ -384,26 +384,16 @@ export default function Battle() {
       exit={{ opacity: 0 }}
       transition={{ duration: TRANSITION_SPEED }}
     >
-      <div
-        // Section for player picture and stats
-        className="flex battleSection"
-      >
+      <div className="flex flex-row justify-around items-center battleSection">
         <div className="player">
-          <div className="playerShipPic">
-            <img src={playerState.imagePath} />
-          </div>
-          <div
-            // Player HP bar
-            className="playerHP"
+          <img src={playerState.imagePath} />
+          <motion.div
+            initial={{ scaleX: "0%" }}
+            animate={{ scaleX: `${playerState.health}%` }}
+            className="bg-gray-400"
           >
-            <motion.div
-              initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${playerState.health}%` }}
-              className="bg-gray-400"
-            >
-              {playerState.health}HP
-            </motion.div>
-          </div>
+            {playerState.health}HP
+          </motion.div>
         </div>
 
         <div className="actionArea">
@@ -451,25 +441,15 @@ export default function Battle() {
           {/* <button onClick={() => retreat()}>Retreat!</button> */}
         </div>
 
-        <div
-          // Section for player picture and stats
-          className="enemy"
-        >
-          <div className="whaleBossPic">
-            <img src={monsterState.imagePath} />
-          </div>
-          <div
-            // Player HP bar
-            className="bossHP"
+        <div className="enemy">
+          <img src={monsterState.imagePath} />
+          <motion.div
+            initial={{ scaleX: "0%" }}
+            animate={{ scaleX: `${monsterState.health}%` }}
+            className="bg-gray-400"
           >
-            <motion.div
-              initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${monsterState.health}%` }}
-              className="bg-gray-400"
-            >
-              {monsterState.health}HP
-            </motion.div>
-          </div>
+            {monsterState.health}HP
+          </motion.div>
         </div>
       </div>
     </motion.div>
