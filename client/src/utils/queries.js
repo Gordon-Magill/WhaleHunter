@@ -40,8 +40,8 @@ export const GET_STARTER_SHIP = gql`
       accuracy
       armor
       attackPower
-      health
       evasion
+      health
       healthCurrent
       imagePath
       name
