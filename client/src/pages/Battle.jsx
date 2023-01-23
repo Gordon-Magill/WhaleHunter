@@ -283,13 +283,18 @@ class Combatant {
 
 // A handler for
 class BattleClass {
-  constructor(player, monster) {
+  constructor(player, monster, playerSetter, monsterSetter) {
     this.player = player;
     this.monster = monster;
     this.victor = null;
   }
 
   executeRound() {
+    if (this.victor !== null) {
+      console.log('Battle is already over!')
+      return
+    }
+
     console.log('Initiating a round of combat!')
     console.log('Player HP: ', this.player.health)
     // If the player is alive, attack
@@ -310,6 +315,8 @@ class BattleClass {
       this.victor = this.monster;
       this.endBattle();
     }
+
+
   }
 
   endBattle() {
@@ -322,6 +329,7 @@ export default function Battle() {
   const playerShipInfo = useUserStateContext().userInfo.ship;
   console.log(playerShipInfo)
   const player = new Combatant(playerShipInfo);
+  const [playerState, setPlayerState] = useState(player)
 
   // Get monster from global state, set by whatever monster was chosen on the dashboard
   const monsterObj = useUserStateContext().monster || {
@@ -336,9 +344,10 @@ export default function Battle() {
     evasion: 5,
   };
   const monster = new Combatant(monsterObj);
+  const [monsterState, setMonsterState] = useState(monster)
 
   // Create a framework for the battle to take place
-  const battleObject = new BattleClass(player, monster);
+  const battleObject = new BattleClass(playerState, monsterState, setPlayerState, setMonsterState);
 
   return (
     <motion.div
@@ -362,10 +371,10 @@ export default function Battle() {
           >
             <motion.div
               initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${player.health}%` }}
+              animate={{ scaleX: `${playerState.health}%` }}
               className="bg-gray-400"
             >
-              {player.health}HP
+              {playerState.health}HP
             </motion.div>
           </div>
         </div>
@@ -414,10 +423,10 @@ export default function Battle() {
           >
             <motion.div
               initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${monster.health}%` }}
+              animate={{ scaleX: `${monsterState.health}%` }}
               className="bg-gray-400"
             >
-              {monster.health}HP
+              {monsterState.health}HP
             </motion.div>
           </div>
         </div>
