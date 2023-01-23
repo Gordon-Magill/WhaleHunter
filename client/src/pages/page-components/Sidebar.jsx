@@ -6,7 +6,7 @@ import {
 } from "../../utils/userContext";
 import { LOGOUT } from "../../utils/actions";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 
 // Import Logo Image
 import Logo from "../../assets/01-logos/logo-full-color.png";
@@ -21,19 +21,23 @@ import { GiShipWheel } from "react-icons/gi";
 import { FaShoppingCart } from "react-icons/fa";
 import {GiTheaterCurtains } from "react-icons/gi";
 
-
 export default function Sidebar() {
-
-  // Set sidebar links
-  const menus = [
+  
+    // Set sidebar links
+  if(!Auth.checkLoggedIn()){
+    var menus = [
+      { name: "Dashboard", link: "/login", icon: GiShipWheel },
+      { name: "Harbor", link: "/login", icon: FaShoppingCart },
+      { name: "Gallery", link: "/login", icon: GiTheaterCurtains },
+    ];
+  } else {
+    
+    var menus = [
     { name: "Dashboard", link: "/dashboard", icon: GiShipWheel },
     { name: "Harbor", link: "/harbor", icon: FaShoppingCart },
     { name: "Gallery", link: "/gallery", icon: GiTheaterCurtains },
   ];
-
-
-
-
+}
 
   // const initialState = useUserContext();
   const userDispatch = useUserDispatchContext();
