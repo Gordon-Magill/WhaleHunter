@@ -15,7 +15,7 @@ function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
 
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Splash />} />

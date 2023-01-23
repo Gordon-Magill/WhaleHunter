@@ -91,6 +91,7 @@ const typeDefs = gql`
             addUser(username: String!, email: String!, password: String!): Auth
             addShip(shipInfo: shipInput!): Ship
             addUserExp(expValue: Float): User
+            getStarterShip: Ship
         }
 `;
 // TODO
