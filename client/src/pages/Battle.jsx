@@ -265,6 +265,7 @@ class Combatant {
     this.health = obj.health;
     this.attackPower = obj.attackPower;
     this.name = obj.name;
+    this.imagePath = obj.imagePath
   }
 
   attack(opponent) {
@@ -311,13 +312,13 @@ class BattleClass {
     // If the player is alive, attack
     if (this.player.isAlive()) {
       this.player.attack(this.monster);
-      this.monsterSetter(this.monster)
+      this.monsterSetter(this.monster);
     }
 
     // If the monster is still alive, attack, otherwise player wins
     if (this.monster.isAlive()) {
       this.monster.attack(this.player);
-      this.playerSetter(this.player)
+      this.playerSetter(this.player);
     } else {
       this.victor = this.player;
       this.endBattle();
@@ -328,8 +329,6 @@ class BattleClass {
       this.victor = this.monster;
       this.endBattle();
     }
-
-
   }
 
   endBattle() {
@@ -351,7 +350,7 @@ export default function Battle() {
   const [playerState, setPlayerState] = useState(player);
 
   // Get monster from global state, set by whatever monster was chosen on the dashboard
-  const monsterObj = useUserStateContext().monster || {
+  const monsterObj = useUserStateContext().monsterPayLoad || {
     name: "Debug Monster",
     imageID: null,
     attackPower: 4,
@@ -361,7 +360,9 @@ export default function Battle() {
     accuracy: 21,
     initiative: 15,
     evasion: 5,
+    imagePath:'/cthulhu_whales/cthulhu_2.png'
   };
+  console.log('Got monster: ', useUserStateContext().monsterPayLoad)
   const monster = new Combatant(monsterObj);
   const [monsterState, setMonsterState] = useState(monster);
 
@@ -389,7 +390,7 @@ export default function Battle() {
       >
         <div className="player">
           <div className="playerShipPic">
-            <img src='/future_ships/future_1.png' />
+            <img src={playerState.imagePath} />
           </div>
           <div
             // Player HP bar
@@ -455,7 +456,7 @@ export default function Battle() {
           className="enemy"
         >
           <div className="whaleBossPic">
-            <img src='/undead_whales/undead_1.png' />
+            <img src={monsterState.imagePath} />
           </div>
           <div
             // Player HP bar
