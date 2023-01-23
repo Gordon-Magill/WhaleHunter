@@ -261,7 +261,7 @@ const defender = {
 class Combatant {
   constructor(obj) {
     console.log("Initiating Combatant with obj: ", obj);
-    this.curHp = obj.health;
+    this.health = obj.health;
     this.attackPower = obj.attackPower;
     this.name = obj.name;
   }
@@ -274,7 +274,7 @@ class Combatant {
   }
 
   isAlive() {
-    if (this.curHp > 0) {
+    if (this.health > 0) {
       return true;
     }
     return false;
@@ -290,6 +290,8 @@ class BattleClass {
   }
 
   executeRound() {
+    console.log('Initiating a round of combat!')
+    console.log('Player HP: ', this.player.health)
     // If the player is alive, attack
     if (this.player.isAlive()) {
       this.player.attack(this.monster);
@@ -360,10 +362,10 @@ export default function Battle() {
           >
             <motion.div
               initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${player.curHp}%` }}
+              animate={{ scaleX: `${player.health}%` }}
               className="bg-gray-400"
             >
-              {player.curHp}HP
+              {player.health}HP
             </motion.div>
           </div>
         </div>
@@ -412,10 +414,10 @@ export default function Battle() {
           >
             <motion.div
               initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${monster.curHp}%` }}
+              animate={{ scaleX: `${monster.health}%` }}
               className="bg-gray-400"
             >
-              {monster.curHp}HP
+              {monster.health}HP
             </motion.div>
           </div>
         </div>
