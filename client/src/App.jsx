@@ -54,8 +54,8 @@ function App() {
         <Router>
           <div className="w-screen flex min-h-screen bg-gray-100 text-gray-800">
             <Sidebar></Sidebar>
-            <main className="main flex flex-col flex-grow  transition-all duration-150 ease-in">
-              <div className="justify-center main-content flex flex-col flex-grow p-4">
+            <main className="main flex flex-col flex-grow transition-all duration-150 ease-in">
+              <div className="justify-center main-content flex flex-col flex-grow">
                 <AnimatedRoutes />
               </div>
               <Footer></Footer>

@@ -29,7 +29,7 @@ function MonsterObject({monsterObj}) {
 
 
   return (
-    <div className="card px-1 py-1">
+    <div className="monsterCard">
       <Link onClick={() => {
         dispatch({
           type: LOAD_MONSTER,
@@ -38,7 +38,7 @@ function MonsterObject({monsterObj}) {
         navigate("/battle")
       }}
       className="relative" >
-        <img src={imagePath} className="rounded-full"></img>
+        <img src={imagePath} className="rounded-full p-2"></img>
         <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white bg-slate-800/75 rounded-full">{name}{monsterID}</p>
       </Link>
     </div>
