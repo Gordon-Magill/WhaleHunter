@@ -17,7 +17,9 @@ function MonsterList() {
   const { data } = useQuery(QUERY_MONSTERS);
 
    // Use optional chaining to check if data exists and if it has a thoughts property. If not, return an empty array to use.
-   const monsterData = data?.monsters || [];
+  const monsterData = data?.monsters || [];
+
+  console.log("monsterData: " , monsterData);
 
   return (
     <div className="my-2">
