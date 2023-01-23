@@ -6,7 +6,7 @@ import { useUserStateContext, useUserDispatchContext} from "../utils/userContext
 import { LOAD_MONSTER } from "../utils/actions";
 
 
-function MonsterObject(monsterObj) {
+function MonsterObject({monsterObj}) {
 
   const state = useUserStateContext();
   const dispatch = useUserDispatchContext();
@@ -25,7 +25,7 @@ function MonsterObject(monsterObj) {
     imagePath,
     expGrant,
   } = monsterObj;
-  console.log()
+  console.log(monsterObj)
 
 
   return (
@@ -38,6 +38,7 @@ function MonsterObject(monsterObj) {
         navigate("/battle")
       }} >
         <p>{name}{monsterID}</p>
+        <img src={imagePath}></img>
       </Link>
     </div>
   );

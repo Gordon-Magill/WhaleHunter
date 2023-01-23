@@ -26,8 +26,7 @@ function MonsterList() {
 
       {monsterData.map((monster) => (
           <MonsterObject
-            monsterID={monster.monsterID}
-            name={monster.name}
+            monsterObj={monster}
             />
         ))}
 
