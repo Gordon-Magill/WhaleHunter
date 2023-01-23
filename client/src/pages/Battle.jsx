@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { motion } from "framer-motion";
 import {TRANSITION_SPEED} from '../utils/transitionSpeed'
 
@@ -9,6 +9,51 @@ import playerShipPic from "../assets/old_ships/tmpa1uksn_p.png"
 // Test HP Value for PLayer
 const playerHP = atkCurrentHp;
 const bossHP = defCurrentHp;
+
+
+class Combatant {
+  constructor(obj){
+    this.curHp = obj.health;
+    this.attackPower = obj.attackPower;
+    this.name = obj.name
+  }
+
+  attack(opponent){
+    opponent.health -= this.attackPower
+    if (opponent.health<0){opponent.health = 0}
+  }
+
+}
+
+class Battle{
+  constructor(player,monster){
+    this.player = player
+    this.monster = monster
+    this.victor = null
+  }
+
+  round(){
+    if (this.player.curHp>0){
+      this.player.attack(this.monster)
+    } else {
+      this.victor = this.monster
+      this.endBattle()
+    }
+
+
+    if (this.monster.curHp>0){
+      this.monster.attack(this.player)
+    } else {
+      this.victor = this.player
+      this.endBattle()
+    }
+  }
+
+  endBattle(){
+    console.log(`Battle over! Winner is ${this.victor.name}!`)
+  }
+
+}
 
 
 
@@ -258,6 +303,9 @@ const defender = {
 }
 
 export default function Battle() {
+  const [state, setState] = useState(null)
+
+
   return (
     <motion.div
     className="container text-center"
