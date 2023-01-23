@@ -10,31 +10,18 @@ import {TRANSITION_SPEED} from '../utils/transitionSpeed'
 
 import { Link, useNavigate } from "react-router-dom";
 
-const contentStyle = {
-  width: "100%",
-  height: "30rem",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-};
-
-const imageStyle = {
-  width: "100%",
-  height: "auto",
-  overflow: "hidden",
-};
 
 export default function Splash() {
   return (
     <motion.div
-      className="container text-center"
+      className="splash"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: TRANSITION_SPEED }}
     >
-      <div className="splash">
-        <img src={Logo}/>
+      <div className="">
+        <img className="flex" src={Logo}/>
       </div>
       <div>
         <p className="m-5">An over the top parody game that gratiutously combines AI image generation while flaying the concept of NFT's alive.</p>

@@ -22,7 +22,7 @@ function MonsterList() {
   console.log("monsterData: " , monsterData);
 
   return (
-    <div className="my-2 flex flex-row items-center flex-wrap justify-center">
+    <div className="my-2 flex flex-col md:flex-row items-center flex-wrap justify-around">
 
       {monsterData.map((monster) => (
           <MonsterObject

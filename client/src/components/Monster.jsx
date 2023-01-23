@@ -29,7 +29,7 @@ function MonsterObject({monsterObj}) {
 
 
   return (
-    <div className="card px-1 py-1">
+    <div className="m-3 w-96 md:w-72 md:m-4 monsterCard">
       <Link onClick={() => {
         dispatch({
           type: LOAD_MONSTER,
