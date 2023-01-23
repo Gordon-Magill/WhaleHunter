@@ -52,9 +52,9 @@ function App() {
     <ApolloProvider client={client}>
       <UserProvider>
         <Router>
-          <div className="w-screen flex flex-row min-h-screen bg-gray-100 text-gray-800">
+          <div className="w-screen flex min-h-screen bg-gray-100 text-gray-800">
             <Sidebar></Sidebar>
-            <main className="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
+            <main className="main flex flex-col flex-grow  transition-all duration-150 ease-in">
               <div className="justify-center main-content flex flex-col flex-grow p-4">
                 <AnimatedRoutes />
               </div>
