@@ -18,7 +18,7 @@ export const QUERY_ME = gql`
 export const QUERY_MONSTERS = gql`
   query Monsters {
     monsters {
-      monsterID
+      _id
       name
       attackPower
       health
@@ -28,6 +28,7 @@ export const QUERY_MONSTERS = gql`
       evasion
       imageID
       expGrant
+      imagePath
     }
   }
 `;

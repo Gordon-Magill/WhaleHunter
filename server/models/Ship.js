@@ -50,7 +50,10 @@ const shipSchema = new Schema(
       type: Number,
       required: true,
       default: 1,
-    }
+    },
+    imagePath: {
+      type: String,
+    },
   },
   {
     toJSON: {

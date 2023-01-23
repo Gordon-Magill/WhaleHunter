@@ -15,10 +15,10 @@ export const LOGIN_USER = gql`
           evasion
           health
           healthCurrent
-          imageID
+          imagePath
           name
           shield
-          shipID
+          _id
         }
       }
     }
@@ -42,6 +42,7 @@ export const ADD_USER = gql`
 export const GET_STARTER_SHIP = gql`
   mutation Mutation {
     getStarterShip {
+      _id
       accuracy
       armor
       attackPower
@@ -50,6 +51,7 @@ export const GET_STARTER_SHIP = gql`
       healthCurrent
       name
       shield
+      imagePath
     }
   }
 `;

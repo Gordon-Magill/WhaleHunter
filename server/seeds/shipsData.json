@@ -10,7 +10,8 @@
         "shield":10,
         "shieldCurrent":10,
         "accuracy":1,
-        "evasion":1
+        "evasion":1,
+        "imagePath":"/rowboat.png"
     },
     {
         "_id":"ship00000002",
@@ -23,7 +24,8 @@
         "shield":100,
         "shieldCurrent":100,
         "accuracy":0.4,
-        "evasion":0.03
+        "evasion":0.03,
+        "imagePath":"/old_ships/old_1.png"
     },
     {
         "_id":"ship00000003",
@@ -36,7 +38,8 @@
         "shield":500,
         "shieldCurrent":500,
         "accuracy":0.6,
-        "evasion":0.07
+        "evasion":0.07,
+        "imagePath":"/modern_ships/modern_1.png"
     },
     {
         "_id":"ship00000004",
@@ -49,6 +52,7 @@
         "shield":1000,
         "shieldCurrent":1000,
         "accuracy":0.9,
-        "evasion":0.1
+        "evasion":0.1,
+        "imagePath":"/future_ships/future_1.png"
     }
 ]
