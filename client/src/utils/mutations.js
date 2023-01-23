@@ -7,8 +7,19 @@ export const LOGIN_USER = gql`
       user {
         _id
         email
-        username
         experience
+        ship {
+          accuracy
+          armor
+          attackPower
+          evasion
+          health
+          healthCurrent
+          imageID
+          name
+          shield
+          shipID
+        }
       }
     }
   }
@@ -24,6 +35,21 @@ export const ADD_USER = gql`
         username
         experience
       }
+    }
+  }
+`;
+
+export const GET_STARTER_SHIP = gql`
+  mutation Mutation {
+    getStarterShip {
+      accuracy
+      armor
+      attackPower
+      evasion
+      health
+      healthCurrent
+      name
+      shield
     }
   }
 `;

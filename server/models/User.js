@@ -27,7 +27,10 @@ const userSchema = new Schema(
     },
     inventory: [itemSchema],
     equippedInventory: [itemSchema],
-    ship: shipSchema,
+    ship: {
+      type: shipSchema,
+      default: null
+    },
     shipInventory: [shipSchema]
   },
   {
