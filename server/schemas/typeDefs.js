@@ -3,6 +3,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
     type Monster {
+        _id: ID!
         name: String!
         attackPower: Float!
         health: Float!
@@ -15,7 +16,7 @@ const typeDefs = gql`
     }
 
     type Ship {
-        shipID: ID!
+        _id: ID!
         name: String!
         attackPower: Float!
         health: Float!
