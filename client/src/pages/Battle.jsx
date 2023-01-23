@@ -1,4 +1,8 @@
+// Importing React relevant state and context
 import React, {useState} from "react";
+import { useUserStateContext, useUserDispatchContext } from "../utils/userContext";
+
+// Importing page transition content
 import { motion } from "framer-motion";
 import {TRANSITION_SPEED} from '../utils/transitionSpeed'
 
@@ -10,7 +14,7 @@ import playerShipPic from "../assets/old_ships/tmpa1uksn_p.png"
 const playerHP = atkCurrentHp;
 const bossHP = defCurrentHp;
 
-
+// A generic class that can be a player or a monster
 class Combatant {
   constructor(obj){
     this.curHp = obj.health;
@@ -23,30 +27,42 @@ class Combatant {
     if (opponent.health<0){opponent.health = 0}
   }
 
+  isAlive(){
+    if (this.curHp>0){
+      return true
+    }
+    return false
+  }
+
 }
 
-class Battle{
+// A handler for 
+class BattleClass{
   constructor(player,monster){
     this.player = player
     this.monster = monster
     this.victor = null
   }
 
-  round(){
-    if (this.player.curHp>0){
+  executeRound(){
+    // If the player is alive, attack
+    if (this.player.isAlive()){
       this.player.attack(this.monster)
-    } else {
-      this.victor = this.monster
-      this.endBattle()
     }
 
-
-    if (this.monster.curHp>0){
+    // If the monster is still alive, attack, otherwise player wins
+    if (this.monster.isAlive()){
       this.monster.attack(this.player)
     } else {
       this.victor = this.player
       this.endBattle()
     }
+
+    if (!this.player.isAlive()){
+      this.victor = this.monster
+      this.endBattle()
+    }
+
   }
 
   endBattle(){
@@ -303,7 +319,8 @@ const defender = {
 }
 
 export default function Battle() {
-  const [state, setState] = useState(null)
+  // const player = useUserStateContext().userInfo.ship
+  // const [state, setState] = useState(null)
 
 
   return (
