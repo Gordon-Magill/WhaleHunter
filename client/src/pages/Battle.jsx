@@ -1,5 +1,6 @@
 // Importing React relevant state and context
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   useUserStateContext,
   useUserDispatchContext,
@@ -283,10 +284,11 @@ class Combatant {
 
 // A handler for
 class BattleClass {
-  constructor(player, monster, playerSetter, monsterSetter) {
+  constructor(player, monster, playerSetter, monsterSetter, victoryStateSetter) {
     this.player = player;
     this.monster = monster;
     this.victor = null;
+    this.victoryStateSetter = victoryStateSetter;
   }
 
   executeRound() {
@@ -297,6 +299,7 @@ class BattleClass {
 
     console.log('Initiating a round of combat!')
     console.log('Player HP: ', this.player.health)
+    console.log('Monster HP: ', this.monster.health)
     // If the player is alive, attack
     if (this.player.isAlive()) {
       this.player.attack(this.monster);
@@ -321,11 +324,17 @@ class BattleClass {
 
   endBattle() {
     console.log(`Battle over! Winner is ${this.victor.name}!`);
+    this.victoryStateSetter(this.victor)
+    if (this.victor == this.player) {
+      // Code for incrementing the user's experience on the db and in global state
+    }
   }
 }
 
 export default function Battle() {
   // Get player's ship from global context
+  const navigate = useNavigate()
+
   const playerShipInfo = useUserStateContext().userInfo.ship;
   console.log(playerShipInfo)
   const player = new Combatant(playerShipInfo);
@@ -347,7 +356,8 @@ export default function Battle() {
   const [monsterState, setMonsterState] = useState(monster)
 
   // Create a framework for the battle to take place
-  const battleObject = new BattleClass(playerState, monsterState, setPlayerState, setMonsterState);
+  const [victoryState, victoryStateSetter] = useState(null)
+  const battleObject = new BattleClass(playerState, monsterState, setPlayerState, setMonsterState, victoryStateSetter);
 
   return (
     <motion.div
@@ -402,9 +412,17 @@ export default function Battle() {
             Start battle
           </button> */}
 
-          <button onClick={() => battleObject.executeRound()}>
-            Next Round
+          {(victoryState == null) ? (
+                      <button onClick={() => battleObject.executeRound()} className='bg-black text-white'>
+                      Next Round
+                    </button>
+          ) : (
+            <button onClick={() => {navigate('/dashboard')}} className='bg-black text-white'>
+            Battle is over! Collect your prize!
           </button>
+
+          )}
+
 
           {/* Removing retreat functionality for now */}
           {/* <button onClick={() => retreat()}>Retreat!</button> */}
