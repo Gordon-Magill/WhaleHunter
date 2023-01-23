@@ -1,6 +1,6 @@
 // Add seeds for starter items, ship types, monsters, etc. to allow the game to run
 const db = require("../config/connection");
-const { Ship, Monster, Icon } = require("../models");
+const { Ship, Monster } = require("../models");
 const fs = require("fs");
 const path = require("path");
 
@@ -13,7 +13,6 @@ db.once("open", async () => {
   console.log("Deleting existing db data...");
   await Ship.deleteMany({});
   await Monster.deleteMany({});
-  await Icon.deleteMany({});
   console.log("Existing db data deleted!");
 
   console.log("Seeding new data to db...");
@@ -23,7 +22,7 @@ db.once("open", async () => {
 
   const monsters = await Monster.insertMany(monstersData);
   console.log("Monsters seeded!");
-  
+
   console.log("Done seeding content.");
 
   process.exit(0);
