@@ -8,7 +8,8 @@
         "shield":1,
         "accuracy":0.25,
         "evasion":0.01,
-        "expGrant": 1
+        "expGrant": 1,
+        "imagePath":"/cthulhu_whales/cthulhu_1.png"
     },
     {
         "_id":"monster00002",
@@ -19,7 +20,8 @@
         "shield":10,
         "accuracy":0.5,
         "evasion":0.05,
-        "expGrant": 10
+        "expGrant": 10,
+        "imagePath":"/fire_whales/fire_1.png"
     },
     {
         "_id":"monster00003",
@@ -30,7 +32,8 @@
         "shield":100,
         "accuracy":0.75,
         "evasion":0.1,
-        "expGrant": 100
+        "expGrant": 100,
+        "imagePath":"/undead_whales/undead_1.png"
     }
 
 
