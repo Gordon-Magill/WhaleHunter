@@ -49,13 +49,14 @@ const typeDefs = gql`
         ships: [Ship]
         monsters: [Monster]
         randomMonster: Monster
+        getStarterShip: Ship
     }
     
     type Mutation {
             login(email: String!, password: String!): Auth
             addUser(username: String!, email: String!, password: String!): Auth
             addUserExp(expValue: Float): User
-            getStarterShip: Ship
+            
         }
 `;
 // TODO

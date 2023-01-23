@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_ME = gql`
   query me {
@@ -29,6 +29,23 @@ export const QUERY_MONSTERS = gql`
       imageID
       expGrant
       imagePath
+    }
+  }
+`;
+
+export const GET_STARTER_SHIP = gql`
+  query Query {
+    getStarterShip {
+      _id
+      accuracy
+      armor
+      attackPower
+      health
+      evasion
+      healthCurrent
+      imagePath
+      name
+      shield
     }
   }
 `;

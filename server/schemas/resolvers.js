@@ -67,7 +67,12 @@ const resolvers = {
       throw new AuthenticationError(
         "AuthenticationError: Invalid credentials attempting to query 'randomMonster'"
       );
-    }
+    },
+    getStarterShip: async(parent, args, context, info) => {
+      const starterShip = await Ship.findOne({name: 'Rowboat'})
+      // console.log('getStarterShip returning ship: ', starterShip)
+      return starterShip
+    },
   },
   Mutation: {
     login: async (parent, args, context, info) => {
@@ -113,11 +118,6 @@ const resolvers = {
       throw new AuthenticationError(
         "AuthenticationError: Invalid credentials attempting to access 'addUserExp'"
       );
-    },
-    getStarterShip: async(parent, args, context, info) => {
-      const starterShip = await Ship.findOne({name: 'Rowboat'})
-      // console.log('getStarterShip returning ship: ', starterShip)
-      return starterShip
     },
   },
 };

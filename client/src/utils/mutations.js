@@ -8,7 +8,9 @@ export const LOGIN_USER = gql`
         _id
         email
         experience
+        username
         ship {
+          _id
           accuracy
           armor
           attackPower
@@ -18,6 +20,8 @@ export const LOGIN_USER = gql`
           imagePath
           name
           shield
+        }
+        shipInventory {
           _id
         }
       }
@@ -26,32 +30,31 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
+  mutation AddUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
         email
-        username
         experience
+        username
+        ship {
+          _id
+          accuracy
+          armor
+          attackPower
+          evasion
+          health
+          healthCurrent
+          imagePath
+          name
+          shield
+        }
+        shipInventory {
+          _id
+        }
       }
     }
   }
 `;
 
-export const GET_STARTER_SHIP = gql`
-  mutation Mutation {
-    getStarterShip {
-      _id
-      accuracy
-      armor
-      attackPower
-      evasion
-      health
-      healthCurrent
-      name
-      shield
-      imagePath
-    }
-  }
-`;
