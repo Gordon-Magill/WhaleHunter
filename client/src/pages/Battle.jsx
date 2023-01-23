@@ -313,8 +313,8 @@ export default function Battle() {
             className="bossHP">
             <motion.div
               initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${bossHP}%` }}
-              className="bg-gray-400">{bossHP}HP</motion.div>
+              animate={{ scaleX: `100%` }}
+              className="bg-gray-400">100</motion.div>
           </div>
         </div>
 
