@@ -1,27 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useQuery } from '@apollo/client';
 
-import goToBattle from '../../components/goToBattle'
+// Importing content for userReducer
+import { useUserStateContext, useUserDispatchContext} from "../../utils/userContext";
+import { LOAD_MONSTER } from '../../utils/actions';
+import { UNLOAD_MONSTER } from '../../utils/actions';
+import { QUERY_MONSTERS } from '../../utils/queries';
 
-const MonsterList = ({ monsters, title }) => {
-  if (!monsters.length) {
-    return <h3>No Monsters Yet</h3>;
-  }
+// Single monster object - not yet being used
+import MonsterObject from '../../components/Monster';
+
+function MonsterList() {
+  const state = useUserStateContext();
+  const dispatch = useUserDispatchContext();
+
+  const { data } = useQuery(QUERY_MONSTERS);
+
+   // Use optional chaining to check if data exists and if it has a thoughts property. If not, return an empty array to use.
+  const monsterData = data?.monsters || [];
+
+  console.log("monsterData: " , monsterData);
 
   return (
-    <div className="monsters">
-      <h3>{title}</h3>
-      {monsters &&
-        monsters.map((monster) => (
-          <div key={monster._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-              {monster.name}
-                </h4>
-                <button
-                    onClick={() => goToBattle(monster)}>Fight {monster.name}</button>
-          </div>
+    <div className="my-2">
+
+      {monsterData.map((monster) => (
+          <MonsterObject
+            monsterID={monster.monsterID}
+            name={monster.name}
+            />
         ))}
+
     </div>
   );
-};
+}
 
 export default MonsterList;
