@@ -6,6 +6,7 @@ import Auth from "../utils/auth";
 import { motion } from "framer-motion";
 import {TRANSITION_SPEED} from '../utils/transitionSpeed'
 
+// List of monster objects
 import MonsterList from './page-components/MonsterList';
 
 export default function Dashboard() {

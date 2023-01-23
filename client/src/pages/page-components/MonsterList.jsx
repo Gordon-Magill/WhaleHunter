@@ -8,20 +8,26 @@ import { UNLOAD_MONSTER } from '../../utils/actions';
 import { QUERY_MONSTERS } from '../../utils/queries';
 
 // Single monster object - not yet being used
-import Monster from '../../components/Monster';
+import MonsterObject from '../../components/Monster';
 
 function MonsterList() {
   const state = useUserStateContext();
   const dispatch = useUserDispatchContext();
 
-  const { currentCategory } = state;
+  const { data } = useQuery(QUERY_MONSTERS);
 
-  const { loading, data } = useQuery(QUERY_MONSTERS);
+   // Use optional chaining to check if data exists and if it has a thoughts property. If not, return an empty array to use.
+   const monsterData = data?.monsters || [];
 
   return (
     <div className="my-2">
 
-      //DATA FROM QUERY_MONSTERS
+      {monsterData.map((monster) => (
+          <MonsterObject
+            monsterID={monster.monsterID}
+            name={monster.name}
+            />
+        ))}
 
     </div>
   );

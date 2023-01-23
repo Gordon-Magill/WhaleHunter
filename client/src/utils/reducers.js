@@ -30,6 +30,7 @@ export default function userReducer(state, action){
       }
     }
     case LOAD_MONSTER: {
+      console.log("action.payload: ", action.payload)
       return {
         ...state,
         battlePageOpen: true,

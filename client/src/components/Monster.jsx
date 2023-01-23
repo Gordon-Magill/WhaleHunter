@@ -1,10 +1,20 @@
 // Single monster object
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+
+import { useUserStateContext, useUserDispatchContext} from "../utils/userContext";
+import { LOAD_MONSTER } from "../utils/actions";
+
 
 function MonsterObject(monsterObj) {
+
+  const state = useUserStateContext();
+  const dispatch = useUserDispatchContext();
+  const navigate = useNavigate();
+
+
   const {
-    _id,
+    monsterID,
     name,
     attackPower,
     health,
@@ -12,17 +22,21 @@ function MonsterObject(monsterObj) {
     shield,
     accuracy,
     evasion,
+    imageID,
     expGrant,
   } = monsterObj;
 
   return (
     <div className="card px-1 py-1">
-      <Link to={`/battle/${_id}`}>
-        <p>{name}</p>
+      <Link onClick={() => {
+        dispatch({
+          type: LOAD_MONSTER,
+          payload: monsterObj,
+        })
+        navigate("/battle")
+      }} >
+        <p>{name}{monsterID}</p>
       </Link>
-      <div>
-        <div><p>{health}</p></div>
-      </div>
     </div>
   );
 }

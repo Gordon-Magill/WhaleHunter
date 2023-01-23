@@ -16,8 +16,9 @@ export const QUERY_ME = gql`
 
 // Query all monsters
 export const QUERY_MONSTERS = gql`
-  query allMonsters {
+  query Monsters {
     monsters {
+      monsterID
       name
       attackPower
       health
@@ -25,6 +26,7 @@ export const QUERY_MONSTERS = gql`
       shield
       accuracy
       evasion
+      imageID
       expGrant
     }
   }
