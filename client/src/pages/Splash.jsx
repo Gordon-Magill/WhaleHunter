@@ -36,6 +36,9 @@ export default function Splash() {
       <div className="splash">
         <img src={Logo}/>
       </div>
+      <div>
+        <p className="m-5">An over the top parody game that gratiutously combines AI image generation while flaying the concept of NFT's alive.</p>
+      </div>
       <div className="flex justify-around">
       <Link className="bg-teal-600 p-5 rounded nav-link active font-bold text-lg text-white " to="/login">
         Login
