@@ -5,15 +5,15 @@ import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 
 export default function Harbor() {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="bg-[url('/page_backgrounds/harbor/harbor_1.png')] bg-cover h-[100vh] flex flex-col items-center justify-center">
       <motion.div
-        className="container text-center bg-[url('/page_backgrounds/harbor/harbor_1.png')] bg-cover h-[90vh] flex flex-col justify-center items-center"
+        className="text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: TRANSITION_SPEED }}
       >
-        <div className="harbor bg-slate-800/50 w-fit p-2 rounded-lg text-white">
+        <div className="harbor bg-slate-800/50 p-5 text-white rounded-lg text-center">
           <h1>The Harbor</h1>
           <button>
             <a
