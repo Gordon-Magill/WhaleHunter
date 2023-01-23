@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { LOGIN_USER, ADD_USER, GET_STARTER_SHIP } from "../utils/mutations";
+import { useMutation, useQuery } from "@apollo/client";
+import { LOGIN_USER, ADD_USER } from "../utils/mutations";
+import { GET_STARTER_SHIP } from "../utils/queries";
+
 import Auth from "../utils/auth";
 
 import { motion } from "framer-motion";
@@ -15,7 +17,7 @@ import { LOGIN } from "../utils/actions";
 export default function LoginPage() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error: loginError }] = useMutation(LOGIN_USER);
-  const [getShip, {error}] = useMutation(GET_STARTER_SHIP)
+  const {data:rowboatData, loading} = useQuery(GET_STARTER_SHIP)
   const [errorState, setErrorState] = useState(false);
   const [validatedForm, setValidatedForm] = useState(false);
 
@@ -53,10 +55,8 @@ export default function LoginPage() {
       const user = data.login.user
       if (data.login.user.ship == null) {
         console.log("Logged in user has no ship!")
-        const {data} = await getShip()
-        const starterShip = data.getStarterShip
-        console.log('Got starter ship: ',starterShip)
-        user.ship = starterShip
+        // console.log('rowboatData: ', rowboatData)
+        user.ship = rowboatData.getStarterShip
       }
 
       userDispatch({ type: LOGIN, payload: user });

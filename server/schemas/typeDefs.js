@@ -3,6 +3,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
     type Monster {
+        _id: ID!
         name: String!
         attackPower: Float!
         health: Float!
@@ -15,7 +16,7 @@ const typeDefs = gql`
     }
 
     type Ship {
-        shipID: ID!
+        _id: ID!
         name: String!
         attackPower: Float!
         health: Float!
@@ -48,13 +49,14 @@ const typeDefs = gql`
         ships: [Ship]
         monsters: [Monster]
         randomMonster: Monster
+        getStarterShip: Ship
     }
     
     type Mutation {
             login(email: String!, password: String!): Auth
             addUser(username: String!, email: String!, password: String!): Auth
             addUserExp(expValue: Float): User
-            getStarterShip: Ship
+            
         }
 `;
 // TODO
