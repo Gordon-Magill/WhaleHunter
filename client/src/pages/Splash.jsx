@@ -3,10 +3,10 @@ import React from "react";
 // Image carousel for home banner
 
 // Images from assets
-import One from '../assets/old_ships/tmp7mrkqgzv.png';
-import Two from '../assets/cthulhu_whales/tmpstas7ntz.png';
-import Three from '../assets/modern_ships/tmp797kt7v6.png';
-import Four from '../assets/fire_whales/tmpho__5bmj.png';
+import One from '../assets/old_ships/old_1.png';
+import Two from '../assets/cthulhu_whales/cthulhu_1.png';
+import Three from '../assets/modern_ships/modern_1.png';
+import Four from '../assets/fire_whales/fire_1.png';
 
 import { motion } from "framer-motion";
 import {TRANSITION_SPEED} from '../utils/transitionSpeed'

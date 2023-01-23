@@ -98,24 +98,6 @@ const resolvers = {
       console.log("addUser mutation returning with token:", token);
       return { token, user };
     },
-    addShip: async (parent, args, context, info) => {
-      if (context.user) {
-        console.log("addShip mutation called with args:", args);
-        const newShipUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          {
-            $push: {
-              ships: args.shipInfo,
-            },
-          },
-          { new: true }
-        );
-      }
-
-      throw new AuthenticationError(
-        "AuthenticationError: Invalid credentials attempting to access 'addShip'"
-      );
-    },
     addUserExp: async (parent, args, context, info) => {
       if (context.user) {
         const addingToUser = User.findByIdAndUpdate(

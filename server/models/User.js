@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const {itemSchema} = require("./Item");
 const {shipSchema} = require("./Ship");
 
 const userSchema = new Schema(
@@ -25,8 +24,6 @@ const userSchema = new Schema(
       required: true,
       default: 0
     },
-    inventory: [itemSchema],
-    equippedInventory: [itemSchema],
     ship: {
       type: shipSchema,
       default: null
