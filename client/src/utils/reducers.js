@@ -33,14 +33,14 @@ export default function userReducer(state, action){
       return {
         ...state,
         battlePageOpen: true,
-        monster: action.payload
+        monsterPayLoad: action.payload
       }
     }
     case UNLOAD_MONSTER: {
       return {
         ...state,
         battlePageOpen: false,
-        monster: null
+        monsterPayLoad: null
       }
     }
 
