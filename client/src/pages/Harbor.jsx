@@ -7,7 +7,7 @@ export default function Harbor() {
   return (
     <div className="flex flex-col items-center justify-center">
       <motion.div
-        className="container text-center bg-[url('/page_backgrounds/harbor/harbor_1.png')] bg-cover h-[80vh] w-[80vh] rounded-full flex flex-col justify-center items-center"
+        className="container text-center bg-[url('/page_backgrounds/harbor/harbor_1.png')] bg-cover h-[90vh] flex flex-col justify-center items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
