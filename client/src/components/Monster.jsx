@@ -36,9 +36,10 @@ function MonsterObject({monsterObj}) {
           payload: monsterObj,
         })
         navigate("/battle")
-      }} >
-        <p>{name}{monsterID}</p>
-        <img src={imagePath}></img>
+      }}
+      className="relative" >
+        <img src={imagePath} className="rounded-full"></img>
+        <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white bg-slate-800/75 rounded-full">{name}{monsterID}</p>
       </Link>
     </div>
   );
