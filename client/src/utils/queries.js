@@ -16,19 +16,18 @@ export const QUERY_ME = gql`
 
 // Query all monsters
 export const QUERY_MONSTERS = gql`
-  query Monsters {
+  query Query {
     monsters {
       _id
-      name
-      attackPower
-      health
-      armor
-      shield
       accuracy
+      armor
+      attackPower
       evasion
-      imageID
       expGrant
+      health
       imagePath
+      name
+      shield
     }
   }
 `;
