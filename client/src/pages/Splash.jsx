@@ -21,7 +21,7 @@ export default function Splash() {
       transition={{ duration: TRANSITION_SPEED }}
     >
       <div className="">
-        <img className="flex" src={Logo}/>
+        <img className="flex align-center justify-center w-[60vw] m-auto" src={Logo}/>
       </div>
       <div>
         <p className="m-5">An over the top parody game that gratiutously combines AI image generation while flaying the concept of NFT's alive.</p>
