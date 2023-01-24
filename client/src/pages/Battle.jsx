@@ -388,6 +388,23 @@ export default function Battle() {
       exit={{ opacity: 0 }}
       transition={{ duration: TRANSITION_SPEED }}
     >
+      {victoryState == null ? (
+            <button
+              onClick={() => battleObject.executeRound()}
+              className="bg-black text-white"
+            >
+              Next Round
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                navigate("/dashboard");
+              }}
+              className="bg-black text-white"
+            >
+              Battle is over! Collect your prize!
+            </button>
+          )}
       <div className="flex flex-row justify-around items-center battleSection">
         <div className="player">
           <img src={playerState.imagePath} />
@@ -423,23 +440,7 @@ export default function Battle() {
             Start battle
           </button> */}
 
-          {victoryState == null ? (
-            <button
-              onClick={() => battleObject.executeRound()}
-              className="bg-black text-white"
-            >
-              Next Round
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                navigate("/dashboard");
-              }}
-              className="bg-black text-white"
-            >
-              Battle is over! Collect your prize!
-            </button>
-          )}
+
 
           {/* Removing retreat functionality for now */}
           {/* <button onClick={() => retreat()}>Retreat!</button> */}
