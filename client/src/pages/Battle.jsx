@@ -394,7 +394,7 @@ export default function Battle() {
           <motion.div
             initial={{ scaleX: "0%" }}
             animate={{ scaleX: `${playerHealth}%` }}
-            className="text-white text-2xl bg-emerald-700"
+            className=" my-3 rounded-lg text-white text-2xl bg-teal-600"
           >
             {playerState.health}HP
           </motion.div>
@@ -450,7 +450,7 @@ export default function Battle() {
           <motion.div
             initial={{ scaleX: "0%" }}
             animate={{ scaleX: `${monsterHealth}%` }}
-            className="text-white text-2xl bg-red-700"
+            className=" my-3 rounded-lg text-white text-2xl bg-teal-900"
           >
             {monsterState.health}HP
           </motion.div>
