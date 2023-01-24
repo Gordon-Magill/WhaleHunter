@@ -1,7 +1,8 @@
 # Space Grift: Whale Hunter
 [![License: Attribution-NonCommmercial-ShareAlike 4.0 International](https://img.shields.io/badge/License-CC_BY--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-![App screenshot](./assets/sidebar_shot.png)
+![App Screenshot](https://user-images.githubusercontent.com/73449635/214199376-31dfdb1d-d4b2-4e08-a0e6-b703241a5b34.png)
+
 
 ## Description
 
