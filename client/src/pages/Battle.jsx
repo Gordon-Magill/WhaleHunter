@@ -376,6 +376,10 @@ export default function Battle() {
     victoryStateSetter
   );
 
+  // TODO: Dynamically obtain starting health for both
+  var playerHealth = (playerState.health / 10)* 100
+  var monsterHealth = (monsterState.health / 19)* 100
+
   return (
     <motion.div
       className="container text-center"
@@ -389,8 +393,8 @@ export default function Battle() {
           <img src={playerState.imagePath} />
           <motion.div
             initial={{ scaleX: "0%" }}
-            animate={{ scaleX: `${playerState.health}%` }}
-            className="bg-gray-400"
+            animate={{ scaleX: `${playerHealth}%` }}
+            className=" my-3 rounded-lg text-white text-2xl bg-teal-600"
           >
             {playerState.health}HP
           </motion.div>
@@ -445,8 +449,8 @@ export default function Battle() {
           <img src={monsterState.imagePath} />
           <motion.div
             initial={{ scaleX: "0%" }}
-            animate={{ scaleX: `${monsterState.health}%` }}
-            className="bg-gray-400"
+            animate={{ scaleX: `${monsterHealth}%` }}
+            className=" my-3 rounded-lg text-white text-2xl bg-teal-900"
           >
             {monsterState.health}HP
           </motion.div>
