@@ -18,8 +18,9 @@ export default function Gallery() {
     exit={{ opacity: 0 }}
     transition={{ duration: TRANSITION_SPEED }}
   >
-    <div className="gallery bg-slate-800/50 p-5 text-white rounded-lg text-center">
+      <div className="harbor bg-slate-800/50 p-5 text-white rounded-lg text-center">
         <h1>The Gallery</h1>
+
 
       </div>
       </motion.div>
