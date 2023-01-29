@@ -13,7 +13,7 @@
     "build": "cd client && npm run build",
     "preview": "cd client && npm run preview",
     "seed": "node server/seeds/seed.js",
-    "serve-heroku": "concurrently \"cd server && npm run start\" \"cd client && npm run serve-heroku\""
+    "serve-heroku": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\""
   },
   "repository": {
     "type": "git",
