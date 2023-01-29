@@ -19,7 +19,7 @@ app.use(express.json());
 
 // If deployed in production, source static content from the client build folder
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.use(express.static(path.join(__dirname, "../client/dist")));
 }
 
 // Define the graphQL Apollo server interface
