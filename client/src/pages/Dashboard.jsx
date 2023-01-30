@@ -26,10 +26,10 @@ export default function Dashboard() {
       exit={{ opacity: 0 }}
       transition={{ duration: TRANSITION_SPEED }}
     >
-      <div className="dashboard flex flex-col items-center">
+      <div className="dashboard flex flex-col items-center w-1/2">
         <h1>Your Dashboard</h1>
         <h2>The Bosses</h2>
-        <MonsterList />
+        <MonsterList className=""/>
       </div>
     </motion.div>
   );
