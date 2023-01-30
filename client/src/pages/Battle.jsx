@@ -377,8 +377,9 @@ export default function Battle() {
   );
 
   // TODO: Dynamically obtain starting health for both
-  var playerHealth = (playerState.health / 10)* 100
-  var monsterHealth = (monsterState.health / 19)* 100
+  let playerHealth = (playerState.health / playerShipInfo.health) * 100;
+  // let playerHealth = (playerState.health / 10) * 100;
+  let monsterHealth = (monsterState.health / monsterObj.health) * 100;
 
   return (
     <motion.div
@@ -389,32 +390,34 @@ export default function Battle() {
       transition={{ duration: TRANSITION_SPEED }}
     >
       {victoryState == null ? (
-            <button
-              onClick={() => battleObject.executeRound()}
-              className="bg-black text-white"
-            >
-              Next Round
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                navigate("/dashboard");
-              }}
-              className="bg-black text-white"
-            >
-              Battle is over! Collect your prize!
-            </button>
-          )}
+        <button
+          onClick={() => battleObject.executeRound()}
+          className="bg-black text-white"
+        >
+          Next Round
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+          className="bg-black text-white"
+        >
+          Battle is over! Collect your prize!
+        </button>
+      )}
       <div className="flex flex-row justify-around items-center battleSection">
         <div className="player">
           <img src={playerState.imagePath} />
-          <motion.div
-            initial={{ scaleX: "0%" }}
-            animate={{ scaleX: `${playerHealth}%` }}
-            className=" my-3 rounded-lg text-white text-2xl bg-teal-600"
-          >
-            {playerState.health}HP
-          </motion.div>
+          <div className="relative">
+            <motion.div
+              initial={{ scaleX: "0%" }}
+              animate={{ scaleX: `${playerHealth}%` }}
+              className=" my-3 rounded-lg text-white text-2xl bg-teal-600"
+            >
+              {playerState.health}HP
+            </motion.div>
+          </div>
         </div>
 
         <div className="actionArea">
@@ -439,8 +442,6 @@ export default function Battle() {
           >
             Start battle
           </button> */}
-
-
 
           {/* Removing retreat functionality for now */}
           {/* <button onClick={() => retreat()}>Retreat!</button> */}
