@@ -351,7 +351,7 @@ export default function Battle() {
 
   // Get monster from global state, set by whatever monster was chosen on the dashboard
   const monsterObj = useUserStateContext().monsterPayLoad || {
-    name: "Debug Monster",
+    name: "Debug Monster (SHOULD NOT LOAD UNDER NORMAL CIRCUMSTANCES)",
     imageID: null,
     attackPower: 4,
     health: 19,

@@ -12,7 +12,7 @@ import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 // Importing content for userReducer
 import { useUserStateContext, useUserDispatchContext } from "../utils/userContext";
 // import userReducer from "../utils/reducers";
-import { LOGIN } from "../utils/actions";
+import { LOGIN, LOAD_MONSTER } from "../utils/actions";
 
 export default function LoginPage() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -60,6 +60,7 @@ export default function LoginPage() {
       }
 
       userDispatch({ type: LOGIN, payload: user });
+      userDispatch({ type: LOAD_MONSTER, payload: 'default' })
       // console.log(
       //   "LoginPage has set userState.userInfo as:",
       //   userState.userInfo
