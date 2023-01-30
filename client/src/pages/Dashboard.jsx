@@ -29,7 +29,7 @@ export default function Dashboard() {
       <div className="dashboard flex flex-col items-center">
         <h1>Your Dashboard</h1>
         <h2>The Bosses</h2>
-        <MonsterList />
+        <MonsterList className=""/>
       </div>
     </motion.div>
   );

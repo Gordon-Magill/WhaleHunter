@@ -29,7 +29,7 @@ function MonsterObject({monsterObj}) {
 
 
   return (
-    <div className="m-3 w-96 md:w-72 md:m-4 monsterCard">
+    <div className="m-3 md:m-4 monsterCard ">
       <Link onClick={() => {
         dispatch({
           type: LOAD_MONSTER,
@@ -39,7 +39,7 @@ function MonsterObject({monsterObj}) {
       }}
       className="relative" >
         <img src={imagePath} className="rounded-full"></img>
-        <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white bg-slate-800/75 rounded-full">{name}{monsterID}</p>
+        <p className="p-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white bg-slate-800/75 rounded-full">{name}{monsterID}</p>
       </Link>
     </div>
   );
