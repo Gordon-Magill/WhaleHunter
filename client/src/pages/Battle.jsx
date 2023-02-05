@@ -311,8 +311,6 @@ class BattleClass {
     console.log("Initiating a round of combat!");
     console.log("Player HP: ", this.player.health);
     console.log("Monster HP: ", this.monster.health);
-    playerHP = this.player.health;
-    monsterHP = this.monster.health;
 
     // If the player is alive, attack
     if (this.player.isAlive()) {
@@ -417,7 +415,7 @@ export default function Battle() {
           <div className="relative">
             <motion.div
               initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `${playerState.health}%` }}
+              animate={{ scaleX: `100%` }}
               className=" my-3 rounded-lg text-white text-2xl bg-teal-600"
             >
               {playerState.health}HP
@@ -455,7 +453,7 @@ export default function Battle() {
           <img src={monsterState.imagePath} />
           <motion.div
             initial={{ scaleX: "0%" }}
-            animate={{ scaleX: `${monsterState.health}%` }}
+            animate={{ scaleX: `100%` }}
             className=" my-3 rounded-lg text-white text-2xl bg-teal-900"
           >
             {monsterState.health}HP
