@@ -261,6 +261,7 @@ import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 //   evasion: 5,
 // };
 
+
 class Combatant {
   constructor(obj) {
     console.log("Initiating Combatant with obj: ", obj);
@@ -311,6 +312,12 @@ class BattleClass {
     console.log("Initiating a round of combat!");
     console.log("Player HP: ", this.player.health);
     console.log("Monster HP: ", this.monster.health);
+
+    function hpBar() {
+
+
+    }
+    hpBar();
 
     // If the player is alive, attack
     if (this.player.isAlive()) {
@@ -416,7 +423,7 @@ export default function Battle() {
             <motion.div
               initial={{ scaleX: "0%" }}
               animate={{ scaleX: `100%` }}
-              className=" my-3 rounded-lg text-white text-2xl bg-teal-600"
+              className="playerHpBar my-3 rounded-lg text-white text-2xl bg-teal-600"
             >
               {playerState.health}HP
             </motion.div>
@@ -454,7 +461,7 @@ export default function Battle() {
           <motion.div
             initial={{ scaleX: "0%" }}
             animate={{ scaleX: `100%` }}
-            className=" my-3 rounded-lg text-white text-2xl bg-teal-900"
+            className="monsterHpBar my-3 rounded-lg text-white text-2xl bg-teal-900"
           >
             {monsterState.health}HP
           </motion.div>
