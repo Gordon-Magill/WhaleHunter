@@ -318,13 +318,21 @@ class BattleClass {
     console.log("Player HP: ", this.player.health);
     console.log("Monster HP: ", this.monster.health);
 
+    // TODO: Define playerShipInfo and monsterObj in time to replace the 10 and 19 hard-coded values
 
-    var currentPlayerHp = (this.player.health / 10 );
-    var currentMonsterHp = (this.monster.health / 19);
+    var rawHpPlayer = this.player.health;
+    var rawHpMonster = this.monster.health;
+
+    var currentPlayerHp = (rawHpPlayer / 10 );
+    var currentMonsterHp = (rawHpMonster / 19);
 
     // Selectors for HP bar ID
-   document.getElementById('playerHpBar').style.transform = `scaleX(${currentPlayerHp})`;
-   document.getElementById('monsterHpBar').style.transform = `scaleX(${currentMonsterHp})`;
+    document.getElementById('playerHpBar').style.transform = `scaleX(${currentPlayerHp})`;
+    document.getElementById('monsterHpBar').style.transform = `scaleX(${currentMonsterHp})`;
+
+    document.getElementById('playerHp').innerHTML = rawHpPlayer;
+    document.getElementById('monsterHp').innerHTML = rawHpMonster;
+
 
     // If the player is alive, attack
     if (this.player.isAlive()) {
@@ -429,12 +437,13 @@ export default function Battle() {
           <div className="relative">
             <motion.div
               initial={{ scaleX: "0%" }}
-              animate={{ scaleX: `100%` }}
+              animate={{ scaleX: `0%` }}
               className="my-3 rounded-lg text-white text-2xl bg-teal-600"
               id = "playerHpBar"
             >
-              {playerState.health}HP
+              <div className="hiddenHP">HP</div>
             </motion.div>
+            <div id="playerHp"></div>
           </div>
         </div>
         <div className="actionArea">
@@ -468,12 +477,13 @@ export default function Battle() {
           <img src={monsterState.imagePath} />
           <motion.div
             initial={{ scaleX: "0%" }}
-            animate={{ scaleX: `100%` }}
+            animate={{ scaleX: `0%` }}
             className="my-3 rounded-lg text-white text-2xl bg-teal-900"
             id = "monsterHpBar"
           >
-            {monsterState.health}HP
+            <div className="hiddenHP">HP</div>
           </motion.div>
+          <div id="monsterHp"></div>
         </div>
       </div>
     </motion.div>
