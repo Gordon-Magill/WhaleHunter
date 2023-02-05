@@ -10,6 +10,10 @@ import {
 import { motion } from "framer-motion";
 import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 
+// Selectors for HP bar ID
+const playerHpBar = document.getElementById('playerHpBar');
+const monsterHpBar = document.getElementById('monsterHpBar');
+
 // Test whale picture
 // import whaleBossPic from "../assets/undead_whales/undead_1.png";
 // Test player picture
@@ -316,6 +320,7 @@ class BattleClass {
     function hpBar() {
 
 
+
     }
     hpBar();
 
@@ -423,7 +428,8 @@ export default function Battle() {
             <motion.div
               initial={{ scaleX: "0%" }}
               animate={{ scaleX: `100%` }}
-              className="playerHpBar my-3 rounded-lg text-white text-2xl bg-teal-600"
+              className="my-3 rounded-lg text-white text-2xl bg-teal-600"
+              id = "playerHpBar"
             >
               {playerState.health}HP
             </motion.div>
@@ -461,7 +467,8 @@ export default function Battle() {
           <motion.div
             initial={{ scaleX: "0%" }}
             animate={{ scaleX: `100%` }}
-            className="monsterHpBar my-3 rounded-lg text-white text-2xl bg-teal-900"
+            className="my-3 rounded-lg text-white text-2xl bg-teal-900"
+            id = "monsterHpBar"
           >
             {monsterState.health}HP
           </motion.div>
