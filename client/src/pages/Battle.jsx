@@ -10,9 +10,10 @@ import {
 import { motion } from "framer-motion";
 import { TRANSITION_SPEED } from "../utils/transitionSpeed";
 
-// Selectors for HP bar ID
-const playerHpBar = document.getElementById('playerHpBar');
-const monsterHpBar = document.getElementById('monsterHpBar');
+
+// Default values for hp
+var playerHp = 0;
+var monsterHp = 0;
 
 // Test whale picture
 // import whaleBossPic from "../assets/undead_whales/undead_1.png";
@@ -317,12 +318,13 @@ class BattleClass {
     console.log("Player HP: ", this.player.health);
     console.log("Monster HP: ", this.monster.health);
 
-    function hpBar() {
 
+    var currentPlayerHp = (this.player.health / 10 )* 10;
+    var currentMonsterHp = (this.monster.health / 19) * 10;
 
-
-    }
-    hpBar();
+    // Selectors for HP bar ID
+   document.getElementById('playerHpBar').style.transform = `scaleX(${currentPlayerHp})`;
+   document.getElementById('monsterHpBar').style.transform = `scaleX(${currentMonsterHp})`;
 
     // If the player is alive, attack
     if (this.player.isAlive()) {
