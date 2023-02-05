@@ -43,3 +43,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.hiddenHP {
+  visibility: hidden;
+}
+
+div {
+  transition: transform 330ms ease-in-out;
+}
