@@ -319,8 +319,8 @@ class BattleClass {
     console.log("Monster HP: ", this.monster.health);
 
 
-    var currentPlayerHp = (this.player.health / 10 )* 10;
-    var currentMonsterHp = (this.monster.health / 19) * 10;
+    var currentPlayerHp = (this.player.health / 10 );
+    var currentMonsterHp = (this.monster.health / 19);
 
     // Selectors for HP bar ID
    document.getElementById('playerHpBar').style.transform = `scaleX(${currentPlayerHp})`;
