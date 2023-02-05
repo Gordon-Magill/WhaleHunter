@@ -357,6 +357,9 @@ class BattleClass {
   }
 
   endBattle() {
+    document.getElementById('playerHp').innerHTML = "";
+    document.getElementById('monsterHp').innerHTML = "";
+
     console.log(`Battle over! Winner is ${this.victor.name}!`);
     this.victoryStateSetter(this.victor);
     if (this.victor == this.player) {
